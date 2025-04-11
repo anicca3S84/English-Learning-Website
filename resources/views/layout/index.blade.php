@@ -57,9 +57,9 @@
         <!-- End Breadcrumb -->
 
         <!-- Slider -->
-        <div class="container-fluid">
+        <div style="padding: 0" class="container-fluid">
             <div class="row">
-                <div style="padding: 0;" class="col-md-12">
+                <div class="col-md-12">
                     <div class="carousel slide" id="carousel-554496">
                         <ol class="carousel-indicators">
                             <li data-slide-to="0" data-target="#carousel-554496"></li>
@@ -90,11 +90,7 @@
                                 <div class="carousel-caption">
                                     <h4>printing and typesetting</h4>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry. Lorem Ipsum has been the industry's
-                                        standard dummy text ever since the 1500s, when an unknown
-                                        printer took a galley of type and scrambled it to make a
-                                        type specimen book.
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                     </p>
                                 </div>
                             </div>
@@ -108,9 +104,7 @@
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and
                                         typesetting industry. Lorem Ipsum has been the industry's
-                                        standard dummy text ever since the 1500s, when an unknown
-                                        printer took a galley of type and scrambled it to make a
-                                        type specimen book.
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -128,6 +122,44 @@
                     </div>
                 </div>
             </div>
+
+
+            <!-- Hero section  -->
+            <div class="hero-section">
+                <div class="section-heading heading-lg heading-md">
+                    We provide you with the right tools to help you<br />
+                    interact confidently in the real world.
+                </div>
+                <div class="container mb-5">
+                    <div class="row hero-box">
+                        <div class="col-md-6 pl-0 hero-image">
+                            <img
+                                src="{{ asset('images/backgrounds/main-slider-v1-img.png') }}" />
+                        </div>
+                        <div class="col-md-6 hero-content">
+                            <h2 class="hero-title title-main">Skills</h2>
+                            <p>
+                                Practise your listening, reading, writing and speaking and
+                                learn useful language to use at work or to communicate
+                                effectively with friends.
+                            </p>
+                            <ul>
+                                <li>
+                                    Audio and video to practise your listening and speaking
+                                    skills.
+                                </li>
+                                <li>Model texts for all types of writing tasks.</li>
+                                <li>
+                                    Work on your reading skills to read more quickly and
+                                    understand more.
+                                </li>
+                            </ul>
+                            <button class="thm-btn btn-purple mt-3">Start learning</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Hero section  -->
         </div>
         <!-- End Slider -->
 
@@ -142,7 +174,7 @@
 
 
 
-    
+
 
     <div class="mobile-nav__wrapper">
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
