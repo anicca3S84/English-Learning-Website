@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@yield('title')</title>
+    <!-- favicons Icons -->
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="assets/images/favicons/apple-touch-icon.png" />
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="assets/images/favicons/favicon-32x32.png" />
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Crsine HTML Template For Car Services" />
+
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <!-- Link CSS files -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        @include('partial.header')
+
+
+        <!--Content here  -->
+
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                </ol>
+            </nav>
+        </div>
+        <!-- End Breadcrumb -->
+
+        <!-- Slider -->
+        <div class="container-fluid">
+            <div class="row">
+                <div style="padding: 0;" class="col-md-12">
+                    <div class="carousel slide" id="carousel-554496">
+                        <ol class="carousel-indicators">
+                            <li data-slide-to="0" data-target="#carousel-554496"></li>
+                            <li data-slide-to="1" data-target="#carousel-554496"></li>
+                            <li
+                                data-slide-to="2"
+                                data-target="#carousel-554496"
+                                class="active"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item">
+                                <img
+                                    class="d-block w-100"
+                                    alt="Carousel Bootstrap First"
+                                    src="{{ asset('images/backgrounds/main-slider-v2-1.jpg') }}" />
+                                <div class="carousel-caption">
+                                    <h4>Your Benefit</h4>
+                                    <p>
+                                        Learn English online and improve your skills through our high-quality courses and resources.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item active">
+                                <img
+                                    class="d-block w-100"
+                                    alt="Carousel Bootstrap Second"
+                                    src="{{ asset('images/backgrounds/main-slider-v2-2.jpg') }}" />
+                                <div class="carousel-caption">
+                                    <h4>printing and typesetting</h4>
+                                    <p>
+                                        Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem Ipsum has been the industry's
+                                        standard dummy text ever since the 1500s, when an unknown
+                                        printer took a galley of type and scrambled it to make a
+                                        type specimen book.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img
+                                    class="d-block w-100"
+                                    alt="Carousel Bootstrap Third"
+                                    src="{{ asset('images/backgrounds/main-slider-v1-img.png') }}" />
+                                <div class="carousel-caption">
+                                    <h4>printer took</h4>
+                                    <p>
+                                        Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem Ipsum has been the industry's
+                                        standard dummy text ever since the 1500s, when an unknown
+                                        printer took a galley of type and scrambled it to make a
+                                        type specimen book.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="carousel-control-prev"
+                            href="#carousel-554496"
+                            data-slide="prev"><span class="carousel-control-prev-icon"></span>
+                            <span class="sr-only">Previous</span></a>
+                        <a
+                            class="carousel-control-next"
+                            href="#carousel-554496"
+                            data-slide="next"><span class="carousel-control-next-icon"></span>
+                            <span class="sr-only">Next</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Slider -->
+
+        <!-- /.Content here  -->
+
+        @include('partial.footer')
+    </div>
+    <!-- /.page-wrapper -->
+
+
+
+
+
+
+    
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image"><img src="{{ asset('images/resources/demo.png') }}" alt="" /></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="icon-phone-call"></i>
+                    <a href="mailto:needhelp@packageName__.com">needhelp@index.com</a>
+                </li>
+                <li>
+                    <i class="icon-letter"></i>
+                    <a href="tel:666-888-0000">666 888 0000</a>
+                </li>
+            </ul>
+            <!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-facebook-square"></a>
+                    <a href="#" class="fab fa-pinterest-p"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                </div>
+                <!-- /.mobile-nav__social -->
+            </div>
+            <!-- /.mobile-nav__top -->
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="thm-btn2">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jarallax@2.0.1/dist/jarallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.appear/1.1.1/jquery.appear.min.js"></script>
+
+    <!-- template js -->
+    <script src="{{ asset('js/index.js') }}"></script>
+</body>
+
+</html>
