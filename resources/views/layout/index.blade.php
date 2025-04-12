@@ -31,7 +31,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 
     <!-- Link CSS files -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -104,7 +105,7 @@
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and
                                         typesetting industry. Lorem Ipsum has been the industry's
-                                        
+
                                     </p>
                                 </div>
                             </div>
@@ -160,8 +161,133 @@
                 </div>
             </div>
             <!-- End Hero section  -->
+
+            <!-- Hero section 2  -->
+            <div class="hero-section hero-section-2">
+                <div class="section-heading heading-lg heading-md">
+                    We provide you with the right tools to help you<br />
+                    interact confidently in the real world.
+                </div>
+                <div class="container mb-5">
+                    <div class="row hero-box">
+                        <div class="col-md-6 hero-content">
+                            <h2 class="hero-title title-main">Skills</h2>
+                            <p>
+                                Practise your listening, reading, writing and speaking and
+                                learn useful language to use at work or to communicate
+                                effectively with friends.
+                            </p>
+                            <ul>
+                                <li>
+                                    Audio and video to practise your listening and speaking
+                                    skills.
+                                </li>
+                                <li>Model texts for all types of writing tasks.</li>
+                                <li>
+                                    Work on your reading skills to read more quickly and
+                                    understand more.
+                                </li>
+                            </ul>
+                            <button class="thm-btn btn-purple mt-3">Start learning</button>
+                        </div>
+                        <div class="col-md-6 pr-0 hero-image">
+                            <img
+                                src="{{ asset('images/backgrounds/main-slider-v1-img.png') }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Hero section 2  -->
+
+            <!-- Hero section 3  -->
+            <div class="hero-section hero-section-3">
+                <div class="section-heading heading-lg heading-md">
+                    We provide you with the right tools to help you<br />
+                    interact confidently in the real world.
+                </div>
+                <div class="container mb-5">
+                    <div class="row hero-box">
+                        <div class="col-md-6 pl-0 hero-image">
+                            <img
+                                src="{{ asset('images/backgrounds/main-slider-v1-img.png') }}" />
+                        </div>
+                        <div class="col-md-6 hero-content">
+                            <h2 class="hero-title title-main">Skills</h2>
+                            <p>
+                                Practise your listening, reading, writing and speaking and
+                                learn useful language to use at work or to communicate
+                                effectively with friends.
+                            </p>
+                            <ul>
+                                <li>
+                                    Audio and video to practise your listening and speaking
+                                    skills.
+                                </li>
+                                <li>Model texts for all types of writing tasks.</li>
+                                <li>
+                                    Work on your reading skills to read more quickly and
+                                    understand more.
+                                </li>
+                            </ul>
+                            <button class="thm-btn btn-purple mt-3">Start learning</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Hero section 3  -->
         </div>
         <!-- End Slider -->
+
+        <!-- card items -->
+        <div class="container-fluid card-section">
+            <div class="card-heading heading-lg heading-md">
+            Empowering You with the Skills to Communicate Confidently in the Real World
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 Services-tab item">
+                        <div class="folded-corner service_tab_1">
+                            <div class="text">
+                                <!-- <i class="fa fa-image fa-5x fa-icon-image"></i> -->
+                                <i class="fa-solid fa-graduation-cap fa-5x fa-icon-image"></i>
+                                <p class="item-title">
+                                <h3> Learn</h3>
+                                </p><!-- /.item-title -->
+                                <p>
+                                    Build a strong foundation in English with guided lessons and structured study paths. Perfect for beginners and those looking to refresh their skills.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 Services-tab item">
+                        <div class="folded-corner service_tab_1">
+                            <div class="text">
+                                <i class="fa fa-lightbulb fa-5x fa-icon-image"></i>
+                                <p class="item-title">
+                                <h3>Create</h3>
+                                </p>
+                                <p>
+                                    Unlock your creativity through fun, interactive activities like storytelling, role-playing, and project-based learning—all in English.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 Services-tab item">
+                        <div class="folded-corner service_tab_1">
+                            <div class="text">
+                                <i class="fa-solid fa-clock fa-5x fa-icon-image"></i>
+                                <p class="item-title">
+                                <h3> Practice</h3>
+                                </p>
+                                <p>
+                                    Improve fluency with real-world practice: conversations, interviews, presentations, and time-based exercises that build confidence fast.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- /.Content here  -->
 
