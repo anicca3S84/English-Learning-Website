@@ -69,7 +69,7 @@ a:hover {
     cursor: pointer;
 }
 .btn:hover {
-    color: #11073d;
+    color: white;
     background-color: #28a745 ;     /* Màu hover tối hơn một chút */
     transform: scale(1.02);        /* Hiệu ứng phóng to nhẹ */
     text-decoration: underline;

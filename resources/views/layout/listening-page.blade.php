@@ -83,7 +83,7 @@
                             for you.
                         </p>
 
-                        <div class="course-highlight position-relative text-center py-5" style="margin-top: 20px">
+                        <div class="course-highlight position-relative text-center py-5" style="margin-top: 40px">
                             <div class="background-layer"></div>
 
                             <div class="course-content p-5 mx-auto shadow">
@@ -92,9 +92,10 @@
                                     Improve your English speaking, listening,
                                     reading <br> and writing skills with our selection of <br>
                                     online courses.
+
                                 </p>
                                 <div class="text-center mt-3">
-                                    <button class="explore-btn">Take the test</button>
+                                    <button class="explore-btn">Discovery your level</button>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +104,7 @@
 
 
 
-                        <div class="skills-section-heading heading-lg" style="margin-top: 80px">
+                        <div class="skills-section-heading heading-lg" style="margin-top: 40px">
                             Choose your level to practise your listening
                         </div>
 
