@@ -16,7 +16,7 @@
     <!-- Link CSS files -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/listening-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
 
     <!-- Inline CSS cho tỷ lệ cột theo Flexbox -->
     <style>
@@ -55,7 +55,6 @@
         <!-- Include header -->
         @include('partial.header')
 
-        <!-- Phần nội dung được chia thành 2 cột -->
         <div class="container mt-5 mb-5">
             <div class="custom-flex-row">
                 <div class="left-col">
@@ -84,15 +83,25 @@
                             for you.
                         </p>
 
-                        <div class="discover-your-current-heading animate__animated animate__bounce animate__infinite animate__slower">
-                            Discover your current English level by taking our free online test
+                        <div class="course-highlight position-relative text-center py-5" style="margin-top: 20px">
+                            <div class="background-layer"></div>
+
+                            <div class="course-content p-5 mx-auto shadow">
+
+                                <p>
+                                    Improve your English speaking, listening,
+                                    reading <br> and writing skills with our selection of <br>
+                                    online courses.
+                                </p>
+                                <div class="text-center mt-3">
+                                    <button class="explore-btn">Take the test</button>
+                                </div>
+                            </div>
                         </div>
 
 
 
-                        <div class="text-center mt-3">
-                            <button class="btn">Discover your level</button>
-                        </div>
+
 
                         <div class="skills-section-heading heading-lg" style="margin-top: 80px">
                             Choose your level to practise your listening
@@ -137,9 +146,8 @@
                             <div class="text-side">
                                 <h2>B1 listening</h2>
                                 <p>
-                                    Listening practice to help you understand the main points of clear, standard speech
-                                    about everyday or job-related topics. Situations include phone calls, meetings and
-                                    interviews.
+                                    Listening practice to help you understand extended speech about abstract, complex or
+                                    unfamiliar topics. Situations include job interviews, lectures, talks and meetings.
                                 </p>
                             </div>
                         </div>
@@ -150,11 +158,26 @@
                                     alt="Listening" />
                             </div>
                             <div class="text-side">
-                                <h2>B1 listening</h2>
+                                <h2>B2 listening</h2>
                                 <p>
                                     Listening practice to help you understand extended, standard speech about familiar
                                     topics that may contain complex ideas. Situations include broadcasts, reviews,
                                     presentations and lectures.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="container-course">
+                            <div class="image-side">
+                                <img src="{{ asset('images/listening-page/c1-listening-image.png') }}"
+                                    alt="Listening" />
+                            </div>
+                            <div class="text-side">
+                                <h2>C1 listening</h2>
+                                <p>
+                                    Listening practice to help you understand the main points of clear, standard speech
+                                    about everyday or job-related topics. Situations include phone calls, meetings and
+                                    interviews.
                                 </p>
                             </div>
                         </div>
@@ -188,48 +211,7 @@
 
 
                 <div class="right-col">
-                    <div class="sidebar-box shadow-sm" style="margin-top: 58px;">
-                        <ul class="list-skills-text">
-                            <li><span class="text-success">✔ Listening</span></li>
-                            <ul class="list-skills-text-md">
-                                <li>A1 listening</li>
-                                <li>A2 listening</li>
-                                <li>B1 listening</li>
-                                <li>B2 listening</li>
-                                <li>C1 listening</li>
-                            </ul>
-                            <li>✔ Reading</li>
-                            <li>✔ Writing</li>
-                            <li>✔ Speaking</li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-box-1 shadow-sm" >
-                        <img style="cursor: pointer" src="{{ asset('images/listening-page/online-english-course-image.avif') }}"
-                            class="img-fluid rounded mb-2">
-                        <p class="online-english-course-title">Online English courses</p>
-                    </div>
-
-                    <div class="sidebar-box shadow-sm" style="margin-top: 18px;">
-                        <ul class="list-skills-text">
-                            <li><span class="right-row-header">Our websites</span></li>
-                            <li>✔  LearnEnglish Kids for children aged 5 to 12</li>
-                            <li>✔  LearnEnglish Teens for children aged 13 to 17</li>
-                            <li>✔  TeachingEnglish for teachers and teacher educators</li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-box-1 shadow-sm" style="padding: 24px 12px" >
-                        <ul class="list-skills-text">
-                            <li><span class="right-row-header">Help</span></li>
-                            <li>✔  Free online English test</li>
-                            <li>✔  Sign up for our newsletter</li>
-                            <li>✔  Frequently asked questions</li>
-                            <li>✔  Getting started</li>
-                            <li>✔  House rules</li>
-                            
-
-                    </div>
+                    @include('partial.side-bar')
                 </div>
 
 

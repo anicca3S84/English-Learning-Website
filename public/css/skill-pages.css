@@ -36,7 +36,7 @@
 .listening-description {
     margin-top: 30px;
     font-size: 18px;
-    line-height: 1.25;
+    line-height: 1.5;
     margin-bottom: 30px;
     color: black;
     width: 100%
@@ -207,4 +207,56 @@ a:hover {
     cursor: pointer;
   }
 
+  .course-highlight {
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+}
 
+.background-layer {
+    background: linear-gradient(to right, #69f54f 30%, #029c3d 70%);
+    height: 300px;
+    width: 100%;
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.course-content {
+    position: relative;
+    z-index: 1;
+    margin-top: 8px;
+    background: white;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    max-width: 730px;
+    height: 270px;
+    font-size: 1.1rem;
+    color: #220053;
+}
+
+.explore-btn {
+    background-color: #23085A;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-size: 0.95rem;
+    margin-top: 15px;
+    text-decoration: none;
+    border: solid;
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #28a745; 
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  border: solid;
+}
