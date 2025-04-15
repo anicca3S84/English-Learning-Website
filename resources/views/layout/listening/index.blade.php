@@ -109,7 +109,7 @@
                         </div>
 
 
-                        <a href="{{ url('/listening/a1') }}" class="container-course text-decoration-none text-dark">
+                        <a href="{{ url('skills/listening/a1') }}" class="container-course text-decoration-none text-dark">
                             <div class="image-side">
                                 <img src="{{ asset('images/listening-page/a1-listening-image.png') }}"
                                     alt="Listening A1" />
@@ -124,7 +124,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ url('/listening/a2') }}" class="container-course text-decoration-none text-dark">
+                        <a href="{{ url('skills/listening/a2') }}" class="container-course text-decoration-none text-dark">
                             <div class="image-side">
                                 <img src="{{ asset('images/listening-page/a2-listening-image.png') }}"
                                     alt="Listening A2" />
@@ -139,7 +139,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ url('/listening/b1') }}" class="container-course text-decoration-none text-dark">
+                        <a href="{{ url('skills/listening/b1') }}" class="container-course text-decoration-none text-dark">
                             <div class="image-side">
                                 <img src="{{ asset('images/listening-page/b1-listening-image.png') }}"
                                     alt="Listening B1" />
@@ -153,7 +153,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ url('/listening/b2') }}" class="container-course text-decoration-none text-dark">
+                        <a href="{{ url('skills/listening/b2') }}" class="container-course text-decoration-none text-dark">
                             <div class="image-side">
                                 <img src="{{ asset('images/listening-page/b2-listening-image.png') }}"
                                     alt="Listening B2" />
@@ -168,7 +168,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ url('/listening/c1') }}" class="container-course text-decoration-none text-dark">
+                        <a href="{{ url('skills/listening/c1') }}" class="container-course text-decoration-none text-dark">
                             <div class="image-side">
                                 <img src="{{ asset('images/listening-page/c1-listening-image.png') }}"
                                     alt="Listening C1" />
