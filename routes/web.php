@@ -1,31 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ListeningController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ListeningController;   
+use App\Http\Controllers\CourseController;
+use App\Models\Course;
+use App\Http\Controllers\SkillController;
 
 
 Route::get('/', function () {
     return view('layout.index');
 });
 
-//listening 
-Route::get('skills/listening', [ListeningController::class, 'index']);
-Route::get('skills/listening/a1', [ListeningController::class, 'a1']);
-Route::get('skills/listening/a2', [ListeningController::class, 'a2']);
-Route::get('skills/listening/b1', [ListeningController::class, 'b1']);
-Route::get('skills/listening/b2', [ListeningController::class, 'b2']);
-Route::get('skills/listening/c1', [ListeningController::class, 'c1']);
-
-//speaking
 
 
+//skill-page
+Route::get('/skill/{slug}', [SkillController::class, 'index']);
 
+//course-page
+Route::get('/skill/{skillSlug}/course/{courseSlug}', [CourseController::class, 'showCourse'])->name('course.show');
 
-
-//speaking
-
-
-
-
-
-//writing
+//lesson-page
+Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [LessonController::class, 'showLesson'])->name('lesson.show');

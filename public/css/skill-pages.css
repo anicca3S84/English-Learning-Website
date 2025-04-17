@@ -1,3 +1,21 @@
+.custom-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  /* Đảm bảo responsive */
+}
+
+.left-col {
+  flex: 0 0 73% !important;
+  max-width: 73% !important;
+}
+
+.right-col {
+  flex: 0 0 27% !important;
+  max-width: 27% !important;
+  padding-left: 20px;
+}
+
+
 .skills-section-heading {
     color: #23085A;
     margin-bottom: 40px;
@@ -259,4 +277,43 @@ a:hover {
   text-decoration: underline;
   cursor: pointer;
   border: solid;
+}
+
+.audio-section{
+  width: 100%;
+}
+
+.accordion{
+  margin-top: 10px;
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: none;
+}
+
+.card-header {
+  background-color: #DEDAE7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  line-height: 1.2;
+}
+
+.card-header a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.arrow-icon {
+  margin-left: auto; /* Đẩy mũi tên sang bên phải */
+}
+
+
+.card-body {
+  background-color: #ECEFF0; /* Màu nền bạn muốn */
 }
