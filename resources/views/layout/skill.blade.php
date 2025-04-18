@@ -17,6 +17,20 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
+
+    <!-- Custom CSS for Flexbox -->
+    <style>
+        .custom-flex-row {
+            display: flex;
+            align-items: stretch; /* Đảm bảo chiều cao của cả hai cột bằng nhau */
+        }
+
+        .left-col, .right-col {
+            flex: 1; /* Mỗi cột sẽ chiếm một phần không gian của container */
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,13 +39,14 @@
         @include('partial.header')
 
         <div class="container mt-5 mb-5">
+            <div id="skill" class="skills-section-heading heading-lg" style="margin-top: -20px">
+                {{ $skill->title }}
+            </div>
             <div class="custom-flex-row">
                 <div class="left-col">
-                    <div id = "skill" class="skills-section-heading heading-lg" style="margin-top: -20px">
-                        {{ $skill->title }}
-                    </div>
+                    
 
-                    <div id = "skill" class="corner-image">
+                    <div id="skill" class="corner-image">
                         <img src="{{ $skill->imageUrl }}" alt="Skill Image" />
                     </div>
                     <div class="listening-description mt-3">
@@ -42,12 +57,10 @@
                         <div class="background-layer"></div>
 
                         <div class="course-content p-5 mx-auto shadow">
-
                             <p>
                                 Improve your English speaking, listening,
                                 reading <br> and writing skills with our selection of <br>
                                 online courses.
-
                             </p>
                             <div class="text-center mt-3">
                                 <button class="explore-btn">Discovery your level</button>
@@ -55,11 +68,9 @@
                         </div>
                     </div>
 
-
                     <div class="skills-section-heading heading-lg" style="margin-top: 40px">
                         Choose your level to practise your listening
                     </div>
-
 
                     <div id="skill">
                         @foreach ($courses as $course)
@@ -67,15 +78,13 @@
                                 <div class="image-side">
                                     <img src="{{ $course->imageUrl }}" alt="{{ $course->title }}" />
                                 </div>
-                                <div href = "{{ route('course.show', ['skillSlug' => $skill->slug, 'courseSlug' => $course->slug]) }}" class="text-side">
+                                <div class="text-side">
                                     <h2>{{ $course->title }}</h2>
                                     <p>{{ $course->description }}</p>
                                 </div>
                             </a>
                         @endforeach
                     </div>
-
-
 
                     <div class="skills-section-heading heading-lg">
                         Learn to listen with confidence
@@ -95,27 +104,20 @@
                         </p>
                     </div>
 
-                    <div class=" mt-3">
+                    <div class="mt-3">
                         <button class="btn">Explore courses</button>
                     </div>
                 </div>
 
-
-
                 <div class="right-col">
                     @include('partial.side-bar')
                 </div>
-
-
-
             </div>
         </div>
     </div>
 
-
     <!-- Footer -->
     @include('partial.footer')
-    </div>
 
     <!-- Optional JS: jQuery, Popper.js, and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

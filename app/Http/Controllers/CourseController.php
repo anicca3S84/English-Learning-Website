@@ -13,7 +13,7 @@ class CourseController extends Controller
     public function showCourse($skillSlug, $courseSlug)
     {
         $skill = Skill::where('slug', $skillSlug)
-            ->select('id', 'title')
+            ->select('id', 'title', 'slug') 
             ->firstOrFail();
 
         $course = Course::where('slug', $courseSlug)
@@ -24,13 +24,22 @@ class CourseController extends Controller
         $lessons = Lesson::where('course_id', $course->id)
             ->get();
 
-        // return view('layout.' . $skillSlug . '.course', [
+        // Add $allSkills for the sidebar
+        $allSkills = Skill::select('id', 'title', 'slug')->get();
+
+        // Add $courses for the active skill to display in the sidebar
+        $courses = Course::where('skill_id', $skill->id)
+            ->select('id', 'title', 'slug')
+            ->get();
 
         return view('layout.course', [
             'skillSlug' => $skillSlug,
-            'skillTitle' => $skill->title,
-            'course' => $course, // Sửa 'courses' thành 'course' để khớp với view
+            'courseSlug' => $courseSlug,
+            'skill' => $skill,
+            'course' => $course,
             'lessons' => $lessons,
+            'allSkills' => $allSkills,
+            'courses' => $courses
         ]);
     }
 }

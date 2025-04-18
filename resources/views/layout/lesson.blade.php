@@ -17,6 +17,30 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
+
+     <!-- Custom CSS for Flexbox -->
+     <style>
+        .custom-flex-row {
+            display: flex;
+            align-items: stretch;
+        }
+    
+        .left-col, .right-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .left-inner, .right-inner {
+            flex: 1;
+        }
+    
+        /* Đảm bảo bên trái không bị thấp hơn quá nhiều */
+        .left-col {
+            min-height: 100%;
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -25,12 +49,11 @@
         @include('partial.header')
 
         <div class="container mt-5 mb-5">
+            <div id = "lesson" class="skills-section-heading heading-lg" style="margin-top: -20px">
+                {{ $lesson->title }}
+            </div>
             <div class="custom-flex-row">
                 <div class="left-col">
-                    <div id = "lesson" class="skills-section-heading heading-lg" style="margin-top: -20px">
-                        {{ $lesson->title }}
-                    </div>
-
                     <div id="lesson" class="corner-image">
                         @if ($skillTitle !== 'Speaking' && !empty($lesson->content['imageUrl']))
                             <img src="{{ $lesson->content['imageUrl'] }}" alt="{{ $lesson->image }}" />
@@ -223,7 +246,7 @@
 
 
                 <div class="right-col">
-                    @include('partial.side-bar')
+                    @include('partial.side-bar', ['lessonSlug' => $lessonSlug])
                 </div>
 
 

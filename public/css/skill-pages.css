@@ -95,31 +95,57 @@ a:hover {
 }
 
 .list-skills-text {
-    font-size: 18px;
-    color: #23085A;
-    list-style-type: none;
-    padding-left: 10px;
-    cursor: pointer;
+  font-size: 18px;
+  color: #23085A;
+  list-style-type: none;
+  padding-left: 10px;
 }
 
 .list-skills-text > li {
-    margin-bottom: 14px;
+  margin-bottom: 14px;
 }
 
-.list-skills-text > li:hover, .list-skills-text-md > li:hover {
-    color: #28a745; /* Màu khi hover */
-    text-decoration: underline;
-    cursor: pointer;
+.list-skills-text > li > span {
+  display: inline-block; /* Ensures span doesn't affect layout */
 }
 
+/* Style for skill links */
+.skill-link {
+  color: #23085A;
+  text-decoration: none;
+}
+
+.skill-link:hover {
+  color: #28a745; /* Green on hover */
+  text-decoration: underline;
+}
+
+/* Protect active skill (text-success) */
+.text-success .skill-link {
+  color: #28a745 !important; /* Keep active skill green */
+  text-decoration: none !important; /* No underline for active skill */
+}
 
 .list-skills-text-md {
-    margin-top: -10px;
-    font-size: 14px;
-    color: #23085A;
-    margin-right: 20px;
-    cursor: pointer;
-    margin-bottom: 10px;
+  margin-top: -10px;
+  font-size: 16px;
+  color: #23085A;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 4px;
+  list-style-type: none;
+  padding-left: 20px; /* Indent courses */
+}
+
+/* Style for course links */
+.course-link {
+  color: #23085A;
+  text-decoration: none;
+}
+
+.course-link:hover {
+  color: #28a745; /* Green on hover for course */
+  text-decoration: underline;
 }
 
 .container-course {

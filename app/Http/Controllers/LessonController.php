@@ -30,23 +30,26 @@ class LessonController extends Controller
     }
 
     public function showLesson($skillSlug, $courseSlug, $lessonSlug)
-    {
-        $skill = Skill::where('slug', $skillSlug)
-            ->select('id', 'title')
-            ->firstOrFail();
+{
+    $skill = Skill::where('slug', $skillSlug)
+        ->select('id', 'title')
+        ->firstOrFail();
 
-        $course = Course::where('slug', $courseSlug)
-            ->where('skill_id', $skill->id)
-            ->select('title', 'skill_id')
-            ->firstOrFail();
+    $course = Course::where('slug', $courseSlug)
+        ->where('skill_id', $skill->id)
+        ->select('title', 'skill_id')
+        ->firstOrFail();
 
-        $lesson = Lesson::where('slug', $lessonSlug)
-            ->firstOrFail();
+    $lesson = Lesson::where('slug', $lessonSlug)
+        ->firstOrFail();
 
-        return view('layout.lesson', [
-            'skillTitle' => $skill->title,
-            'courseTitle' => $course->title,
-            'lesson' => $lesson
-        ]);
-    }
+    // Truyền thêm biến lessonSlug vào view
+    return view('layout.lesson', [
+        'skillTitle' => $skill->title,
+        'course' => $course,
+        'lesson' => $lesson,
+        'lessonSlug' => $lessonSlug, // Truyền slug của bài học
+    ]);
+}
+
 }

@@ -15,10 +15,15 @@ Route::get('/', function () {
 
 
 //skill-page
-Route::get('/skill/{slug}', [SkillController::class, 'index']);
+Route::get('/skill/{slug}', [SkillController::class, 'index'])->name('skill.index');
 
 //course-page
 Route::get('/skill/{skillSlug}/course/{courseSlug}', [CourseController::class, 'showCourse'])->name('course.show');
 
 //lesson-page
 Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [LessonController::class, 'showLesson'])->name('lesson.show');
+
+
+
+
+
