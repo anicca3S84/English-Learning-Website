@@ -1,5 +1,57 @@
 <!--Start Footer One-->
 <footer class="footer-one">
+    <div class="container-fluid card-section">
+        <div class="card-heading heading-lg heading-md">
+            Empowering You with the Skills to Communicate Confidently in the Real World
+        </div>
+        <div class="container">
+            <div class="row">
+                <!-- Learn Section -->
+                <div class="col-md-4 Services-tab item">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text">
+                            <i class="fa-solid fa-graduation-cap fa-5x fa-icon-image"></i>
+                            <h3 class="item-title">Learn</h3>
+                            <p>
+                                Build a strong foundation in English with guided lessons and structured study paths.
+                                Perfect for beginners and those looking to refresh their skills.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Create Section -->
+                <div class="col-md-4 Services-tab item">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text">
+                            <i class="fa fa-lightbulb fa-5x fa-icon-image"></i>
+                            <h3 class="item-title">Create</h3>
+                            <p>
+                                Unlock your creativity through fun, interactive activities like storytelling,
+                                role-playing, and project-based learning—all in English.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Practice Section -->
+                <div class="col-md-4 Services-tab item">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text">
+                            <i class="fa-solid fa-clock fa-5x fa-icon-image"></i>
+                            <h3 class="item-title">Practice</h3>
+                            <p>
+                                Improve fluency with real-world practice: conversations, interviews, presentations,
+                                and time-based exercises that build confidence fast.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
     <!-- /.footer-one__bg -->
     <div class="footer-one__top">
         <div class="container">
