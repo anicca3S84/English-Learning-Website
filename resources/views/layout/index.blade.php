@@ -33,10 +33,13 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
     <!-- Link CSS files -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
+
 </head>
 
 <body>
@@ -241,14 +244,13 @@
         <!-- card items -->
         <div class="container-fluid card-section">
             <div class="card-heading heading-lg heading-md">
-            Empowering You with the Skills to Communicate Confidently in the Real World
+                Empowering You with the Skills to Communicate Confidently in the Real World
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 Services-tab item">
                         <div class="folded-corner service_tab_1">
-                            <div class="text">
-                                <!-- <i class="fa fa-image fa-5x fa-icon-image"></i> -->
+                            <div class="text-card">
                                 <i class="fa-solid fa-graduation-cap fa-5x fa-icon-image"></i>
                                 <p class="item-title">
                                 <h3> Learn</h3>
@@ -261,7 +263,7 @@
                     </div>
                     <div class="col-md-4 Services-tab item">
                         <div class="folded-corner service_tab_1">
-                            <div class="text">
+                            <div class="text-card">
                                 <i class="fa fa-lightbulb fa-5x fa-icon-image"></i>
                                 <p class="item-title">
                                 <h3>Create</h3>
@@ -274,7 +276,7 @@
                     </div>
                     <div class="col-md-4 Services-tab item">
                         <div class="folded-corner service_tab_1">
-                            <div class="text">
+                            <div class="text-card">
                                 <i class="fa-solid fa-clock fa-5x fa-icon-image"></i>
                                 <p class="item-title">
                                 <h3> Practice</h3>
@@ -288,6 +290,241 @@
                 </div>
             </div>
         </div>
+
+        <!-- Carousel content -->
+        <div class="container-fluid carousel-section">
+            <div class="carousel-heading heading-lg heading-md">
+                Empowering You with the Skills to Communicate Confidently in the Real World
+            </div>
+            <div class="container">
+                <div class="row items">
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 1">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 1</h2>
+                                <p class="card-text">This is a description of the first car image. This is a long text to test how it is truncated gracefully with the ellipsis if it overflows.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 2">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 2</h2>
+                                <p class="card-text">This is a description of the second car image.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 2">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 2</h2>
+                                <p class="card-text">This is a description of the second car image.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 2">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 2</h2>
+                                <p class="card-text">This is a description of the second car image.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 2">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 2</h2>
+                                <p class="card-text">This is a description of the second car image.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 2">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 2</h2>
+                                <p class="card-text">This is a description of the second car image.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card rounded-lg shadow-sm card-custom">
+                            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg" class="card-img-top rounded-top" alt="Car Image 2">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-purple">Car 2</h2>
+                                <p class="card-text">This is a description of the second car image.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="carousel-heading heading-lg heading-md">
+                Explore our free resources:
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Listening</a></li>
+                    <li><a href="#">Reading</a></li>
+                    <li><a href="#">Writing</a></li>
+                    <li><a href="#">Speaking</a></li>
+                    <li><a href="#">Vocabulary</a></li>
+                    <li><a href="#">Grammar</a></li>
+                    <li><a href="#">Business English</a></li>
+                    <li><a href="#">General English</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.Carousel content -->
+
+        <!-- Card 2 section -->
+        <div class="container-fluid card-section">
+            <div class="card-heading-2 heading-lg heading-md">
+                Empowering You with the Skills to Communicate Confidently in the Real World
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card-custom-2 d-flex align-items-start">
+                            <div class="card-icon-2">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h5 class="card-title-2">Skills</h5>
+                                <p class="card-text-2">Learn new words to understand and express yourself clearly</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card-custom-2 d-flex align-items-start">
+                            <div class="card-icon-2">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h5 class="card-title-2">Grammar</h5>
+                                <p class="card-text-2">Practice verb tenses and grammar rules, word parts and verb</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card-custom-2 d-flex align-items-start">
+                            <div class="card-icon-2">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h5 class="card-title-2">Vocabulary</h5>
+                                <p class="card-text-2">Learn new words to understand and express yourself clearly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-bottom: 80px;" class="row d-flex justify-content-center ">
+                    <button class="thm-btn btn-purple mt-3">Get started</button>
+                </div>
+            </div>
+        </div>
+        <!-- /. Card 2 section -->
+
+
+        <!-- Card 3 section -->
+        <div style="background-color: #f0ffe7;" class="container-fluid card-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 card-custom-3">
+                        <div class="folded-corner">
+                            <div class="text-card">
+                                <i class="fa-solid fa-brain fa-5x fa-icon-image"></i>
+                                <p style="margin-top: 12px;" class="item-title heading-lg heading-md">
+                                    <a href="#"> Learn</a>
+                                </p>
+                                <p>
+                                    Build a strong foundation in English with guided lessons and structured study paths. Perfect for beginners and those looking to refresh their skills.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 card-custom-3">
+                        <div class="folded-corner">
+                            <div class="text-card">
+                                <i class="fa-solid fa-book fa-5x fa-icon-image"></i>
+                                <p style="margin-top: 12px;" class="item-title heading-lg heading-md">
+                                    <a href="#"> Practice</a>
+                                </p>
+                                <p>
+                                    Improve fluency with real-world practice: conversations, interviews, presentations, and time-based exercises that build confidence fast.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /. Card 3 section -->
+
+
+        <!-- Card 4 section -->
+        <section class="course-section">
+            <h2 style="color: #fff;" class="mb-5">Online courses</h2>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 course-box">
+                        <div class="course-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="course-title">
+                            <a href="">Live classes</a>
+                        </div>
+                        <div class="course-description">
+                            Group and one-to-one classes with expert teachers.
+                        </div>
+                    </div>
+                    <div class="col-md-3 course-box">
+                        <div class="course-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <div class="course-title">
+                        <a href="">Self Study</a>
+                        </div>
+                        <div class="course-description">
+                            Learn English in your own time, at your own pace.
+                        </div>
+                    </div>
+                    <div class="col-md-3 course-box">
+                        <div class="course-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="course-title">
+                            <a href="">Personal tutoring</a>
+                        </div>
+                        <div class="course-description">
+                            One-to-one sessions focused on a personal plan.
+                        </div>
+                    </div>
+                    <div class="col-md-3 course-box">
+                        <div class="course-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="course-title">
+                            <a href="">IELTS preparation</a>
+                        </div>
+                        <div class="course-description">
+                            Get the score you need with private and group classes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.Card 4 section -->
+
 
         <!-- /.Content here  -->
 
@@ -363,7 +600,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jarallax@2.0.1/dist/jarallax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.appear/1.1.1/jquery.appear.min.js"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- template js -->
     <script src="{{ asset('js/index.js') }}"></script>
 </body>

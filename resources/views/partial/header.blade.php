@@ -103,7 +103,7 @@
                             <div class="main-menu__right">
                                 <div class="main-menu__right-login-register">
                                     <ul class="list-unstyled">
-                                        <li><a href="#">Login</a></li>
+                                    <li><a href="{{ route('login') }}">Login</a></li>
                                         <li><a href="#">Register</a></li>
                                     </ul>
                                 </div>
