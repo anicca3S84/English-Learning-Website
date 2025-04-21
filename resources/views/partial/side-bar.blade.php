@@ -39,7 +39,7 @@
     @endif
 
     {{-- CÁC DIV CÒN LẠI (gói chung trong wrapper) --}}
-    <div style="margin-top: {{ isset($lessonSlug) ? '-26px' : '0' }};">
+    <div style="margin-top: {{ isset($lessonSlug) ? '-28px' : '0' }};">
         {{-- Hình khóa học --}}
         <div class="sidebar-box-1 shadow-sm">
             <img style="cursor: pointer" src="{{ asset('images/listening-page/online-english-course-image.avif') }}"
