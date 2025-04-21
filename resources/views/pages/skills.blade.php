@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skills.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
+
 </head>
 <body>
     <div class="page-wrapper">
@@ -32,7 +34,7 @@
             <div class="intro-section position-relative text-left text-dark">
                 <img src="{{ asset('images/backgrounds/skills-background.jpg') }}" alt="Skills background" class="img-fluid w-100">
                 <div class="intro-text-box shadow-lg p-4">
-                    <h2 class="font-weight-bold text-primary">Skills</h2>
+                    <h2 class="font-weight-bold text-primary" style="color:#23085A !important;">Skills</h2>
                     <p class="mb-2">
                     Practise your reading, writing, listening <br>
                     and speaking skills at your level.
@@ -88,65 +90,57 @@
                         </div>
 
                         <!-- Skills Sections -->
-                        <div class="row align-items-center skill-box">
-                            <div class="col-md-5">
-                                <img src="{{ asset('images/backgrounds/skills-listenning.jpg') }}" alt="Listening" class="img-fluid">
-                            </div>
-                            <div class="col-md-7">
-                                <p class="text-primary font-weight-bold mb-0 ">Listening</p>
-                                <p>
-                                
-                                Listening will help you to improve your understanding of the language and your pronunciation.
-                                </p>
-                                <a href="#" class="btn btn-primary btn-explore mt-0">Explore Listening</a>
-                            </div>
+                         
+                        <div id="skill">
+                            <a href="/skill/listening" class="container-course text-decoration-none text-dark">
+                                <div class="image-side">
+                                    <img src="{{ asset('images/backgrounds/skills-listenning.jpg') }}" alt="Listening" />
+                                </div>
+                                <div class="text-side">
+                                    <h2>Listening</h2>
+                                    <p>Listening will help you to improve your understanding of the language and your pronunciation.</p>
+                                </div>
+                            </a>
                         </div>
 
-                        <div class="row align-items-center skill-box my-4">
-                            <div class="col-md-5">
-                                <img src="{{ asset('images/backgrounds/skills-reading.jpg') }}" alt="Reading" class="img-fluid rounded-left">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="p-4">
-                                    <h3 class="text-primary font-weight-bold mb-0">Reading</h3>
-                                    <p>
-                                    Reading will help you to improve your understanding of the language and build your vocabulary.
-                                    </p>
-                                    <a href="#" class="btn btn-primary btn-explore mt-0">Explore Reading</a>
+                        <div id="skill">
+                            <a href="/skill/reading" class="container-course text-decoration-none text-dark">
+                                <div class="image-side">
+                                    <img src="{{ asset('images/backgrounds/skills-reading.jpg') }}" alt="Reading" />
                                 </div>
-                            </div>
+                                <div class="text-side">
+                                    <h2>Reading</h2>
+                                    <p>Reading will help you to improve your understanding of the language and build your vocabulary.</p>
+                                </div>
+                            </a>
                         </div>
 
-                        <div class="row align-items-center skill-box my-4">
-                            <div class="col-md-5">
-                                <img src="{{ asset('images/backgrounds/skills-speaking.jpg') }}" alt="Speaking" class="img-fluid rounded-left">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="p-4">
-                                    <h3 class="text-primary font-weight-bold mb-0">Speaking</h3>
-                                    <p>
-                                    You can improve your speaking by noticing the language we use in different situations and practising useful phrases.
-                                    </p>
-                                    <a href="#" class="btn btn-primary btn-explore mt-0">Explore Speaking</a>
+                        <div id="skill">
+                            <a href="/skill/speaking" class="container-course text-decoration-none text-dark">
+                                <div class="image-side">
+                                    <img src="{{ asset('images/backgrounds/skills-speaking.jpg') }}" alt="Speaking" />
                                 </div>
-                            </div>
+                                <div class="text-side">
+                                    <h2>Speaking</h2>
+                                    <p>You can improve your speaking by noticing the language we use in different situations and practising useful phrases.</p>
+                                </div>
+                            </a>
                         </div>
 
-                        <div class="row align-items-center skill-box my-4">
-                                    <div class="col-md-5">
-                                        <img src="{{ asset('images/backgrounds/skills-writing.jpg') }}" alt="Writing" class="img-fluid rounded-left">
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="p-4">
-                                            <h3 class="text-primary font-weight-bold mb-0">Writing</h3>
-                                            <p>
-                                          You can improve your writing by understanding model texts and how they're structured.
-                                            </p>
-                                            <a href="#" class="btn btn-primary btn-explore mt-0">Explore Writing</a>
-                                        </div>
-                                    </div>
+                        <div id="skill">
+                            <a href="/skill/writing" class="container-course text-decoration-none text-dark">
+                                <div class="image-side">
+                                    <img src="{{ asset('images/backgrounds/skills-writing.jpg') }}" alt="Writing" />
                                 </div>
-                        
+                                <div class="text-side">
+                                    <h2>Writing</h2>
+                                    <p>You can improve your writing by understanding model texts and how they're structured.</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                       
 
                         <div class="online-courses-section my-5">
                                 <div class="container">
@@ -166,10 +160,10 @@
                             <!-- Khối kỹ năng -->
                             <div class="box mb-4">
                                 <ul class="list-unstyled mb-0">
-                                    <li><a href="#listening" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Listening</a></li>
-                                    <li><a href="#reading" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Reading</a></li>
-                                    <li><a href="#writing" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Writing</a></li>
-                                    <li><a href="#speaking" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Speaking</a></li>
+                                    <li><a href="/skill/listening" class="text-dark d-block"><i class="fas fa-check text-purple mr-2 text-decoration-none"></i>Listening</a></li>
+                                    <li><a href="/skill/reading" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Reading</a></li>
+                                    <li><a href="/skill/writing" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Writing</a></li>
+                                    <li><a href="/skill/speaking" class="text-dark d-block"><i class="fas fa-check text-purple mr-2"></i>Speaking</a></li>
                                 </ul>
                             </div>
 

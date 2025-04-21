@@ -68,7 +68,7 @@
                                     <a href="index.html">Home</a>
                                 </li>
                                 <li class="dropdown">
-                                <a href="{{ route('skills') }}">Skills</a>
+                                <a href="#">Skills</a>
                                     <ul>
                                         <li><a href="#">Listening</a></li>
                                         <li>
