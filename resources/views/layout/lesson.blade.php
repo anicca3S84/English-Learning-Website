@@ -124,180 +124,119 @@
                             <div id="collapseTask1" class="collapse" aria-labelledby="headingTask1"
                                 data-parent="#accordionTask1">
                                 <div class="card-body">
-                                    <div class="spelling-task-wrapper">
-                                        <!-- badge remaining -->
-                                        <div class="spelling-task-remaining">12 items remaining</div>
-
-                                        <h4 class="spelling-task-title">Vocabulary A1-A2: Accessories - Spelling</h4>
-                                        <p class="spelling-task-instruction">Listen and put the letters in order.</p>
-
-                                        <div class="spelling-task-letters">
-                                            <div class="spelling-task-letter" draggable="true" id="letter-b">B</div>
-                                            <div class="spelling-task-letter" draggable="true" id="letter-g">G</div>
-                                            <div class="spelling-task-letter" draggable="true" id="letter-a">A</div>
-                                        </div>
-
-                                        <div class="spelling-task-answer-row">
-                                            <button class="spelling-task-audio">
-                                                <i class="fa fa-volume-up"></i>
-                                            </button>
-                                            <div class="spelling-task-box" data-box="1"></div>
-                                            <div class="spelling-task-box" data-box="2"></div>
-                                            <div class="spelling-task-box" data-box="3"></div>
-                                        </div>
-
-
-                                        <div class="spelling-task-progress">
-                                            <!-- 12 dot ví dụ -->
-                                            <div class="spelling-task-dot active"></div>
-                                            <!-- ... -->
-                                            <div class="spelling-task-dot"></div>
-                                            <div class="spelling-task-dot"></div>
-                                            <div class="spelling-task-dot"></div>
-                                            <div class="spelling-task-dot"></div>
-                                            <div class="spelling-task-dot"></div>
-                                            <div class="spelling-task-dot"></div>
-                                            <div class="spelling-task-dot"></div>
-
-                                        </div>
-
-                                        <div class="spelling-task-bottom-controls">
-                                            <!-- Nhóm nút bên trái: Finish + Try again -->
-                                            <div class="spelling-task-buttons">
-                                                <button class="spelling-task-btn spelling-task-finish-btn">
-                                                    <i class="fa fa-flag"></i> Finish
-                                                </button>
-                                                <button class="spelling-task-btn spelling-task-retry-btn">
-                                                    <i class="fa fa-rotate-right"></i> Try again
-                                                </button>
-                                            </div>
-
-                                            <!-- Nhóm nút bên phải: Mũi tên điều hướng -->
-                                            <div class="spelling-task-nav-arrows">
-                                                <button class="spelling-task-arrow-btn spelling-task-prev-btn">
-                                                    <i class="fa fa-chevron-left"></i>
-                                                </button>
-                                                <button class="spelling-task-arrow-btn spelling-task-next-btn">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-
-
-
-
-                                    </div>
+                                    @foreach ($tasks as $task)
+                                        @include('layout.task1', ['task' => $task])
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Task 2 -->
-                        <div class="accordion" id="accordionTask2">
-                            <div class="card">
-                                <div class="card-header" id="headingTask2">
-                                    <a href="#" class="listening-description" data-toggle="collapse"
-                                        data-target="#collapseTask2" aria-expanded="false"
-                                        aria-controls="collapseTask2" style="color: #23085A;">
-                                        Task 2
-                                        <span class="arrow-icon">▼</span>
-                                    </a>
-                                </div>
+                    <!-- Task 2 -->
+                    <div class="accordion" id="accordionTask2">
+                        <div class="card">
+                            <div class="card-header" id="headingTask2">
+                                <a href="#" class="listening-description" data-toggle="collapse"
+                                    data-target="#collapseTask2" aria-expanded="false" aria-controls="collapseTask2"
+                                    style="color: #23085A;">
+                                    Task 2
+                                    <span class="arrow-icon">▼</span>
+                                </a>
+                            </div>
 
-                                <div id="collapseTask2" class="collapse" aria-labelledby="headingTask2"
-                                    data-parent="#accordionTask2">
-                                    <div class="card-body">
-                                        <!-- Nội dung Task 2 -->
-                                    </div>
+                            <div id="collapseTask2" class="collapse" aria-labelledby="headingTask2"
+                                data-parent="#accordionTask2">
+                                <div class="card-body">
+                                    <!-- Nội dung Task 2 -->
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Task 3 -->
-                        <div class="accordion" id="accordionTask3">
-                            <div class="card">
-                                <div class="card-header" id="headingTask3">
-                                    <a href="#" class="listening-description" data-toggle="collapse"
-                                        data-target="#collapseTask3" aria-expanded="false"
-                                        aria-controls="collapseTask3" style="color: #23085A;">
-                                        Task 3
-                                        <span class="arrow-icon">▼</span>
-                                    </a>
-                                </div>
+                    <!-- Task 3 -->
+                    <div class="accordion" id="accordionTask3">
+                        <div class="card">
+                            <div class="card-header" id="headingTask3">
+                                <a href="#" class="listening-description" data-toggle="collapse"
+                                    data-target="#collapseTask3" aria-expanded="false" aria-controls="collapseTask3"
+                                    style="color: #23085A;">
+                                    Task 3
+                                    <span class="arrow-icon">▼</span>
+                                </a>
+                            </div>
 
-                                <div id="collapseTask3" class="collapse" aria-labelledby="headingTask3"
-                                    data-parent="#accordionTask3">
-                                    <div class="card-body">
-                                        <!-- Nội dung Task 3 -->
-                                    </div>
+                            <div id="collapseTask3" class="collapse" aria-labelledby="headingTask3"
+                                data-parent="#accordionTask3">
+                                <div class="card-body">
+                                    <!-- Nội dung Task 3 -->
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                        <div class="skills-section-heading heading-md">
-                            Discussion
-                        </div>
+                    <div class="skills-section-heading heading-md">
+                        Discussion
+                    </div>
 
-                        <div class="listening-description" style="margin-top: -40px;">
-                            {{ $lesson->content['discussion'] }}
-                        </div>
+                    <div class="listening-description" style="margin-top: -40px;">
+                        {{ $lesson->content['discussion'] }}
+                    </div>
 
-                        <div class="accordion-download" id="accordionDownload">
-                            <div class="card">
-                                <div class="card-header" id="headingDownload">
-                                    <div class="listening-description" style="color: #23085A; cursor: default;">
-                                        Download Lesson PDF
-                                    </div>
+                    <div class="accordion-download" id="accordionDownload">
+                        <div class="card">
+                            <div class="card-header" id="headingDownload">
+                                <div class="listening-description" style="color: #23085A; cursor: default;">
+                                    Download Lesson PDF
                                 </div>
+                            </div>
 
-                                <div id="collapseDownload" class="collapse show" aria-labelledby="headingDownload"
-                                    data-parent="#accordionDownload">
-                                    <div class="card-body">
+                            <div id="collapseDownload" class="collapse show" aria-labelledby="headingDownload"
+                                data-parent="#accordionDownload">
+                                <div class="card-body">
+                                    <div
+                                        style="display: flex; align-items: center; background-color: white; border-radius: 0 80px 80px 0; overflow: hidden;">
                                         <div
-                                            style="display: flex; align-items: center; background-color: white; border-radius: 0 80px 80px 0; overflow: hidden;">
-                                            <div
-                                                style="background-color: #2b0060; padding: 24px; display: flex; align-items: center; justify-content: center;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-                                                    fill="white" viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M12 2a5 5 0 00-5 5v4H5l7 7 7-7h-2V7a5 5 0 00-5-5zm-3 5a3 3 0 116 0v4h-6V7zm-5 13h14v2H4v-2z" />
-                                                </svg>
-                                            </div>
-                                            <div style="padding: 0 24px;">
-                                                <a href="{{ $lesson->content['documentUrl'] }}" target="_blank"
-                                                    style="color: #23085A; font-size: 18px; text-decoration: underline;">Worksheet</a>
-                                            </div>
+                                            style="background-color: #2b0060; padding: 24px; display: flex; align-items: center; justify-content: center;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                fill="white" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 2a5 5 0 00-5 5v4H5l7 7 7-7h-2V7a5 5 0 00-5-5zm-3 5a3 3 0 116 0v4h-6V7zm-5 13h14v2H4v-2z" />
+                                            </svg>
+                                        </div>
+                                        <div style="padding: 0 24px;">
+                                            <a href="{{ $lesson->content['documentUrl'] }}" target="_blank"
+                                                style="color: #23085A; font-size: 18px; text-decoration: underline;">Worksheet</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <div style="margin-top: 40px;">
-                            <button class="btn">Try another listening</button>
-                        </div>
-
                     </div>
 
 
 
-                    <div class="right-col">
-                        @include('partial.side-bar', ['lessonSlug' => $lessonSlug])
+
+                    <div style="margin-top: 40px;">
+                        <button class="btn">Try another listening</button>
                     </div>
-
-
 
                 </div>
+
+
+
+                <div class="right-col">
+                    @include('partial.side-bar', ['lessonSlug' => $lessonSlug])
+                </div>
+
+
+
             </div>
         </div>
+    </div>
 
-        <!-- Footer -->
-        @include('partial.footer')
+    <!-- Footer -->
+    @include('partial.footer')
     </div>
 
     <script>
@@ -325,8 +264,8 @@
     <script src="{{ asset('js/task1.js') }}"></script>
 
 
- 
-    
+
+
 
 
 </body>

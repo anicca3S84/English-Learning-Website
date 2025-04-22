@@ -187,6 +187,14 @@
     background-color: #e6f2d1;
     color: #6b8e23;
   }
+
+  /* Màu khi bị khóa (đậm hơn) */
+.spelling-task-finish-btn.locked:disabled {
+  background-color: #c6d9a0; /* Màu đậm hơn */
+  color: #6b8e23;
+  opacity: 1; /* Đảm bảo nút không bị mờ mặc dù disabled */
+  cursor: not-allowed;
+}
   
   .spelling-task-finish-btn:hover {
     background-color: #d4e9b2;
@@ -196,6 +204,11 @@
     background-color: #f0f3e8;
     color: #6b8e23;
   }
+
+  .spelling-task-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
   
   .spelling-task-retry-btn:hover {
     background-color: #e1e5d7;
@@ -229,3 +242,95 @@
     content: none;
   }
   
+  .spelling-task-question {
+    display: none;
+}
+
+.spelling-task-question.active {
+    display: block;
+}
+
+
+.spelling-task-wrapper {
+  position: relative;
+}
+
+
+.spelling-task-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Mờ nền */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spelling-task-modal {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.modal-text {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 6px 16px;
+  border: solid 1px transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+
+.modal-confirm {
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-cancel {
+  background-color: #dc3545;
+  color: white;
+}
+
+
+/* Định dạng cho chữ cái đúng (màu xanh) */
+.spelling-task-letter.correct {
+  background-color: #61f17c !important; /* Màu xanh đậm */
+  color: #ffffff !important; /* Màu trắng để tương phản */
+}
+
+/* Định dạng cho chữ cái sai (màu đỏ) */
+.spelling-task-letter.incorrect {
+  background-color:#f77d6c !important; /* Màu đỏ đậm */
+  color: #ffffff !important; /* Màu trắng để tương phản */
+}
+
+/* Nút Yes của modal Finish */
+.confirm-yes {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Nút No của modal Finish */
+.confirm-no {
+  background-color: #dc3545;
+  color: white;
+}
