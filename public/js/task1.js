@@ -266,8 +266,17 @@ document.querySelector(".spelling-task-retry-btn")?.addEventListener("click", ()
     if (cancelBtn) cancelBtn.addEventListener('click', hideModal);
 });
 
+document.querySelectorAll('.spelling-task-audio').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const audio = new Audio(btn.dataset.audio);
+        audio.play();
+    });
+});
+
+
 // Khởi tạo khi trang tải
 document.addEventListener("DOMContentLoaded", () => {
     showQuestion(currentIndex);
     updateRemainingItems();
 });
+
