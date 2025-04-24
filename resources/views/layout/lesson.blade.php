@@ -17,35 +17,12 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/task1.css') }}">
 
-     <!-- Custom CSS for Flexbox -->
-     <style>
-        .custom-flex-row {
-            display: flex;
-            align-items: stretch;
-        }
-    
-        .left-col, .right-col {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-    
-        .left-inner, .right-inner {
-            flex: 1;
-        }
-    
-        /* Đảm bảo bên trái không bị thấp hơn quá nhiều */
-        .left-col {
-            min-height: 100%;
-        }
-    </style>
-    
 </head>
 
 <body>
     <div class="page-wrapper">
-        <!-- Include header -->
         @include('partial.header')
 
         <div class="container mt-5 mb-5">
@@ -145,8 +122,12 @@
 
                             <div id="collapseTask1" class="collapse" aria-labelledby="headingTask1"
                                 data-parent="#accordionTask1">
-                                <div class="card-body">
-                                    <!-- Nội dung Task 1 -->
+                                <div class="card-body"> 
+                                    @foreach ($tasks as $task)
+                                        @if ($task->task_order == 1)
+                                            @include('layout.task1', ['task' => $task])
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -275,10 +256,17 @@
 
 
 
-    <!-- Optional JS: jQuery, Popper.js, and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <script src="{{ asset('js/task1.js') }}"></script>
+
+
+
+
+
 
 </body>
 

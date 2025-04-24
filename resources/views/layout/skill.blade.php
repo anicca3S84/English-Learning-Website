@@ -18,19 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
 
-    <!-- Custom CSS for Flexbox -->
-    <style>
-        .custom-flex-row {
-            display: flex;
-            align-items: stretch; /* Đảm bảo chiều cao của cả hai cột bằng nhau */
-        }
 
-        .left-col, .right-col {
-            flex: 1; /* Mỗi cột sẽ chiếm một phần không gian của container */
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
 </head>
 
 <body>
