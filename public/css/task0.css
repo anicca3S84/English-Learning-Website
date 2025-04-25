@@ -153,3 +153,15 @@
   text-align: center;
 }
 
+/* Định dạng cho chữ cái đúng (màu xanh) */
+.correct {
+  background-color: #61f17c !important; /* Màu xanh đậm */
+  color: #ffffff !important; /* Màu trắng để tương phản */
+}
+
+/* Định dạng cho chữ cái sai (màu đỏ) */
+.incorrect {
+  background-color:#f77d6c !important; /* Màu đỏ đậm */
+  color: #ffffff !important; /* Màu trắng để tương phản */
+}
+
