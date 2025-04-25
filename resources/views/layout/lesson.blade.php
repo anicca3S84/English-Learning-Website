@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
     <link rel="stylesheet" href="{{ asset('css/task1.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/task0.css') }}">
 
 </head>
 
@@ -108,6 +109,35 @@
                     </div>
 
 
+                     <!-- Task 0 -->
+                     <div class="accordion" id="accordionTask0">
+                        <div class="card">
+                            <div class="card-header" id="headingTask0">
+                                <a href="#" class="listening-description" data-toggle="collapse"
+                                    data-target="#collapseTask0" aria-expanded="false" aria-controls="collapseTask0"
+                                    style="color: #23085A;">
+                                    Task 0
+                                    <span class="arrow-icon">▼</span>
+                                </a>
+                            </div>
+
+                            <div id="collapseTask0" class="collapse" aria-labelledby="headingTask0"
+                                data-parent="#accordionTask0">
+                                <div class="card-body">
+                                    <!-- Nội dung Task 0 -->
+                                    @foreach ($tasks as $task)
+                                        @if ($task->task_order == 0)
+                                            @include('layout.task0', ['task' => $task])
+                                        @endif
+                                    @endforeach
+
+                                  
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Task 1 -->
                     <div class="accordion" id="accordionTask1">
                         <div class="card">
@@ -132,6 +162,9 @@
                             </div>
                         </div>
                     </div>
+
+                    
+
 
                     <!-- Task 2 -->
                     <div class="accordion" id="accordionTask2">
@@ -262,6 +295,7 @@
 
 
     <script src="{{ asset('js/task1.js') }}"></script>
+    <script src="{{ asset('js/task0.js') }}"></script>
 
 
 
