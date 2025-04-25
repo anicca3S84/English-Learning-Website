@@ -14,6 +14,11 @@ Route::get('/', function () {
 
 
 
+//skills-page (trang bên ngoài)
+Route::get('/skills', function () {
+    return view('pages.skills');
+});
+
 //skill-page
 Route::get('/skill/{slug}', [SkillController::class, 'index'])->name('skill.index');
 

@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="skills-section-heading heading-lg" style="margin-top: 40px">
-                        Choose your level to practise your listening
+                        Choose your level to practise 
                     </div>
 
                     <div id="skill">
