@@ -42,9 +42,29 @@ class LessonController extends Controller
 
     $lesson = Lesson::where('slug', $lessonSlug)
         ->firstOrFail();
-
     // Truyền thêm biến lessonSlug vào view
     return view('layout.lesson', [
+        'skillTitle' => $skill->title,
+        'course' => $course,
+        'lesson' => $lesson,
+        'lessonSlug' => $lessonSlug, // Truyền slug của bài học
+    ]);
+}
+public function testLesson($skillSlug, $courseSlug, $lessonSlug)
+{
+    $skill = Skill::where('slug', $skillSlug)
+        ->select('id', 'title')
+        ->firstOrFail();
+
+    $course = Course::where('slug', $courseSlug)
+        ->where('skill_id', $skill->id)
+        ->select('title', 'skill_id')
+        ->firstOrFail();
+
+    $lesson = Lesson::where('slug', $lessonSlug)
+        ->firstOrFail();
+    // Truyền thêm biến lessonSlug vào view
+    return view('layout.grammar-lesson', [
         'skillTitle' => $skill->title,
         'course' => $course,
         'lesson' => $lesson,
