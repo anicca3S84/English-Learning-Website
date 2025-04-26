@@ -75,7 +75,7 @@
         }
 
         .btn-google:hover {
-            background:rgb(228, 224, 224);
+            background: rgb(228, 224, 224);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -102,6 +102,21 @@
                 margin: 15px;
             }
         }
+
+        /* disabled facebook btn */
+        .disabled-link {
+            pointer-events: none;
+            color: #999;
+            text-decoration: none;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        
+        .disabled-link:hover {
+            color: #999;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -110,14 +125,14 @@
     <div class="login-card">
         <h2>Sign in</h2>
         <p>Sign in to start your language journey</p>
-        <button class="btn btn-social btn-google">
+        <a href="{{ route('auth/google') }}" class="btn btn-social btn-google">
             <img src="https://www.google.com/favicon.ico" alt="Google Icon">
             Sign in with Google
-        </button>
-        <button class="btn btn-social btn-facebook">
+        </a>
+        <a href="{{ route('auth/facebook') }}" class="btn btn-social btn-facebook disabled-link">
             <img src="https://www.facebook.com/favicon.ico" alt="Facebook Icon">
-            Sign in with Facebook
-        </button>
+            Sign in with Facebook (Developing)
+        </a>
     </div>
 
     <!-- Bootstrap 4 JS and dependencies -->

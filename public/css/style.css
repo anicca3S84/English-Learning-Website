@@ -2087,3 +2087,22 @@ ul {
     font-size: 1rem;
     margin-top: 10px;
 }
+
+
+/* logout btn */
+
+.log-out-btn{
+    color: var(--thm-gray);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+    outline: none;
+    border: none;
+}
+.log-out-btn:hover {
+    color: var(--thm-base);
+}
+
+

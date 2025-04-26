@@ -101,18 +101,32 @@
 
                         <div class="right">
                             <div class="main-menu__right">
+                                @auth
+                                <div class="main-menu__right-login-register d-flex align-items-center">
+                                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="log-out-btn">Logout</button>
+                                    </form>
+                                </div>
+                                @endauth
+
+                                @guest
                                 <div class="main-menu__right-login-register">
                                     <ul class="list-unstyled">
-                                    <li><a href="{{ route('login') }}">Login</a></li>
-                                        <li><a href="#">Register</a></li>
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><a href="{{ route('login') }}">Register</a></li>
                                     </ul>
                                 </div>
+                                @endguest
+
                                 <div class="main-menu__right-cart-search">
                                     <div class="main-menu__right-search-box">
                                         <a href="#" class="thm-btn search-toggler">Search</a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </nav>
