@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Vocabulary List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Link CSS files -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header-banner {
+        .vocab_x87_header-banner {
             background-color: #f8f9fa;
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
             margin-bottom: 20px;
         }
-        .search-section {
+
+        .vocab_x87_search-section {
             background-color: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 5px;
             padding: 20px;
             margin-bottom: 20px;
         }
-        .search-box {
+
+        .vocab_x87_search-box {
             position: relative;
             max-width: 500px;
         }
-        .search-box input {
+
+        .vocab_x87_search-box input {
             border-radius: 25px;
             padding-right: 50px;
             height: 40px;
         }
-        .search-box .go-btn {
+
+        .vocab_x87_search-box .vocab_x87_go-btn {
             position: absolute;
             right: 0;
             top: 0;
@@ -42,202 +53,242 @@
             color: white;
             border: none;
         }
-        .filter-btn, .download-btn {
+
+        .vocab_x87_filter-btn,
+        .vocab_x87_download-btn {
             background-color: #4a76a8;
             color: white;
             border: none;
             padding: 8px 20px;
             border-radius: 5px;
         }
-        .breadcrumb {
+
+        /* .vocab_x87_breadcrumb {
             background-color: transparent;
             padding-left: 0;
-        }
-        .word-table {
+        } */
+        .vocab_x87_word-table {
             border: 1px solid #dee2e6;
             border-radius: 5px;
-            overflow: auto;
-            max-height: 500px;
         }
-        .word-table td {
+
+        .vocab_x87_word-table td {
             vertical-align: middle;
             padding: 12px 15px;
         }
-        .word {
+
+        .vocab_x87_word {
             color: #4a76a8;
             font-weight: 500;
         }
-        .part-of-speech {
+
+        .vocab_x87_part-of-speech {
             color: #555;
             font-style: italic;
         }
-        .level-badge {
+
+        .vocab_x87_level-badge {
             background-color: #6c757d;
             color: white;
             padding: 3px 6px;
             border-radius: 3px;
             font-size: 12px;
         }
-        .audio-icon {
+
+        .vocab_x87_audio-icon {
             color: #4a76a8;
             cursor: pointer;
             margin-right: 10px;
         }
+
         .table-hover tbody tr:hover {
             background-color: #f8f9fa;
         }
     </style>
 </head>
-<body>
-    <div class="header-banner">
-        <div class="container">
-            <h5 class="text-success font-weight-bold">The most important words to learn in English. <a href="#" class="text-success">Find out more &gt;</a></h5>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="search-section">
-            <div class="row align-items-center">
-                <div class="col-md-5">
-                    <div class="search-box">
-                        <input type="text" class="form-control" placeholder="Type and press Go">
-                        <button class="go-btn">Go</button>
+<body>
+    <div class="page-wrapper">
+        @include('partial.header')
+
+
+        <!--Content here  -->
+
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Vocabulary</li>
+                </ol>
+            </nav>
+        </div>
+        <!-- End Breadcrumb -->
+        <div style="margin-bottom: 40px;" class="container">
+            <div class="vocab_x87_search-section">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <div class="vocab_x87_search-box">
+                            <input type="text" class="form-control searchInput" placeholder="Type and press Go">
+                            <button class="vocab_x87_go-btn">Go</button>
+                        </div>
+                    </div>
+                    <div class="col-md-7 text-md-right mt-3 mt-md-0">
+                        <button class="vocab_x87_filter-btn mr-2">
+                            <i class="fas fa-filter"></i> Filters
+                        </button>
+                        <button id="downloadBtn" class="vocab_x87_download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-7 text-md-right mt-3 mt-md-0">
-                    <button class="filter-btn mr-2">
-                        <i class="fas fa-filter"></i> Filters
-                    </button>
-                    <button class="download-btn">
-                        <i class="fas fa-download"></i> Download
-                    </button>
+                <!-- Thêm 1 nơi để hiện Not found -->
+                <div id="notFoundMessage" style="color: red; margin-top: 10px; display: none;">Not found</div>
+            </div>
+            <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                <div class="vocab_x87_word-table">
+                    <table class="table table-hover mb-0" style="min-width: 100%">
+                        <tbody>
+                            @foreach($vocabularies as $vocabulary)
+                            <tr>
+                                <td width="20%">
+                                    <span class="vocab_x87_word">{{ $vocabulary->word }}</span>
+                                    <span class="vocab_x87_part-of-speech">{{ $vocabulary->pos }}</span>
+                                </td>
+                                <td width="10%" class="text-center">
+                                    <span class="vocab_x87_level-badge">A1</span> <!-- Nếu có level thì thay, nếu chưa có cứ để A1 -->
+                                </td>
+                                <td width="10%" class="text-center">
+                                    <audio id="audio-{{ $vocabulary->id }}" src="{{ $vocabulary->phonetic }}"></audio>
+                                    <i class="fas fa-volume-up vocab_x87_audio-icon" onclick="document.getElementById('audio-{{ $vocabulary->id }}').play();"></i>
+                                    <audio id="audio-am-{{ $vocabulary->id }}" src="{{ $vocabulary->phonetic_am }}"></audio>
+                                    <i class="fas fa-volume-up vocab_x87_audio-icon text-danger" onclick="document.getElementById('audio-am-{{ $vocabulary->id }}').play();"></i>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <!-- /.Content here  -->
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">English</a></li>
-                <li class="breadcrumb-item"><a href="#">Oxford 3000</a></li>
-                <li class="breadcrumb-item active">All</li>
-            </ol>
-        </nav>
+        @include('partial.footer')
 
-        <div class="word-table">
-            <table class="table table-hover mb-0" style="min-width: 100%">
-                <tbody>
-                    <tr>
-                        <td width="20%"><span class="word">almost</span> <span class="part-of-speech">adverb</span></td>
-                        <td width="10%" class="text-center"><span class="level-badge">A2</span></td>
-                        <td width="10%" class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">alone</span> <span class="part-of-speech">adjective</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">alone</span> <span class="part-of-speech">adverb</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">along</span> <span class="part-of-speech">adverb</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">along</span> <span class="part-of-speech">preposition</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">already</span> <span class="part-of-speech">adverb</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">also</span> <span class="part-of-speech">adverb</span></td>
-                        <td class="text-center"><span class="level-badge">A1</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">alter</span> <span class="part-of-speech">verb</span></td>
-                        <td class="text-center"><span class="level-badge">B2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">alternative</span> <span class="part-of-speech">adjective</span></td>
-                        <td class="text-center"><span class="level-badge">B1</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">alternative</span> <span class="part-of-speech">noun</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">although</span> <span class="part-of-speech">conjunction</span></td>
-                        <td class="text-center"><span class="level-badge">A2</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">always</span> <span class="part-of-speech">adverb</span></td>
-                        <td class="text-center"><span class="level-badge">A1</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="word">amazed</span> <span class="part-of-speech">adjective</span></td>
-                        <td class="text-center"><span class="level-badge">B1</span></td>
-                        <td class="text-center">
-                            <i class="fas fa-volume-up audio-icon"></i>
-                            <i class="fas fa-volume-up audio-icon text-danger"></i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="search-popup">
+            <div class="search-popup__overlay search-toggler"></div>
+            <!-- /.search-popup__overlay -->
+            <div class="search-popup__content">
+                <form action="#">
+                    <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+                    <input type="text" id="search" placeholder="Search Here..." />
+                    <button type="submit" aria-label="search submit" class="thm-btn2">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- /.search-popup__content -->
         </div>
+        <!-- /.search-popup -->
+
+        <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
     </div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jarallax@2.0.1/dist/jarallax.min.js"></script>
+    <!-- template js -->
+    <script src="{{ asset('js/index.js') }}"></script>
+    <script>
+        //handle search input
+        let debounceTimer;
+        const input = document.querySelector('.searchInput');
+        const notFoundMessage = document.getElementById('notFoundMessage');
+
+        input.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() {
+                const keyword = input.value.trim().toLowerCase();
+                if (keyword === '') {
+                    notFoundMessage.style.display = 'none';
+                    return;
+                }
+
+                const rows = document.querySelectorAll('.vocab_x87_word-table tbody tr');
+                let found = false;
+                let matchedRow = null;
+
+                rows.forEach(row => {
+                    const word = row.querySelector('.vocab_x87_word').textContent.trim().toLowerCase();
+                    if (word.indexOf(keyword) !== -1) {
+                        found = true;
+                        matchedRow = row; // Lưu hàng tìm được
+                        // Highlight từ gần đúng
+                        row.style.backgroundColor = '#d1ecf1';
+                        setTimeout(() => {
+                            row.style.backgroundColor = ''; // Reset màu sau 1s
+                        }, 5000);
+                    }
+                });
+
+                if (matchedRow) {
+                    const tableContainer = document.querySelector('.table-container');
+
+                    const containerTop = tableContainer.getBoundingClientRect().top;
+                    const rowTop = matchedRow.getBoundingClientRect().top;
+
+                    const offset = rowTop - containerTop;
+
+                    tableContainer.scrollTo({
+                        top: tableContainer.scrollTop + offset - tableContainer.clientHeight / 2 + matchedRow.clientHeight / 2,
+                        behavior: 'smooth'
+                    });
+                }
+
+                if (!found) {
+                    notFoundMessage.style.display = 'block';
+                } else {
+                    notFoundMessage.style.display = 'none';
+                }
+            }, 100); // 100ms debounce
+        });
+
+
+
+
+        //handle download button
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const rows = document.querySelectorAll('.vocab_x87_word-table tbody tr');
+            let csvContent = "Word,Part of Speech,Level\n"; // Header dòng đầu tiên
+
+            rows.forEach(row => {
+                const word = row.querySelector('.vocab_x87_word')?.textContent.trim() || '';
+                const pos = row.querySelector('.vocab_x87_part-of-speech')?.textContent.trim() || '';
+                const level = row.querySelector('.vocab_x87_level-badge')?.textContent.trim() || '';
+
+                csvContent += `"${word}","${pos}","${level}"\n`;
+            });
+
+            // Tạo 1 blob file từ chuỗi CSV
+            const blob = new Blob([csvContent], {
+                type: 'text/csv;charset=utf-8;'
+            });
+
+            // Tạo 1 đường link ảo để tự động tải
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "vocabulary_list.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
 </body>
+
 </html>

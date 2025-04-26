@@ -9,15 +9,14 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\FacebookController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\VocabularyController;
 
 // Home Route
 Route::get('/', function () {
     return view('layout.index');
 });
-
-Route::get('/home', function () {
-    return view('layout.home');
-})->name('layout.home');
+//vocabulary
+Route::get('/vocabularies', [VocabularyController::class, 'index']);
 
 
 
