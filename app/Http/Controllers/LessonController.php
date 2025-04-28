@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lesson;
 use App\Models\Course;
+use App\Models\Option;
+use App\Models\Question;
 use App\Models\Skill;
-
+use App\Models\Task;
 
 class LessonController extends Controller
 {
@@ -63,12 +65,18 @@ public function testLesson($skillSlug, $courseSlug, $lessonSlug)
 
     $lesson = Lesson::where('slug', $lessonSlug)
         ->firstOrFail();
+    $tasks = Task::where('lesson_id', $lesson->id)->get();
+    $taskIds = $tasks->pluck('id');
+    $questions = Question::whereIn('task_id', $taskIds)->get();
+    $questionIds = $questions->pluck('id');
+    $options = Option::whereIn('question_id', $questionIds)->get();
     // Truyền thêm biến lessonSlug vào view
     return view('layout.grammar-lesson', [
-        'skillTitle' => $skill->title,
-        'course' => $course,
         'lesson' => $lesson,
-        'lessonSlug' => $lessonSlug, // Truyền slug của bài học
+        'tasks' => $tasks,
+        'questions' => $questions,
+        'options' => $options,
+        'lessonSlug' => $lessonSlug,
     ]);
 }
 
