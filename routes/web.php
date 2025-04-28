@@ -24,8 +24,6 @@ Route::get('/skill/{skillSlug}/course/{courseSlug}', [CourseController::class, '
 //lesson-page
 Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [LessonController::class, 'showLesson'])->name('lesson.show');
 
-Route::get('/{skillSlug}', [SkillController::class, 'grammar'])->name('skill.grammar');
-
 Route::get('/{skillSlug}/{courseSlug}/{lessonSlug}', [LessonController::class, 'testLesson'])->name('lesson.testLesson');
 
 
