@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const dragOptionsContainer = document.querySelector(".drag-options");
     const dropBoxes = document.querySelectorAll(".drop-box");
@@ -112,44 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// document.getElementById('finish-btn').addEventListener('click', function () {
-//     const imageBoxes = document.querySelectorAll('.image-box');
-//     let allFilled = true;
-//     let allCorrect = true;
-
-//     imageBoxes.forEach(box => {
-//         const correctAnswer = box.getAttribute('data-correct');
-//         const dropBox = box.querySelector('.drop-box');
-//         const userAnswer = dropBox.textContent.trim();
-
-//         if (userAnswer === '') {
-//             allFilled = false;
-//         }
-
-//         if (userAnswer.toLowerCase() !== correctAnswer.toLowerCase()) {
-//             allCorrect = false;
-//         }
-//     });
-
-//     const messageBox = document.querySelector('.drag-task-message');
-//     messageBox.style.display = 'block';
-
-//     if (!allFilled) {
-//         messageBox.textContent = "⚠️ Vui lòng điền đầy đủ các đáp án trước khi hoàn thành!";
-//         messageBox.style.color = "#d9534f"; // đỏ
-//     } else if (allCorrect) {
-//         messageBox.textContent = "🎉 Chính xác! Bạn làm rất tốt!";
-//         messageBox.style.color = "#28a745"; // xanh lá
-//     } else {
-//         messageBox.textContent = "❌ Có một số đáp án chưa đúng. Hãy thử lại!";
-//         messageBox.style.color = "#d9534f"; // đỏ
-//     }
-
-//     // Tự ẩn sau 3 giây
-//     setTimeout(() => {
-//         messageBox.style.display = 'none';
-//     }, 3000);
-// });
 
 function lockDragAndDrop() {
   const letters = document.querySelectorAll(".drag-option");
@@ -167,6 +131,24 @@ function lockDragAndDrop() {
 
   isDragDropLocked = true;
 }
+
+function unlockDragAndDrop() {
+    const letters = document.querySelectorAll(".drag-option");
+    const boxes = document.querySelectorAll(".drop-box");
+  
+    letters.forEach(letter => {
+        letter.setAttribute("draggable", "true");
+        letter.style.cursor = "grab"; // hoặc "pointer" tùy bạn
+        letter.classList.remove("no-arrow");
+    });
+  
+    boxes.forEach(box => {
+        box.style.pointerEvents = "auto"; // khôi phục tương tác
+    });
+  
+    isDragDropLocked = false;
+  }
+  
 
 
 document.getElementById("finish-btn").addEventListener("click", function () {
@@ -223,6 +205,7 @@ document.getElementById("try-again-btn").addEventListener("click", function () {
             dragOptionsContainer.appendChild(draggedItem);
         }
     });
+    unlockDragAndDrop();
 
     // Optional: Clear any messages or highlights
     document.querySelector(".drag-task-message").textContent = "";
