@@ -14,4 +14,7 @@ class Vocabulary extends Model
     protected $fillable = [
         'phonetic', 'phonetic_am', 'phonetic_am_text', 'phonetic_text', 'pos', 'word'
     ];
+    public function senses() {
+        return $this->hasMany(Sense::class);
+    }
 }

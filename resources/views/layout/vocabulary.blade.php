@@ -54,7 +54,6 @@
             border: none;
         }
 
-        .vocab_x87_filter-btn,
         .vocab_x87_download-btn {
             background-color: #4a76a8;
             color: white;
@@ -63,10 +62,6 @@
             border-radius: 5px;
         }
 
-        /* .vocab_x87_breadcrumb {
-            background-color: transparent;
-            padding-left: 0;
-        } */
         .vocab_x87_word-table {
             border: 1px solid #dee2e6;
             border-radius: 5px;
@@ -99,6 +94,14 @@
             color: #4a76a8;
             cursor: pointer;
             margin-right: 10px;
+        }
+
+        .vocab_x87_audio-icon:hover {
+            color: #007bff;
+        }
+
+        .vocab_x87_audio-icon.text-danger:hover {
+            color: red !important;
         }
 
         .table-hover tbody tr:hover {
@@ -134,9 +137,6 @@
                         </div>
                     </div>
                     <div class="col-md-7 text-md-right mt-3 mt-md-0">
-                        <button class="vocab_x87_filter-btn mr-2">
-                            <i class="fas fa-filter"></i> Filters
-                        </button>
                         <button id="downloadBtn" class="vocab_x87_download-btn">
                             <i class="fas fa-download"></i> Download
                         </button>
@@ -150,19 +150,18 @@
                     <table class="table table-hover mb-0" style="min-width: 100%">
                         <tbody>
                             @foreach($vocabularies as $vocabulary)
-                            <tr>
+                            <tr onclick="openVocabularyModal('{{ e($vocabulary->word) }}', '{{ e($vocabulary->pos) }}', '{{ e($vocabulary->phonetic) }}', '{{ e($vocabulary->phonetic_am) }}', '{{ e($vocabulary->phonetic_am_text) }}', '{{ e($vocabulary->phonetic_text) }}', {{ json_encode($vocabulary->senses) }})">
+
                                 <td width="20%">
                                     <span class="vocab_x87_word">{{ $vocabulary->word }}</span>
                                     <span class="vocab_x87_part-of-speech">{{ $vocabulary->pos }}</span>
                                 </td>
                                 <td width="10%" class="text-center">
-                                    <span class="vocab_x87_level-badge">A1</span> <!-- Nếu có level thì thay, nếu chưa có cứ để A1 -->
+                                    <span class="vocab_x87_level-badge">A1</span>
                                 </td>
                                 <td width="10%" class="text-center">
-                                    <audio id="audio-{{ $vocabulary->id }}" src="{{ $vocabulary->phonetic }}"></audio>
-                                    <i class="fas fa-volume-up vocab_x87_audio-icon" onclick="document.getElementById('audio-{{ $vocabulary->id }}').play();"></i>
-                                    <audio id="audio-am-{{ $vocabulary->id }}" src="{{ $vocabulary->phonetic_am }}"></audio>
-                                    <i class="fas fa-volume-up vocab_x87_audio-icon text-danger" onclick="document.getElementById('audio-am-{{ $vocabulary->id }}').play();"></i>
+                                    <i class="fas fa-volume-up vocab_x87_audio-icon" onclick="playAudio('{{ $vocabulary->phonetic }}')"></i>
+                                    <i class="fas fa-volume-up vocab_x87_audio-icon text-danger" onclick="playAudio('{{ $vocabulary->phonetic_am }}')"></i>
                                 </td>
                             </tr>
                             @endforeach
@@ -171,6 +170,41 @@
                 </div>
             </div>
         </div>
+        <audio id="main-audio"></audio>
+
+        <!-- Modal for Vocabulary Details -->
+        <div id="vocabularyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vocabularyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content shadow-lg border-0 rounded-4">
+                    <div class="modal-header bg-primary text-white rounded-top-4">
+                        <h5 class="modal-title" id="vocabularyModalLabel">📚 Vocabulary Detail</h5>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="mb-4 text-center">
+                            <h2 id="vocabularyWord" class="fw-bold"></h2>
+                            <p id="vocabularyPos" class="text-muted mb-2"></p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <p><strong>🇺🇸 US Pronunciation:</strong> <span id="vocabularyPhoneticAmText"></span></p>
+                                <audio id="vocabularyAudioAm" controls class="w-100"></audio>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>🇬🇧 UK Pronunciation:</strong> <span id="vocabularyPhoneticText"></span></p>
+                                <audio id="vocabularyAudio" controls class="w-100"></audio>
+                            </div>
+                        </div>
+                        <div id="senseDetails" class="mt-4">
+                            <!-- Sense and Example will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- /.Content here  -->
 
         @include('partial.footer')
@@ -204,6 +238,17 @@
     <!-- template js -->
     <script src="{{ asset('js/index.js') }}"></script>
     <script>
+        // aduio play
+        function playAudio(audioUrl) {
+            const audio = document.getElementById('main-audio');
+            if (audio.src !== audioUrl) {
+                audio.src = audioUrl;
+            }
+            audio.play().catch(err => {
+                console.error('Play error:', err);
+            });
+        }
+
         //handle search input
         let debounceTimer;
         const input = document.querySelector('.searchInput');
@@ -288,6 +333,41 @@
             link.click();
             document.body.removeChild(link);
         });
+
+        // handle show modal 
+
+        function openVocabularyModal(word, pos, phonetic, phoneticAm, phoneticAmText, phoneticText, senses) {
+            console.log(senses); // Đảm bảo senses được truyền đúng
+
+            // Cập nhật modal với thông tin từ vựng và sense
+            document.getElementById('vocabularyWord').textContent = word;
+            document.getElementById('vocabularyPos').textContent = pos;
+            document.getElementById('vocabularyPhoneticAmText').textContent = phoneticAmText;
+            document.getElementById('vocabularyPhoneticText').textContent = phoneticText;
+
+            // Hiển thị sense vào modal
+            let senseList = '';
+            senses.forEach(sense => {
+                senseList += `<div style="margin-bottom: 10px;">`;
+                senseList += `<p class="text-primary fw-bold mb-1"><strong>Sense:</strong> ${sense.definition}</p>`;
+                if (sense.example && sense.example.length > 0) {
+                    senseList += `<ul>`;
+                    sense.example.forEach(exampleItem => {
+                        senseList += `<li>${exampleItem.x}</li>`;
+                    });
+                    senseList += `</ul>`;
+                }
+                senseList += `</div>`;
+            });
+            document.getElementById('senseDetails').innerHTML = senseList; // Gắn sense vào modal
+
+            // Cập nhật nguồn âm thanh
+            document.getElementById('vocabularyAudio').src = phonetic;
+            document.getElementById('vocabularyAudioAm').src = phoneticAm;
+
+            // 👉 Đây, thêm dòng này để show modal
+            $('#vocabularyModal').modal('show');
+        }
     </script>
 </body>
 
