@@ -40,22 +40,16 @@ class LessonController extends Controller
             ->select('title', 'skill_id')
             ->firstOrFail();
 
-        $lesson = Lesson::where('slug', $lessonSlug)->firstOrFail();
+    $lesson = Lesson::where('slug', $lessonSlug)
+        ->firstOrFail();
 
-        // Lấy tasks + questions + options cho bài học này
-        $tasks = Task::where('lesson_id', $lesson->id)
-            ->with(['questions.options' => function ($query) {
-                $query->orderBy('option_order');
-            }])
-            ->orderBy('task_order')
-            ->get();
+    // Truyền thêm biến lessonSlug vào view
+    return view('layout.lesson', [
+        'skillTitle' => $skill->title,
+        'course' => $course,
+        'lesson' => $lesson,
+        'lessonSlug' => $lessonSlug, // Truyền slug của bài học
+    ]);
+}
 
-        return view('layout.lesson', [
-            'skillTitle' => $skill->title,
-            'course' => $course,
-            'lesson' => $lesson,
-            'lessonSlug' => $lessonSlug,
-            'tasks' => $tasks, // truyền thêm
-        ]);
-    }
 }

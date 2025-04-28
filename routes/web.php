@@ -12,12 +12,8 @@ Route::get('/', function () {
     return view('layout.index');
 });
 
+Route::get('/skill', [SkillController::class, 'skillOuterPage'])->name('skill.outerPage');
 
-
-//skills-page (trang bên ngoài)
-Route::get('/skills', function () {
-    return view('pages.skills');
-});
 
 //skill-page
 Route::get('/skill/{slug}', [SkillController::class, 'index'])->name('skill.index');
@@ -28,7 +24,9 @@ Route::get('/skill/{skillSlug}/course/{courseSlug}', [CourseController::class, '
 //lesson-page
 Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [LessonController::class, 'showLesson'])->name('lesson.show');
 
+Route::get('/{skillSlug}', [SkillController::class, 'grammar'])->name('skill.grammar');
 
+Route::get('/{skillSlug}/{courseSlug}/{lessonSlug}', [LessonController::class, 'testLesson'])->name('lesson.testLesson');
 
 
 
