@@ -13,7 +13,6 @@ class Question extends Model
 
     public function options()
     {
-        // orderBy('option_order') để lưu đúng thứ tự gốc
         return $this->hasMany(Option::class)->orderBy('option_order');
     }
 }
