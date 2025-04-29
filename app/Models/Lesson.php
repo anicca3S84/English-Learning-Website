@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $table = 'lessons'; // nếu tên bảng là 'lessons'
+    protected $table = 'lessons'; 
 
     protected $fillable = [
         'courseId',
@@ -18,8 +18,9 @@ class Lesson extends Model
     ];
 
     protected $casts = [
-        'content' => 'array', // Laravel sẽ tự decode JSON
+        'content' => 'array',
     ];
+    
     public function tasks() {
         return $this->hasMany(Task::class);
     }

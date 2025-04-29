@@ -123,7 +123,7 @@
                                 data-parent="#accordionTask0">
                                 <div class="card-body">
                                     <!-- Nội dung Task 0 -->
-                                    @foreach ($tasks as $task)
+                                    @foreach ($lesson->tasks as $task)
                                         @if ($task->task_order == 0)
                                             @include('layout.task0', ['task' => $task])
                                         @endif
@@ -151,7 +151,7 @@
                             <div id="collapseTask1" class="collapse" aria-labelledby="headingTask1"
                                 data-parent="#accordionTask1">
                                 <div class="card-body"> 
-                                    @foreach ($tasks as $task)
+                                    @foreach ($lesson->tasks as $task)
                                         @if ($task->task_order == 1)
                                             @include('layout.task1', ['task' => $task])
                                         @endif
