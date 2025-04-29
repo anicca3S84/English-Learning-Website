@@ -34,12 +34,6 @@
 }
 
 
-.subtitle {
-    font-size: 18px;
-    font-weight: 500;
-    color: #666;
-}
-
 /* Body Text */
 .text-lg {
     font-size: 18px;
@@ -975,24 +969,24 @@ ul {
 ***/
 
 
-.card-heading{
+.card-heading {
     color: white;
     text-align: center;
-    margin-bottom:40px;
+    margin-bottom: 40px;
     padding-top: 80px;
     line-height: 48px;
 }
 
 
-.card-section{
+.card-section {
     background-color: var(--heading-color);
     margin-top: 0;
 }
 
-.text {
+.text-card {
     color: var(--heading-color);
     text-align: center;
-} 
+}
 
 
 .folded-corner:hover .text {
@@ -1007,7 +1001,7 @@ ul {
 /*
     nav link items
   */
-  .folded-corner {
+.folded-corner {
     padding: 60px 30px;
     position: relative;
     font-size: 100%;
@@ -1061,6 +1055,137 @@ ul {
     text-align: center;
     transition: all 1s cubic-bezier(.99, .82, .11, 1.41);
 }
+
+
+/***
+=============================================
+    Carousel Header
+=============================================
+***/
+
+.carousel-section {
+    background-color: #b4ff89;
+    margin-top: 0;
+    padding-bottom: 80px;
+}
+
+.items {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.slick-slide {
+    margin: 10px;
+}
+
+.slick-slide img {
+    width: 100%;
+    border: 0px solid #fff;
+}
+
+
+
+.card-custom {
+    background-color: #f5f5f5;
+    height: 500px;
+    overflow: hidden;
+}
+
+.card-custom img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.text-purple {
+    color: var(--heading-color);
+}
+
+.carousel-heading {
+    color: var(--heading-color);
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 80px;
+    line-height: 48px;
+}
+
+
+.menu {
+    padding: 10px 20px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu li {
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+
+.menu a {
+    color: var(--heading-color);
+    text-decoration: underline;
+}
+
+.menu a:hover {
+    color: #000;
+}
+
+
+
+/***
+=============================================
+    Card-2
+=============================================
+***/
+
+
+
+
+.card-custom-2 {
+    border: 2px solid #28a745;
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #2c3e50;
+    margin: 40px 0 20px 0;
+}
+
+.card-custom-2 .card-title-2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card-custom-2 .card-text-2 {
+    font-size: 1rem;
+}
+
+.card-custom-2 .card-icon-2 {
+    background-color: #28a745;
+    color: white;
+    border-radius: 50%;
+    padding: 8px;
+    width: 60px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-heading-2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 80px;
+    line-height: 48px;
+}
+
 
 
 
@@ -1898,5 +2023,86 @@ ul {
 
 
 
+
+
+
+.card-custom-3{
+    margin: 80px 0;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.course-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--heading-color);
+}
+
+.course-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.course-box {
+    border-left: 1px solid #4a2c8c;
+    border-right: 1px solid #4a2c8c;
+    padding: 20px;
+    color: #fff;
+}
+
+.course-title a {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+}
+.course-title:hover a {
+    text-decoration: underline;
+    color: #ababab;
+}
+
+.course-description {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+
+/* logout btn */
+
+.log-out-btn{
+    color: var(--thm-gray);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+    outline: none;
+    border: none;
+}
+.log-out-btn:hover {
+    color: var(--thm-base);
+}
 
 

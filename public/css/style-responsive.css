@@ -1548,78 +1548,6 @@
 
 
 
-@media only screen and (max-width: 767px) {
-
-    /** Main Slider One css**/
-    .main-slider__content-tagline {
-        width: 280px;
-    }
-
-    .main-slider__content-tagline h2 {
-        font-size: 30px;
-    }
-
-    .main-slider__content-title {
-        font-size: 50px;
-    }
-
-    .main-slider-one .swiper-slide .shape1 img {
-        width: 70%;
-    }
-
-    .main-slider-one .swiper-slide .shape2 img {
-        width: 0%;
-    }
-
-    .main-slider__content-text {
-        font-size: 18px;
-        line-height: 30px;
-        font-weight: 600;
-    }
-
-    .main-slider__content-text br {
-        display: none;
-    }
-
-    .main-slider__nav {
-        display: none;
-    }
-
-    .main-slider__content-icon-one {
-        display: none;
-    }
-
-    .main-slider-one__img img {
-        display: none;
-    }
-
-
-
-
-    /** Main SLider Two css**/
-    .main-slider-two {
-        margin-top: 0;
-    }
-
-    .main-slider__title {
-        font-size: 50px;
-    }
-
-}
-
-
-@media (max-width: 575px) {
-
-    .main-slider__content-icon-two,
-    .main-slider-one__round-box {
-        display: none;
-    }
-
-    .main-slider .container {
-        padding-top: 100px;
-        padding-bottom: 100px;
-    }
-}
 
 
 
@@ -1679,4 +1607,42 @@
         line-height: 28px
     }
 
+}
+
+
+
+
+
+
+
+/* Card Custom 2 */
+
+@media (max-width: 1000px) {
+    .card-custom-2 {
+        height: 250px;
+    }
+}
+
+@media (max-width: 770px) {
+    .card-custom-2 {
+        height: 150px;
+    }
+}
+
+
+
+
+@media (max-width: 770px) {
+    .card-custom-3:first-child {        
+        margin-bottom: 20px;
+    }
+    .card-custom-3:last-child {        
+        margin-top: 20px;
+    }
+
+    .course-box {
+        border: 1px solid #4a2c8c;
+        margin: 20px;
+        color: #fff;
+    }
 }
