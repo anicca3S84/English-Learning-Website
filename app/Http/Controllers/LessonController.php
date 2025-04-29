@@ -63,19 +63,19 @@ public function testLesson($skillSlug, $courseSlug, $lessonSlug)
         ->select('title', 'skill_id')
         ->firstOrFail();
 
-    $lesson = Lesson::where('slug', $lessonSlug)
-        ->firstOrFail();
-    $tasks = Task::where('lesson_id', $lesson->id)->get();
-    $taskIds = $tasks->pluck('id');
-    $questions = Question::whereIn('task_id', $taskIds)->get();
-    $questionIds = $questions->pluck('id');
-    $options = Option::whereIn('question_id', $questionIds)->get();
+    // $lesson = Lesson::where('slug', $lessonSlug)
+    //     ->firstOrFail();
+    // $tasks = Task::where('lesson_id', $lesson->id)->get();
+    // $taskIds = $tasks->pluck('id');
+    // $questions = Question::whereIn('task_id', $taskIds)->get();
+    // $questionIds = $questions->pluck('id');
+    // $options = Option::whereIn('question_id', $questionIds)->get();
+    $lesson = Lesson::with('tasks.questions.options')
+            ->where('slug', $lessonSlug)
+            ->firstOrFail();
     // Truyền thêm biến lessonSlug vào view
     return view('layout.grammar-lesson', [
         'lesson' => $lesson,
-        'tasks' => $tasks,
-        'questions' => $questions,
-        'options' => $options,
         'lessonSlug' => $lessonSlug,
     ]);
 }

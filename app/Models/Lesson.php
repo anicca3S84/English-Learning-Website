@@ -20,4 +20,7 @@ class Lesson extends Model
     protected $casts = [
         'content' => 'array', // Laravel sẽ tự decode JSON
     ];
+    public function tasks() {
+        return $this->hasMany(Task::class);
+    }
 }

@@ -14,4 +14,7 @@ class Task extends Model
         'instructions',
         'task_order'
     ];
+    public function questions() {
+        return $this->hasMany(Question::class);
+    }
 }

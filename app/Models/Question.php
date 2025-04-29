@@ -14,5 +14,7 @@ class Question extends Model
         'type',
         'question_order'
     ];
-    
+    public function options() {
+        return $this->hasMany(Option::class);
+    }
 }
