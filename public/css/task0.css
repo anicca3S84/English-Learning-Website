@@ -154,13 +154,13 @@
 }
 
 /* Định dạng cho chữ cái đúng (màu xanh) */
-.correct {
+.task0-correct {
   background-color: #61f17c !important; /* Màu xanh đậm */
   color: #ffffff !important; /* Màu trắng để tương phản */
 }
 
 /* Định dạng cho chữ cái sai (màu đỏ) */
-.incorrect {
+.task0-incorrect {
   background-color:#f77d6c !important; /* Màu đỏ đậm */
   color: #ffffff !important; /* Màu trắng để tương phản */
 }

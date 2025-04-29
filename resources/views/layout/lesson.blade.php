@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/task1.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/task0.css') }}">
 
 </head>
 
@@ -294,8 +292,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-    <script src="{{ asset('js/task1.js') }}"></script>
-    <script src="{{ asset('js/task0.js') }}"></script>
 
 
 

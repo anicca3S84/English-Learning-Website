@@ -1,3 +1,7 @@
+
+<link rel="stylesheet" href="{{ asset('css/task1.css') }}">
+
+
 <div class="spelling-task-wrapper">
     <!-- Chỉ để hiển thị thông báo -->
     <div class="spelling-task-message" style="display: none; margin-bottom: 10px;"></div>
@@ -80,3 +84,5 @@
 
     
 </div>
+
+<script src="{{ asset('js/task1.js') }}"></script>

@@ -2,7 +2,7 @@ let score = 0; // Biến lưu trữ điểm
 let totalQuestions = 0; // Biến lưu trữ tổng số câu hỏi
 let completedQuestions = []; // Mảng lưu các câu hỏi đã hoàn thành
 let currentIndex = 0; // Chỉ số câu hỏi hiện tại
-let isDragDropLocked = false; // Biến theo dõi trạng thái khóa kéo-thả
+let isDragDropLockedTask1 = false; // Biến theo dõi trạng thái khóa kéo-thả
 
 const finishBtn = document.querySelector('.spelling-task-finish-btn');
 const overlay = document.querySelector('.spelling-task-overlay');
@@ -50,7 +50,7 @@ function isQuestionCompleted(question) {
 }
 
 // Hàm khóa kéo-thả
-function lockDragAndDrop() {
+function lockDragAndDropTask1() {
     const letters = document.querySelectorAll(".spelling-task-letter");
     const boxes = document.querySelectorAll(".spelling-task-box");
 
@@ -65,12 +65,12 @@ function lockDragAndDrop() {
         box.replaceWith(box.cloneNode(true));
     });
 
-    isDragDropLocked = true;
+    isDragDropLockedTask1 = true;
 }
 
 // Hàm khởi tạo drag and drop
-function initDragAndDrop() {
-    if (isDragDropLocked) return; // Không khởi tạo nếu kéo-thả đang bị khóa
+function initDragAndDropTask1() {
+    if (isDragDropLockedTask1) return; // Không khởi tạo nếu kéo-thả đang bị khóa
 
     const activeQuestion = document.querySelector(".spelling-task-question.active");
     if (!activeQuestion) return;
@@ -107,6 +107,7 @@ function initDragAndDrop() {
                     letterEl.setAttribute("draggable", "true");
                     letterEl.style.cursor = "grab";
                     letterEl.classList.remove("no-arrow");
+
                 }, { once: true });
             }
         });
@@ -121,7 +122,7 @@ function showQuestion(index) {
         questions.forEach((q, i) => q.classList.toggle("active", i === index));
         dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
         currentIndex = index;
-        initDragAndDrop();
+        initDragAndDropTask1();
     }
 }
 
@@ -131,7 +132,7 @@ document.querySelector(".spelling-task-next-btn")?.addEventListener("click", () 
     if (!currentQuestion) return;
 
     const currentIdx = parseInt(currentQuestion.getAttribute("data-question-index"));
-    if (!isDragDropLocked && isQuestionCompleted(currentQuestion) && !completedQuestions.includes(currentIdx)) {
+    if (!isDragDropLockedTask1 && isQuestionCompleted(currentQuestion)    && !completedQuestions.includes(currentIdx)) {
         completedQuestions.push(currentIdx);
         updateRemainingItems();
     }
@@ -212,7 +213,7 @@ finishBtn?.addEventListener("click", () => {
             // Khóa nút Finish, thêm lớp locked để làm đậm màu, và khóa kéo-thả
             finishBtn.disabled = true;
             finishBtn.classList.add('locked');
-            lockDragAndDrop();
+            lockDragAndDropTask1();
         });
     }
 
@@ -258,8 +259,8 @@ document.querySelector(".spelling-task-retry-btn")?.addEventListener("click", ()
             // Kích hoạt lại nút Finish và kéo-thả
             finishBtn.disabled = false;
             finishBtn.classList.remove('locked');
-            isDragDropLocked = false;
-            initDragAndDrop();
+            isDragDropLockedTask1 = false;
+            initDragAndDropTask1();
         });
     }
 

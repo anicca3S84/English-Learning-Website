@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/task0.css') }}">
+
 <div class="drag-task-wrapper">
     <!-- Thông báo -->
     <div class="drag-task-message" ></div>
@@ -39,3 +41,4 @@
         </button>
     </div>
 </div>
+<script src="{{ asset('js/task0.js') }}"></script>

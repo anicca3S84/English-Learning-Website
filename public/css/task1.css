@@ -319,7 +319,7 @@
 
 /* Định dạng cho chữ cái sai (màu đỏ) */
 .spelling-task-letter.incorrect {
-  background-color:#f77d6c !important; /* Màu đỏ đậm */
+  background-color:#f77d6c !important; /* Màu đỏ đậm */                                                                                
   color: #ffffff !important; /* Màu trắng để tương phản */
 }
 

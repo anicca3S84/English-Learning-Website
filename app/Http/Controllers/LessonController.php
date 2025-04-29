@@ -42,7 +42,6 @@ class LessonController extends Controller
 
         $lesson = Lesson::where('slug', $lessonSlug)->firstOrFail();
 
-        // Lấy tasks + questions + options cho bài học này
         $tasks = Task::where('lesson_id', $lesson->id)
             ->with(['questions.options' => function ($query) {
                 $query->orderBy('option_order');
@@ -50,12 +49,14 @@ class LessonController extends Controller
             ->orderBy('task_order')
             ->get();
 
-        return view('layout.lesson', [
+        $view = $skillSlug === 'grammar' ? 'layout.grammar-lesson' : 'layout.lesson';
+
+        return view($view, [
             'skillTitle' => $skill->title,
             'course' => $course,
             'lesson' => $lesson,
             'lessonSlug' => $lessonSlug,
-            'tasks' => $tasks, // truyền thêm
+            'tasks' => $tasks,
         ]);
-}
+    }
 }
