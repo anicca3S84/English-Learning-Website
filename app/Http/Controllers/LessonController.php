@@ -42,6 +42,46 @@ class LessonController extends Controller
             ->select('title', 'skill_id')
             ->firstOrFail();
 
+
+        $lesson = Lesson::where('slug', $lessonSlug)
+            ->firstOrFail();
+        // Truyền thêm biến lessonSlug vào view
+        return view('layout.lesson', [
+            'skillTitle' => $skill->title,
+            'course' => $course,
+            'lesson' => $lesson,
+            'lessonSlug' => $lessonSlug, // Truyền slug của bài học
+        ]);
+}
+public function testLesson($skillSlug, $courseSlug, $lessonSlug)
+{
+    $skill = Skill::where('slug', $skillSlug)
+        ->select('id', 'title')
+        ->firstOrFail();
+
+    $course = Course::where('slug', $courseSlug)
+        ->where('skill_id', $skill->id)
+        ->select('title', 'skill_id')
+        ->firstOrFail();
+
+    // $lesson = Lesson::where('slug', $lessonSlug)
+    //     ->firstOrFail();
+    // $tasks = Task::where('lesson_id', $lesson->id)->get();
+    // $taskIds = $tasks->pluck('id');
+    // $questions = Question::whereIn('task_id', $taskIds)->get();
+    // $questionIds = $questions->pluck('id');
+    // $options = Option::whereIn('question_id', $questionIds)->get();
+    $lesson = Lesson::with('tasks.questions.options')
+            ->where('slug', $lessonSlug)
+            ->firstOrFail();
+    // Truyền thêm biến lessonSlug vào view
+    return view('layout.grammar-lesson', [
+        'lesson' => $lesson,
+        'lessonSlug' => $lessonSlug,
+    ]);
+}
+>>>>>>> 7ddd8b8e7e78af71d276a558caba007872efa2c0
+
         $lesson = Lesson::where('slug', $lessonSlug)->firstOrFail();
 
         $tasks = Task::where('lesson_id', $lesson->id)

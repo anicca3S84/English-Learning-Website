@@ -84,10 +84,10 @@
                                     <div class=" bg-white h-fit p-4">
                                         <div class="">
                                             <p class=" text-xl font-bold text-[#658600] mb-1">
-                                                {{ $tasks[0]->title}}
+                                                {{ $lesson->tasks[0]->title}}
                                             </p>
                                             <p class=" text-md text-gray-500">
-                                                {{ $tasks[0]->instructions }}
+                                                {{ $lesson->tasks[0]->instructions }}
                                             </p>
                                         </div>
                                         <div class="flex flex-row justify-end ">
@@ -197,10 +197,10 @@
                                     <div class=" bg-white h-fit p-4">
                                         <div class="">
                                             <p class=" text-xl font-bold text-[#658600] mb-1">
-                                                {{ $tasks[1]->title}}
+                                                {{ $lesson->tasks[1]->title}}
                                             </p>
                                             <p class=" text-md text-gray-500">
-                                                {{ $tasks[1]->instructions }}
+                                                {{ $lesson->tasks[1]->instructions }}
                                             </p>
                                         </div>
                                         <div class="flex flex-row justify-end ">
@@ -323,19 +323,9 @@
 </body>
 </html>
 <script>
-    let tasks = <?php echo $tasks ?>;
-    let questions = <?php echo $questions ?>;
-    let options = <?php echo $options ?>;
-    let task1Questions = questions.filter(q => q.task_id === tasks[0].id);
-    let task2Questions = questions.filter(q => q.task_id === tasks[1].id);
-    let task1QuestionIds = task1Questions.map(q => q.id);
-    let task2QuestionIds = task2Questions.map(q => q.id);
-    let task1Options = options.filter(opt => task1QuestionIds.includes(opt.question_id));
-    let task2Options = options.filter(opt => task2QuestionIds.includes(opt.question_id));
-    let task1OptionQuestionIds = task1Options.map(q => q.question_id);
-    let task2OptionQuestionIds = task2Options.map(q => q.question_id);
-    console.log("task1OptionQuestionIds: "+task1OptionQuestionIds);
-    console.log(task2Options);
+    let tasks = <?php echo $lesson->tasks ?>;
+    let questions1 = <?php echo $lesson->tasks[0]->questions ?>;
+    let questions2 = <?php echo $lesson->tasks[1]->questions ?>;
     const remainingQuizs =document.getElementById('remainingQuizs');
     const form =document.getElementById('formQuiz');
     const progressDiv =document.getElementById('progressLine');
@@ -410,15 +400,10 @@
         div.classList.add('flex', 'flex-col', 'text-md');
         div.id = 'task1-quiz' +i;
         const p =document.createElement('p');
-        p.textContent =task1Questions[i-1].question;
+        p.textContent =questions1[i-1].question;
         div.appendChild(p);
-        const questionOptions = task1Options.filter(opt => opt.question_id == task1Questions[i-1].id);
-        console.log("task1Question id: " +task1Questions[i-1].id);
-        console.log(questionOptions);
-        // for(let j=(3*i-2); j<=i*3; j++) {
-        //     questionOptions.push(task1Options[j-1].text);
-        // }
-        questionOptions.forEach(option => {
+
+        questions1[i-1].options.forEach(option => {
             const label =document.createElement('label');
             const input =document.createElement('input');
             input.type = 'radio';
@@ -514,13 +499,9 @@
         div.classList.add('flex', 'flex-col', 'text-md');
         div.id = 'task2-quiz' +u;
         const p =document.createElement('p');
-        p.textContent =task2Questions[u-1].question;
+        p.textContent =questions2[u-1].question;
         div.appendChild(p);
-        const questionOptions = task2Options.filter(opt => opt.question_id == task2Questions[u-1].id);
-        // for(let j=(3*u-2); j<=u*3; j++) {
-        //     questionOptions.push(task2Options[j-1].text);
-        // }
-        questionOptions.forEach(option => {
+        questions2[u-1].options.forEach(option => {
             const label =document.createElement('label');
             const input =document.createElement('input');
             input.type = 'radio';
@@ -607,28 +588,23 @@
         popUpContent.textContent = `Answerd questions: ${quizsAnswered} out of 8. Do you want to finish?`;
     }
     function renderAnswers() {
-        for(j=0; j<Object.keys(task1Options).length; j+=3) {
-            const chunk = Object.keys(options).slice(j, j+3).map(key => task1Options[key]);
-            chunk.forEach(option => {
+        for(j=1; j<=numberOfQuestions; j++) {
+            questions1[j-1].options.forEach(option => {
                     if(option.is_correct == true) {
                     rightAnswers.push(option);
                     console.log("option: " + option.text);
                     console.log(option);
                     
-                    if(selectedAnswers[`q${(j+3)/3}`]) {
-                        console.log("selectedAnswer: " + selectedAnswers[`q${(j+3)/3}`].value + " and j/3: " + j/3);
-                    }
-                    if(selectedAnswers[`q${(j+3)/3}`]) {
-                        if(selectedAnswers[`q${(j+3)/3}`].value == option.text) {
-                            selectedAnswers[`q${(j+3)/3}`].isTrue = true;
+                    if(selectedAnswers[`q${j}`]) {
+                        if(selectedAnswers[`q${j}`].value == option.text) {
+                            selectedAnswers[`q${j}`].isTrue = true;
                             totalScore ++;
                         }else  {
-                        selectedAnswers[`q${(j+3)/3}`].isTrue = false;
+                        selectedAnswers[`q${j}`].isTrue = false;
                         }
                     } 
                 }
                 })
-
         }
         console.log(selectedAnswers);
         const popUp =document.getElementById('popupQuiz');
@@ -720,23 +696,19 @@
         popUpContent.textContent = `Answerd questions: ${quizsAnswered} out of 8. Do you want to finish?`;
     }
     function renderAnswers2() {
-        for(j=0; j<Object.keys(task2Options).length; j+=3) {
-            const chunk = Object.keys(task2Options).slice(j, j+3).map(key => task2Options[key]);
-            chunk.forEach(option => {
+        for(j=1; j<=numberOfQuestions; j++) {
+            questions2[j-1].options.forEach(option => {
                     if(option.is_correct == true) {
                     rightAnswers2.push(option);
                     console.log("option: " + option.text);
                     console.log(option);
-                    
-                    if(selectedAnswers2[`q${(j+3)/3}`]) {
-                        console.log("selectedAnswer: " + selectedAnswers2[`q${(j+3)/3}`].value + " and j/3: " + j/3);
-                    }
-                    if(selectedAnswers2[`q${(j+3)/3}`]) {
-                        if(selectedAnswers2[`q${(j+3)/3}`].value == option.text) {
-                            selectedAnswers2[`q${(j+3)/3}`].isTrue = true;
+
+                    if(selectedAnswers2[`q${j}`]) {
+                        if(selectedAnswers2[`q${j}`].value == option.text) {
+                            selectedAnswers2[`q${j}`].isTrue = true;
                             totalScore2 ++;
                         }else  {
-                        selectedAnswers2[`q${(j+3)/3}`].isTrue = false;
+                        selectedAnswers2[`q${j}`].isTrue = false;
                         }
                     } 
                 }
@@ -795,8 +767,4 @@
         }
     }
 
-    console.log(tasks);
-    console.log(questions);
-    console.log(options);
-</script> 
-
+</script>
