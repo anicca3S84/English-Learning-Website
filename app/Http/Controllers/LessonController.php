@@ -7,6 +7,8 @@ use App\Models\Lesson;
 use App\Models\Course;
 use App\Models\Skill;
 use App\Models\Task;
+use App\Models\Question;
+use App\Models\Option;
 
 class LessonController extends Controller
 {
@@ -59,4 +61,6 @@ class LessonController extends Controller
             'tasks' => $tasks,
         ]);
     }
+
+    
 }

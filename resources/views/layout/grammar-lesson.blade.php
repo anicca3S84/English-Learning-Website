@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -799,4 +798,5 @@
     console.log(tasks);
     console.log(questions);
     console.log(options);
-</script>
+</script> 
+
