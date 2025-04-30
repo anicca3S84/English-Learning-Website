@@ -164,7 +164,7 @@
                     
 
 
-                    {{-- <!-- Task 2 -->
+                    <!-- Task 2 -->
                     <div class="accordion" id="accordionTask2">
                         <div class="card">
                             <div class="card-header" id="headingTask2">
@@ -187,7 +187,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+
+                    
 
                     <!-- Task 3 -->
                     <div class="accordion" id="accordionTask3">

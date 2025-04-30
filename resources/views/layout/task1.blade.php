@@ -25,7 +25,7 @@
             </div>
 
             <div class="spelling-task-answer-row">
-                <button class="spelling-task-audio" data-audio="{{ $question->audio_url }}">
+                <button class="spelling-task-audio" data-audio="{{ $question->audio }}">
                     <i class="fa fa-volume-up"></i>
                 </button>
                 @foreach ($question->options->sortBy('option_order') as $index => $option)

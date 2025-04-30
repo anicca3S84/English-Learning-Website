@@ -10,7 +10,7 @@ const modalText = document.querySelector('.modal-text');
 const modalActions = document.querySelector('.modal-actions');
 
 // Hàm hiển thị modal với nội dung và nút tùy chỉnh
-function showModal(text, actionsHTML) {
+function showSpellingModal(text, actionsHTML) {
     if (overlay && modalText && modalActions) {
         modalText.textContent = text;
         modalActions.innerHTML = actionsHTML;
@@ -19,7 +19,7 @@ function showModal(text, actionsHTML) {
 }
 
 // Hàm ẩn modal
-function hideModal() {
+function hideSpellingModal() {
     if (overlay) overlay.style.display = 'none';
 }
 
@@ -34,9 +34,9 @@ function updateRemainingItems() {
 // Hàm hiển thị điểm trong modal
 function displayScore(percentage) {
     const resultMessage = `Your score: ${score} out of ${totalQuestions} questions. (${percentage.toFixed(2)}%)`;
-    showModal(resultMessage, '<button class="modal-btn modal-ok">OK</button>');
+    showSpellingModal(resultMessage, '<button class="modal-btn modal-ok">OK</button>');
     const okBtn = document.querySelector('.modal-ok');
-    if (okBtn) okBtn.addEventListener('click', hideModal);
+    if (okBtn) okBtn.addEventListener('click', hideSpellingModal);
 }
 
 // Hàm kiểm tra xem câu hỏi đã hoàn thành chưa
@@ -148,7 +148,7 @@ document.querySelector(".spelling-task-prev-btn")?.addEventListener("click", () 
 
 // Sự kiện "Finish"
 finishBtn?.addEventListener("click", () => {
-    showModal(
+    showSpellingModal(
         'Do you want to finish?',
         '<button class="modal-btn confirm-yes">Yes</button><button class="modal-btn confirm-no">No</button>'
     );
@@ -217,12 +217,12 @@ finishBtn?.addEventListener("click", () => {
         });
     }
 
-    if (noBtn) noBtn.addEventListener('click', hideModal);
+    if (noBtn) noBtn.addEventListener('click', hideSpellingModal);
 });
 
 // Sự kiện "Try again"
 document.querySelector(".spelling-task-retry-btn")?.addEventListener("click", () => {
-    showModal(
+    showSpellingModal(
         'Are you sure you want to try again ?',
         '<button class="modal-btn modal-confirm">Yes</button><button class="modal-btn modal-cancel">No</button>'
     );
@@ -254,7 +254,7 @@ document.querySelector(".spelling-task-retry-btn")?.addEventListener("click", ()
             completedQuestions = [];
             updateRemainingItems();
             showQuestion(0);
-            hideModal();
+            hideSpellingModal();
 
             // Kích hoạt lại nút Finish và kéo-thả
             finishBtn.disabled = false;
@@ -264,7 +264,7 @@ document.querySelector(".spelling-task-retry-btn")?.addEventListener("click", ()
         });
     }
 
-    if (cancelBtn) cancelBtn.addEventListener('click', hideModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', hideSpellingModal);
 });
 
 document.querySelectorAll('.spelling-task-audio').forEach(btn => {

@@ -105,6 +105,12 @@
   color: #6b8e23;
 }
 
+.action-btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+
 /* Nút Finish */
 .action-btn.finish {
   background-color: #e6f2d1;
