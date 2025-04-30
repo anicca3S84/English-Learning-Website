@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
-use App\Http\Controllers\ListeningController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\CourseController;
 use App\Models\Course;
 use App\Http\Controllers\SkillController;
