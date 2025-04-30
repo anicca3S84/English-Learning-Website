@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\FacebookController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\VocabularyController;
+use App\Http\Controllers\TestController;
 
 // Home Route
 Route::get('/', function () {
@@ -50,3 +51,11 @@ Route::post('/logout', function () {
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
 
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+
+
+// Route hiển thị bài test (load tất cả câu hỏi)
+Route::get('/test', [TestController::class, 'index'])->name('test.question');
+
+// Route nộp bài
+
+Route::post('/test/submit', [TestController::class, 'submitTest'])->name('test.submit');
