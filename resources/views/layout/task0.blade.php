@@ -3,7 +3,6 @@
 <div class="drag-task-wrapper">
     <!-- Thông báo -->
     <div class="drag-task-message" ></div>
-    <div class="drag-task-remaining">{{ $task->questions->count() }} items remaining</div>
 
     <h4 class="drag-task-title">{{ $task->title }}</h4>
     <p class="drag-task-instruction">{{ $task->instruction ?? 'Match the words and pictures.' }}</p>

@@ -42,6 +42,32 @@
                     </div>
 
 
+
+
+                    <div class="accordion" id="accordionTask2">
+                        <div class="card">
+                            <div class="card-header" id="headingTask2">
+                                <a href="#" class="listening-description" data-toggle="collapse"
+                                    data-target="#collapseTask2" aria-expanded="false" aria-controls="collapseTask2"
+                                    style="color: #23085A;">
+                                    Preparation
+                                    <span class="arrow-icon">▼</span>
+                                </a>
+                            </div>
+
+                            <div id="collapseTask2" class="collapse" aria-labelledby="headingTask2"
+                                data-parent="#accordionTask2">
+                                <div class="card-body">
+                                    @foreach ($lesson->tasks as $task)
+                                        @if ($task->task_order == 2)
+                                            @include('layout.preparation', ['task' => $task])
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     @php
                         $youtubeLink = $lesson->content['videoUrl'] ?? null;
                         $videoId = null;
@@ -52,7 +78,7 @@
                     @endphp
 
                     @if ($videoId)
-                        <div class="video-section mt-3 mb-5"
+                        <div class="video-section mt-3 mb-3"
                             style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -107,35 +133,35 @@
                     </div>
 
 
-                     <!-- Task 0 -->
-                     <div class="accordion" id="accordionTask0">
-                        <div class="card">
-                            <div class="card-header" id="headingTask0">
-                                <a href="#" class="listening-description" data-toggle="collapse"
-                                    data-target="#collapseTask0" aria-expanded="false" aria-controls="collapseTask0"
-                                    style="color: #23085A;">
-                                    Task 0
-                                    <span class="arrow-icon">▼</span>
-                                </a>
-                            </div>
+                    <!-- Task 0 -->
+                    @if ($skillTitle !== 'Speaking')
+                        <div class="accordion" id="accordionTask0">
+                            <div class="card">
+                                <div class="card-header" id="headingTask0">
+                                    <a href="#" class="listening-description" data-toggle="collapse"
+                                        data-target="#collapseTask0" aria-expanded="false" aria-controls="collapseTask0"
+                                        style="color: #23085A;">
+                                        Task 0
+                                        <span class="arrow-icon">▼</span>
+                                    </a>
+                                </div>
 
-                            <div id="collapseTask0" class="collapse" aria-labelledby="headingTask0"
-                                data-parent="#accordionTask0">
-                                <div class="card-body">
-                                    <!-- Nội dung Task 0 -->
-                                    @foreach ($lesson->tasks as $task)
-                                        @if ($task->task_order == 0)
-                                            @include('layout.task0', ['task' => $task])
-                                        @endif
-                                    @endforeach
-
-                                  
-                                 
+                                <div id="collapseTask0" class="collapse" aria-labelledby="headingTask0"
+                                    data-parent="#accordionTask0">
+                                    <div class="card-body">
+                                        <!-- Nội dung Task 0 -->
+                                        @foreach ($lesson->tasks as $task)
+                                            @if ($task->task_order == 0)
+                                                @include('layout.task0', ['task' => $task])
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
+                    @endif
+
+
                     <!-- Task 1 -->
                     <div class="accordion" id="accordionTask1">
                         <div class="card">
@@ -150,7 +176,7 @@
 
                             <div id="collapseTask1" class="collapse" aria-labelledby="headingTask1"
                                 data-parent="#accordionTask1">
-                                <div class="card-body"> 
+                                <div class="card-body">
                                     @foreach ($lesson->tasks as $task)
                                         @if ($task->task_order == 1)
                                             @include('layout.task1', ['task' => $task])
@@ -161,56 +187,6 @@
                         </div>
                     </div>
 
-                    
-
-
-                    <!-- Task 2 -->
-                    <div class="accordion" id="accordionTask2">
-                        <div class="card">
-                            <div class="card-header" id="headingTask2">
-                                <a href="#" class="listening-description" data-toggle="collapse"
-                                    data-target="#collapseTask2" aria-expanded="false" aria-controls="collapseTask2"
-                                    style="color: #23085A;">
-                                    Task 2
-                                    <span class="arrow-icon">▼</span>
-                                </a>
-                            </div>
-
-                            <div id="collapseTask2" class="collapse" aria-labelledby="headingTask2"
-                                data-parent="#accordionTask2">
-                                <div class="card-body">
-                                    @foreach ($lesson->tasks as $task)
-                                        @if ($task->task_order == 2)
-                                            @include('layout.preparation', ['task' => $task])
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-
-                    <!-- Task 3 -->
-                    <div class="accordion" id="accordionTask3">
-                        <div class="card">
-                            <div class="card-header" id="headingTask3">
-                                <a href="#" class="listening-description" data-toggle="collapse"
-                                    data-target="#collapseTask3" aria-expanded="false" aria-controls="collapseTask3"
-                                    style="color: #23085A;">
-                                    Task 3
-                                    <span class="arrow-icon">▼</span>
-                                </a>
-                            </div>
-
-                            <div id="collapseTask3" class="collapse" aria-labelledby="headingTask3"
-                                data-parent="#accordionTask3">
-                                <div class="card-body">
-                                    <!-- Nội dung Task 3 -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
                     <div class="skills-section-heading heading-md">

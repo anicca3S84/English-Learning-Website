@@ -178,10 +178,10 @@ document.getElementById("finish-btn").addEventListener("click", function () {
     messageBox.style.display = "block";
 
     if (correct === total) {
-        messageBox.textContent = "🎉 Hoàn thành xuất sắc! Tất cả đều đúng.";
+        messageBox.textContent = "🎉 Excellent finish! It's all true.";
         messageBox.style.borderColor = "#4CAF50";
     } else {
-        messageBox.textContent = `❌ Có ${total - correct} câu sai. Hãy thử lại nhé!`;
+        messageBox.textContent = `❌ There is a ${total - correct} wrong sentence. Let's try again!`;
         messageBox.style.borderColor = "#f44336";
     }
 
