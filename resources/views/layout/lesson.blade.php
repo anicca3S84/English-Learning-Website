@@ -164,7 +164,7 @@
                     
 
 
-                    <!-- Task 2 -->
+                    {{-- <!-- Task 2 -->
                     <div class="accordion" id="accordionTask2">
                         <div class="card">
                             <div class="card-header" id="headingTask2">
@@ -181,13 +181,13 @@
                                 <div class="card-body">
                                     @foreach ($lesson->tasks as $task)
                                         @if ($task->task_order == 2)
-                                            @include('layout.task2', ['task' => $task])
+                                            @include('layout.preparation', ['task' => $task])
                                         @endif
                                     @endforeach
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Task 3 -->
                     <div class="accordion" id="accordionTask3">
