@@ -51,3 +51,11 @@ Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->
 
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
 
+
+
+// Route hiển thị bài test (load tất cả câu hỏi)
+Route::get('/test', [TestController::class, 'index'])->name('test.question');
+
+// Route nộp bài
+
+Route::post('/test/submit', [TestController::class, 'submitTest'])->name('test.submit');
