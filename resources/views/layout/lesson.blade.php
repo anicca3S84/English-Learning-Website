@@ -179,7 +179,11 @@
                             <div id="collapseTask2" class="collapse" aria-labelledby="headingTask2"
                                 data-parent="#accordionTask2">
                                 <div class="card-body">
-                                    <!-- Nội dung Task 2 -->
+                                    @foreach ($lesson->tasks as $task)
+                                        @if ($task->task_order == 2)
+                                            @include('layout.task2', ['task' => $task])
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
