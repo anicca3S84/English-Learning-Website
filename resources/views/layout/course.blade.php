@@ -77,7 +77,7 @@
 
 
                     <div class="skills-section-heading heading-lg" style="margin-top: 40px">
-                        Choose a listening lesson
+                        Choose a lesson
                     </div>
 
 
