@@ -34,5 +34,17 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),         
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), 
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
+
+    'facebook' => [
+        'client_id' => '629028666804372',
+        'client_secret' => '657979a007214e848329e8019ad3a362',
+        'redirect' => 'http://127.0.0.1:8000/auth/facebook/callback',
+
+    ],
 
 ];

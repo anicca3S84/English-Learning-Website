@@ -7,6 +7,8 @@ use App\Models\Lesson;
 use App\Models\Course;
 use App\Models\Skill;
 use App\Models\Task;
+use App\Models\Question;
+use App\Models\Option;
 
 class LessonController extends Controller
 {
@@ -29,6 +31,7 @@ class LessonController extends Controller
         ]);
     }
 
+
     public function showLesson($skillSlug, $courseSlug, $lessonSlug)
     {
         $skill = Skill::where('slug', $skillSlug)
@@ -40,22 +43,16 @@ class LessonController extends Controller
             ->select('title', 'skill_id')
             ->firstOrFail();
 
-        $lesson = Lesson::where('slug', $lessonSlug)->firstOrFail();
 
-        // Lấy tasks + questions + options cho bài học này
-        $tasks = Task::where('lesson_id', $lesson->id)
-            ->with(['questions.options' => function ($query) {
-                $query->orderBy('option_order');
-            }])
-            ->orderBy('task_order')
-            ->get();
-
-        return view('layout.lesson', [
-            'skillTitle' => $skill->title,
-            'course' => $course,
+        $lesson = Lesson::with('tasks.questions.options')
+            ->where('slug', $lessonSlug)
+            ->firstOrFail();
+        $view = $skillSlug === 'grammar' ? 'layout.grammar-lesson' : 'layout.lesson';
+        // Truyền thêm biến lessonSlug vào view
+        return view($view, [
             'lesson' => $lesson,
             'lessonSlug' => $lessonSlug,
-            'tasks' => $tasks, // truyền thêm
+            'skillTitle' => $skill->title,
         ]);
     }
 }

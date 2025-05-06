@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const dragOptionsContainer = document.querySelector(".drag-options");
     const dropBoxes = document.querySelectorAll(".drop-box");
@@ -113,24 +115,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function lockDragAndDropTask0() {
+    const letters = document.querySelectorAll(".drag-option");
+    const boxes = document.querySelectorAll(".drop-box");
 
-function lockDragAndDrop() {
-  const letters = document.querySelectorAll(".drag-option");
-  const boxes = document.querySelectorAll(".drop-box");
+    letters.forEach(letter => {
+        letter.setAttribute("draggable", "false");
+        letter.style.cursor = "default";
+        letter.classList.add("no-arrow");
+    });
 
-  letters.forEach(letter => {
-      letter.setAttribute("draggable", "false");
-      letter.style.cursor = "default";
-      letter.classList.add("no-arrow");
-  });
+    boxes.forEach(box => {
+        box.style.pointerEvents = "none";
+    });
 
-  boxes.forEach(box => {
-      box.style.pointerEvents = "none"; // disable interactions instead of replacing
-  });
-
-  isDragDropLocked = true;
+    isDragDropLockedTask0 = true;
 }
 
+function unlockDragAndDropTask0() {
+    const letters = document.querySelectorAll(".drag-option");
+    const boxes = document.querySelectorAll(".drop-box");
+
+    letters.forEach(letter => {
+        letter.setAttribute("draggable", "true");
+        letter.style.cursor = "grab";
+        letter.classList.remove("no-arrow");
+    });
+
+    boxes.forEach(box => {
+        box.style.pointerEvents = "auto";
+    });
+
+    isDragDropLockedTask0 = false;
+}
 
 document.getElementById("finish-btn").addEventListener("click", function () {
     const dropBoxes = document.querySelectorAll(".drop-box");
@@ -148,45 +165,44 @@ document.getElementById("finish-btn").addEventListener("click", function () {
         }
 
         if (dragged) {
-          dragged.classList.remove("correct", "incorrect");
-          if (boxCorrect) {
-              dragged.classList.add("correct");
-          } else {
-              dragged.classList.add("incorrect");
-          }
-      }
-
-        lockDragAndDrop();
+            dragged.classList.remove("task0-correct", "task0-incorrect");
+            if (boxCorrect) {
+                dragged.classList.add("task0-correct");
+            } else {
+                dragged.classList.add("task0-incorrect");
+            }
+        }
     });
 
     const messageBox = document.querySelector(".drag-task-message");
     messageBox.style.display = "block";
 
     if (correct === total) {
-        messageBox.textContent = "🎉 Hoàn thành xuất sắc! Tất cả đều đúng.";
+        messageBox.textContent = "🎉 Excellent finish! It's all true.";
         messageBox.style.borderColor = "#4CAF50";
     } else {
-        messageBox.textContent = `❌ Có ${total - correct} câu sai. Hãy thử lại nhé!`;
+        messageBox.textContent = `❌ There is a ${total - correct} wrong sentence. Let's try again!`;
         messageBox.style.borderColor = "#f44336";
     }
 
-  
+    lockDragAndDropTask0();
 });
 
 document.getElementById("try-again-btn").addEventListener("click", function () {
     const messageBox = document.querySelector(".drag-task-message");
-    messageBox.style.display="none";
+    messageBox.style.display = "none";
+
     const dragOptionsContainer = document.querySelector(".drag-options");
     const dropBoxes = document.querySelectorAll(".drop-box");
 
     dropBoxes.forEach((dropBox) => {
         const draggedItem = dropBox.querySelector(".drag-option");
         if (draggedItem) {
-          draggedItem.classList.remove("correct", "incorrect");
+            draggedItem.classList.remove("task0-correct", "task0-incorrect");
             dragOptionsContainer.appendChild(draggedItem);
         }
     });
 
-    // Optional: Clear any messages or highlights
-    document.querySelector(".drag-task-message").textContent = "";
+    unlockDragAndDropTask0();
+    messageBox.textContent = "";
 });

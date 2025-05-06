@@ -4,7 +4,7 @@
   font-family: Arial, sans-serif;
   background-color: #fff;
   border-radius: 10px;
-  padding: 30px;
+  padding: 70px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -105,6 +105,12 @@
   color: #6b8e23;
 }
 
+.action-btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+
 /* Nút Finish */
 .action-btn.finish {
   background-color: #e6f2d1;
@@ -154,13 +160,13 @@
 }
 
 /* Định dạng cho chữ cái đúng (màu xanh) */
-.correct {
+.task0-correct {
   background-color: #61f17c !important; /* Màu xanh đậm */
   color: #ffffff !important; /* Màu trắng để tương phản */
 }
 
 /* Định dạng cho chữ cái sai (màu đỏ) */
-.incorrect {
+.task0-incorrect {
   background-color:#f77d6c !important; /* Màu đỏ đậm */
   color: #ffffff !important; /* Màu trắng để tương phản */
 }

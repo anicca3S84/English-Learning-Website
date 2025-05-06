@@ -23,17 +23,13 @@
 
 <body>
     <div class="page-wrapper">
-        <!-- Include header -->
         @include('partial.header')
-
         <div class="container mt-5 mb-5">
             <div id="skill" class="skills-section-heading heading-lg" style="margin-top: -20px">
                 {{ $skill->title }}
             </div>
             <div class="custom-flex-row">
                 <div class="left-col">
-                    
-
                     <div id="skill" class="corner-image">
                         <img src="{{ $skill->imageUrl }}" alt="Skill Image" />
                     </div>
