@@ -51,22 +51,21 @@
                     <div>
                         <img class=" w-full h-[510px] rounded-br-4xl" src=" {{ $lesson->content['imageUrl'] }}">
                     </div>
-                    <div class=" text-black pt-8">
-                        {!! $lesson->content['introduce'] !!}
-                        <!-- <p>
-                            Do you know how to use adjectives with prepositions like <i>interested in</i> or <i>similar to</i>? Test what you know with interactive exercises and read the explanation to help you.
+                    <div class=" text-black">
+                        <p>
+                            Do you know how to use comparative adjectives like <i>older, better</i> and <i>more interesting</i>? 
+                            Test what you know with interactive exercises and read the explanation to help you.
                         </p>
                         <p>
-                            Look at these examples to see how adjectives are used with prepositions.
+                            Look at these examples to see how we use comparative adjectives.
                         </p>
                         <div class=" border-l-4 border-gray-300  pl-4">
                             <p><i>
-                                I'm <strong>interested in</strong> the idea.<br>
-                                My jacket is <strong>similar to</strong> yours.<br>
-                                She's <strong>brilliant at</strong> maths.<br>
-                                My neighbour is <strong>angry about</strong> the party.
+                                The city is more interesting than the countryside.<br>
+                                This house is older than my house.<br>
+                                She's better at cooking now than before.
                             </i></p>
-                        </div> -->
+                        </div>
                         <p>
                             Try this exercise to test your grammar.
                         </p>
@@ -178,7 +177,113 @@
                         <p class=" text-4xl font-bold text-blue-900">
                             Grammar explanation
                         </p>
-                        {!! $lesson->content['main_content'] !!}
+                        <div class=" mb-20">
+                            <p>
+                            We use comparative adjectives to compare two things or show change. 
+                            The comparative form depends on the number of syllables in the adjective.
+                            </p>
+                        </div>
+                        <div class=" mb-24"> 
+                            <p class=" text-3xl font-bold text-blue-900">
+                                Adjectives with one syllable 
+                            </p> 
+                            <p> 
+                                To make comparative forms with one-syllable adjectives, we usually add -<i>er</i>:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    old → older<br> 
+                                    clean → cleaner<br> 
+                                    slow → slower
+                                </i></p> 
+                            </div> 
+                            <p> 
+                                If an adjective ends in -<i>e</i>, we add -<i>r</i>:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    safe → safer<br> 
+                                    nice → nicer
+                                </i></p> 
+                            </div> 
+                            <p> 
+                                If an adjective ends in a vowel and a consonant, we usually double the consonant:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    big → bigger<br> 
+                                    hot → hotter
+                                </i></p> 
+                            </div> 
+                        </div>
+                        <div class=" mb-24"> 
+                            <p class=" text-3xl font-bold text-blue-900">
+                                Adjectives with two or more syllables 
+                            </p> 
+                            <p> 
+                                If a two-syllable adjective ends in a consonant and -<i>y</i>, we change -<i>y</i> to -<i>i</i> and add -<i>er</i>:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    noisy → noisier<br> 
+                                    happy → happier<br> 
+                                    easy → easier
+                                </i></p> 
+                            </div> 
+                            <p> 
+                                We use more to make comparative forms for most other two-syllable adjectives 
+                                and for all adjectives with three or more syllables:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    crowded → more crowded<br> 
+                                    stressful → more stressful<br> 
+                                    dangerous → more dangerous
+                                </i></p> 
+                            </div> 
+                            <p> 
+                                Exception: You can either add -er/-r or use more with some two-syllable adjectives, 
+                                such as common, cruel, gentle, handsome, likely, narrow, pleasant, polite, simple and stupid.
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    I think life in the countryside is <strong>simpler</strong> than in the city.<br>  
+                                    It's <strong>more simple</strong> to live in the city because everything you need is there.
+                                </i></p> 
+                            </div> 
+                        </div>
+                        <div class=" mb-24"> 
+                            <p class=" text-3xl font-bold text-blue-900">
+                                Irregular adjectives
+                            </p> 
+                            <p> 
+                                The adjectives good, bad and far have irregular comparative forms:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    good → better<br> 
+                                    bad → worse<br> 
+                                    far → further/farther
+                                </i></p> 
+                            </div> 
+
+                        </div>
+                        <div class=" mb-4"> 
+                            <p class=" text-3xl font-bold text-blue-900">
+                                Than
+                            </p> 
+                            <p> 
+                                When we want to say which person or thing we are comparing with, we can use than:
+                            </p> 
+                            <div class=" border-l-4 border-gray-300  pl-4"> 
+                                <p><i> 
+                                    Their house is <strong>cleaner than</strong> ours.<br> 
+                                    Traffic is <strong>slower</strong> in the city <strong>than</strong> in the countryside.<br> 
+                                    After the race I was <strong>more tired than</strong> Anne.
+                                </i></p> 
+                            </div> 
+
+                        </div>
 
                         <p>
                             Do this exercise to test your grammar again.
@@ -279,13 +384,13 @@
                             Language level
                         </p>
                         <div class="flex flex-row">
-                            <div class=" bg-green-600 text-white w-fit mr-1">
-                                <button class="px-2 py-1">
+                            <div class=" bg-green-600 text-white w-fit mr-1 px-2 py-1">
+                                <button>
                                     {{ $lesson->content['language_level_1']}}
                                 </button>
                             </div>
-                            <div class=" bg-green-600 text-white w-fit mr-1">
-                                <button class="px-2 py-1">
+                            <div class=" bg-green-600 text-white w-fit mr-1 px-2 py-1">
+                                <button>
                                 {{ $lesson->content['language_level_2']}}
                                 </button>
                             </div>
