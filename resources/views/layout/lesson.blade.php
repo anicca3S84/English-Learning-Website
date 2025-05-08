@@ -31,7 +31,7 @@
             <div class="custom-flex-row">
                 <div class="left-col">
                     <div id="lesson" class="corner-image">
-                        @if ($skillTitle !== 'Speaking' && !empty($lesson->content['imageUrl']))
+                        @if ($skillTitle !== 'Speaking' && $skillTitle !== 'Vocabulary' && !empty($lesson->content['imageUrl']))
                             <img src="{{ $lesson->content['imageUrl'] }}" alt="{{ $lesson->image }}" />
                         @endif
                     </div>
@@ -97,28 +97,31 @@
                         </div>
                     @endif
 
-                    <!-- Transcription -->
-                    <div class="accordion" id="accordionTranscription">
-                        <div class="card">
-                            <div class="card-header" id="headingTranscription">
-                                <a href="#" class="listening-description" data-toggle="collapse"
-                                    data-target="#collapseTranscription" aria-expanded="true"
-                                    aria-controls="collapseTranscription" style="color: #23085A;">
-                                    Transcription
-                                    <span class="arrow-icon">▼</span>
-                                </a>
-                            </div>
+                    @if (!empty($lesson->content['transcriptHtml']))
+                        <div class="accordion" id="accordionTranscription">
+                            <div class="card">
+                                <div class="card-header" id="headingTranscription">
+                                    <a href="#" class="listening-description" data-toggle="collapse"
+                                        data-target="#collapseTranscription" aria-expanded="true"
+                                        aria-controls="collapseTranscription" style="color: #23085A;">
+                                        Transcription
+                                        <span class="arrow-icon">▼</span>
+                                    </a>
+                                </div>
 
-                            <div id="collapseTranscription" class="collapse show" aria-labelledby="headingTranscription"
-                                data-parent="#accordionTranscription">
-                                <div class="card-body">
-                                    <div class="listening-description" id="lesson-transcript" style="margin-top: 24px;">
-                                        {!! $lesson->content['transcriptHtml'] !!}
+                                <div id="collapseTranscription" class="collapse show"
+                                    aria-labelledby="headingTranscription" data-parent="#accordionTranscription">
+                                    <div class="card-body">
+                                        <div class="listening-description" id="lesson-transcript"
+                                            style="margin-top: 24px;">
+                                            {!! $lesson->content['transcriptHtml'] !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
+
 
                     <div id="lesson">
                         @if ($skillTitle == 'Writing')
@@ -197,36 +200,41 @@
                         {{ $lesson->content['discussion'] }}
                     </div>
 
-                    <div class="accordion-download" id="accordionDownload">
-                        <div class="card">
-                            <div class="card-header" id="headingDownload">
-                                <div class="listening-description" style="color: #23085A; cursor: default;">
-                                    Download Lesson PDF
+                    @if (!empty($lesson->content['documentUrl']))
+                        <div class="accordion-download" id="accordionDownload">
+                            <div class="card">
+                                <div class="card-header" id="headingDownload">
+                                    <div class="listening-description" style="color: #23085A; cursor: default;">
+                                        Download Lesson PDF
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div id="collapseDownload" class="collapse show" aria-labelledby="headingDownload"
-                                data-parent="#accordionDownload">
-                                <div class="card-body">
-                                    <div
-                                        style="display: flex; align-items: center; background-color: white; border-radius: 0 80px 80px 0; overflow: hidden;">
+                                <div id="collapseDownload" class="collapse show" aria-labelledby="headingDownload"
+                                    data-parent="#accordionDownload">
+                                    <div class="card-body">
                                         <div
-                                            style="background-color: #2b0060; padding: 24px; display: flex; align-items: center; justify-content: center;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-                                                fill="white" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 2a5 5 0 00-5 5v4H5l7 7 7-7h-2V7a5 5 0 00-5-5zm-3 5a3 3 0 116 0v4h-6V7zm-5 13h14v2H4v-2z" />
-                                            </svg>
-                                        </div>
-                                        <div style="padding: 0 24px;">
-                                            <a href="{{ $lesson->content['documentUrl'] }}" target="_blank"
-                                                style="color: #23085A; font-size: 18px; text-decoration: underline;">Worksheet</a>
+                                            style="display: flex; align-items: center; background-color: white; border-radius: 0 80px 80px 0; overflow: hidden;">
+                                            <div
+                                                style="background-color: #2b0060; padding: 24px; display: flex; align-items: center; justify-content: center;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                    fill="white" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 2a5 5 0 00-5 5v4H5l7 7 7-7h-2V7a5 5 0 00-5-5zm-3 5a3 3 0 116 0v4h-6V7zm-5 13h14v2H4v-2z" />
+                                                </svg>
+                                            </div>
+                                            <div style="padding: 0 24px;">
+                                                <a href="{{ $lesson->content['documentUrl'] }}" target="_blank"
+                                                    style="color: #23085A; font-size: 18px; text-decoration: underline;">
+                                                    Worksheet
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
+
 
 
 
