@@ -31,6 +31,23 @@
         .options { flex-direction: column; gap: 10px; }
         .option { background: white; border: 1px solid #ccc; padding: 12px; border-radius: 5px; display: flex; align-items: center; font-size: 16px; }
         .option input[type="radio"] { margin-right: 10px; }
+        .correct {
+    background-color: #d4edda !important;
+    border: 1px solid #28a745 !important;
+    color: #155724 !important;
+}
+
+.wrong {
+    background-color: #f8d7da !important;
+    border: 1px solid #dc3545 !important;
+    color: #721c24 !important;
+}
+
+.try-again-btn {
+    margin-top: 20px;
+    text-align: center;
+}
+
     </style>
 </head>
 <!-- SweetAlert2 CDN -->
@@ -83,43 +100,51 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script>
-    // Timer
     var totalTime = 30 * 60;
     var timeLeft = totalTime;
+    var timerInterval;
     var timerElement = document.getElementById('timer');
     var progressElement = document.querySelector('.progress');
 
-    function updateTimer() {
-        var minutes = Math.floor(timeLeft / 60);
-        var seconds = timeLeft % 60;
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        timerElement.innerHTML = 'Time remaining: ' + minutes + ':' + seconds;
-        progressElement.style.width = ((totalTime - timeLeft) / totalTime) * 100 + '%';
-
-        if (timeLeft > 0) {
-            timeLeft--;
-        } else {
-            clearInterval(timerInterval);
-            alert('Time is up!');
-            finishTest();
-        }
-    }
-
-    var timerInterval = setInterval(updateTimer, 1000);
-
-    // Question handling
     var questions = @json($questions);
+    questions.forEach(q => {
+        q.options = q.options.map(opt => ({
+            ...opt,
+            is_correct: opt.is_correct === 1
+        }));
+    });
+
     var totalQuestions = questions.length;
-    var currentIndex = {{ $currentIndex ?? 0 }};
+    var currentIndex = 0;
     var answers = {};
+    var testFinished = false;
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            timerElement.innerHTML = 'Time remaining: ' + minutes + ':' + seconds;
+            progressElement.style.width = ((totalTime - timeLeft) / totalTime) * 100 + '%';
+
+            if (timeLeft > 0) {
+                timeLeft--;
+            } else {
+                clearInterval(timerInterval);
+                alert('Time is up!');
+                finishTest();
+            }
+        }, 1000);
+    }
 
     function saveAnswer() {
-    var selectedOption = document.querySelector('input[name="answer"]:checked');
-    if (selectedOption) {
-        answers[currentIndex] = { answer: selectedOption.value };
+        if (testFinished) return;
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (selected) {
+            answers[currentIndex] = { answer: selected.value };
+        }
     }
-}
 
     function loadQuestion(index) {
         if (index < 0 || index >= totalQuestions) return;
@@ -129,7 +154,7 @@
     }
 
     function renderQuestion() {
-        var q = questions[currentIndex];
+        const q = questions[currentIndex];
         document.getElementById('question-number').innerText = `Question ${currentIndex + 1} of ${totalQuestions}`;
         document.getElementById('question-content').innerText = q.question;
 
@@ -137,57 +162,118 @@
         document.getElementById('textB').innerText = q.options[1]?.text || '';
         document.getElementById('textC').innerText = q.options[2]?.text || '';
 
-        document.querySelectorAll('input[name="answer"]').forEach(e => e.checked = false);
+        const radios = document.querySelectorAll('input[name="answer"]');
+        radios.forEach((radio, i) => {
+            radio.checked = false;
+            radio.disabled = testFinished;
+            radio.parentElement.classList.remove('correct', 'wrong');
+        });
+
         if (answers[currentIndex]?.answer) {
             document.querySelector(`input[name="answer"][value="${answers[currentIndex].answer}"]`).checked = true;
         }
 
-        document.getElementById('prevButton').style.visibility = currentIndex == 0 ? 'hidden' : 'visible';
-        document.getElementById('nextButton').style.visibility = currentIndex == totalQuestions - 1 ? 'hidden' : 'visible';
+        if (testFinished) {
+            const correctIndex = q.options.findIndex(opt => opt.is_correct);
+            const correctLetter = ['A', 'B', 'C'][correctIndex];
+            radios.forEach((radio, i) => {
+                const letter = ['A', 'B', 'C'][i];
+                if (letter === correctLetter) {
+                    radio.parentElement.classList.add('correct');
+                } else if (letter === answers[currentIndex]?.answer) {
+                    radio.parentElement.classList.add('wrong');
+                }
+            });
+        }
+
+        document.getElementById('prevButton').style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+        document.getElementById('nextButton').style.visibility = currentIndex === totalQuestions - 1 ? 'hidden' : 'visible';
     }
 
-    questions.forEach(question => {
-    question.options = question.options.map(opt => ({
-        ...opt,
-        is_correct: opt.is_correct === 1
-    }));
-});
-
-function finishTest() {
+    function finishTest() {
     saveAnswer();
     if (!confirm('Are you sure you want to submit your answers?')) return;
 
+    clearInterval(timerInterval);
+    testFinished = true;
+
     let correct = 0;
-    let total = totalQuestions;
-
     for (let i = 0; i < totalQuestions; i++) {
-        const userAnswer = answers[i]?.answer; // A, B, or C
-        const question = questions[i];
-
-        // Tìm vị trí đáp án đúng (0 = A, 1 = B, 2 = C, v.v...)
-        const correctIndex = question.options.findIndex(opt => opt.is_correct);
-        const correctLetter = ['A', 'B', 'C', 'D', 'E'][correctIndex]; // Mở rộng nếu có nhiều hơn 3
-
-        if (userAnswer === correctLetter) {
-            correct++;
-        }
+        const userAnswer = answers[i]?.answer;
+        const correctIndex = questions[i].options.findIndex(opt => opt.is_correct);
+        const correctLetter = ['A', 'B', 'C'][correctIndex];
+        if (userAnswer === correctLetter) correct++;
     }
 
-    const percent = ((correct / total) * 100).toFixed(2);
+    const percent = ((correct / totalQuestions) * 100).toFixed(2);
+    const levelText = correct <= 7
+    ? "Based on your results we recommend learning materials at A1 level."
+    : "Based on your results we recommend learning materials at A2 level.";
 
-    Swal.fire({
+   Swal.fire({
     title: 'Your score',
-    text: `Task: ${correct} out of ${total} (${percent}%)`,
+    html: `Task: ${correct} out of ${totalQuestions} (${percent}%)<br><br><strong>${levelText}</strong>`,
     icon: 'info',
     confirmButtonText: 'OK'
-}).then(() => {
-    location.reload(); // Tải lại trang sau khi đóng thông báo
-});
+    }).then(() => {
+        // Ẩn nút Finish Test sau khi hiện kết quả
+        const finishBtn = document.querySelector('button.btn-success');
+        if (finishBtn) finishBtn.style.display = 'none';
 
+        renderQuestion(); // hiển thị đáp án đúng/sai
+        showTryAgainButton();
+    });
 }
 
-    document.addEventListener('DOMContentLoaded', renderQuestion);
-</script>
 
+    function showTryAgainButton() {
+        if (document.getElementById('tryAgainBtn')) return;
+
+        const container = document.querySelector('.question-container');
+        const tryAgainDiv = document.createElement('div');
+        tryAgainDiv.className = 'try-again-btn';
+
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-warning';
+        btn.id = 'tryAgainBtn';
+        btn.textContent = 'Try Again';
+        btn.onclick = resetTest;
+
+        tryAgainDiv.appendChild(btn);
+        container.appendChild(tryAgainDiv);
+    }
+
+    function resetTest() {
+        answers = {};
+        currentIndex = 0;
+        testFinished = false;
+        timeLeft = totalTime;
+        document.getElementById('timer').innerText = 'Time remaining: 30:00';
+        document.querySelector('.progress').style.width = '0%';
+
+        // Clear selection and styles
+        document.querySelectorAll('.option').forEach(el => {
+            el.classList.remove('correct', 'wrong');
+        });
+
+        document.querySelectorAll('input[name="answer"]').forEach(el => {
+            el.disabled = false;
+        });
+
+        // Remove Try Again button
+        const btn = document.getElementById('tryAgainBtn');
+        if (btn) btn.parentElement.remove();
+// Hiện lại nút Finish Test
+    const finishBtn = document.querySelector('button.btn-success');
+    if (finishBtn) finishBtn.style.display = 'inline-block';
+        renderQuestion();
+        startTimer();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderQuestion();
+        startTimer();
+    });
+</script>
 </body>
 </html>
