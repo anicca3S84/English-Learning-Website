@@ -66,19 +66,6 @@ class LoginGoogleController extends Controller
         //
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function redirectToGoogle()
     {
 
@@ -116,7 +103,7 @@ class LoginGoogleController extends Controller
 
                 $newUser = User::create([
 
-                    'name' => $user->name,
+                    'username' => $user->name,
 
                     'email' => $user->email,
 

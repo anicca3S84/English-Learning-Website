@@ -189,26 +189,18 @@
       <h1>Reset your password</h1>
       <span class="divider"></span>
       <p>Enter your email address below and we’ll send you a link with instructions.</p>
-      <form id="resetForm" autocomplete="off">
+      <form id="resetForm" autocomplete="off" method="POST" action="{{ route('reset-password-post') }}">
+        @csrf
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required placeholder=""/>
-        <button type="submit" class="submit-btn"href="/reset/after.html">Submit</button>
+        <button type="submit" class="submit-btn">Submit</button>
       </form>
       <div class="back-link">
-        If you’re not ready, you can <a href="/login/index.html">go back.</a>
+        If you’re not ready, you can <a href="{{ route('loginDB') }}">go back.</a>
       </div>
     </div>
   </div>
-    <script>
-  document.getElementById('resetForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var email = document.getElementById('email').value;
-    if (!email) {
-      alert("Please enter your email.");
-      return;
-    }
-    window.location.href = "/reset/after.html";
-  });
+  <script>
   </script>
 </body>
 </html>

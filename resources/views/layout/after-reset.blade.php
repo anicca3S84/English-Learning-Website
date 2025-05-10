@@ -134,7 +134,7 @@
       <span class="divider"></span>
       <p>If your email is registered you will receive an email and instructions to reset your password.</p>
       <div class="back-link">
-        If you’re not ready, you can <a href="/login/index.html">go back.</a>
+        If you’re not ready, you can <a href="{{ route('loginDB') }}">go back.</a>
       </div>
     </div>
   </div>

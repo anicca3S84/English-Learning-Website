@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
         'google_id',
