@@ -49,31 +49,40 @@ class TestController extends Controller
 
     public function submitTest(Request $request)
     {
-        $answers = $request->input('answers');
-        $correctAnswers = 0;
-        $totalQuestions = count($answers);
+        $answers = $request->input('answers'); // { question_id: selected_option_id }
     
-        foreach ($answers as $index => $answerData) {
-            // Lấy câu hỏi từ session
-            $questions = session('questions');
-            $question = $questions[$index] ?? null;
+        $questions = Question::with('options')->where('task_id', 3)->get();
+        $detailedResults = [];
+        $score = 0;
     
-            if ($question && isset($question->options)) {
-                foreach ($question->options as $option) {
-                    if ($option->text === $answerData['answer'] && $option->is_correct == 1) {
-                        $correctAnswers++;
-                        break;
-                    }
-                }
-            }
+        foreach ($questions as $q) {
+            $correctOption = $q->options->firstWhere('is_correct', 1);
+            $userAnswer = $answers[$q->id] ?? null;
+    
+            $isCorrect = $userAnswer == $correctOption->id;
+            if ($isCorrect) $score++;
+    
+            $detailedResults[] = [
+                'id' => $q->id,
+                'question' => $q->question,
+                'options' => $q->options->map(function ($opt) {
+                    return [
+                        'id' => $opt->id,
+                        'text' => $opt->text,
+                        'is_correct' => $opt->is_correct
+                    ];
+                }),
+                'user_answer' => $userAnswer,
+                'correct_answer' => $correctOption->id,
+                'is_correct' => $isCorrect
+            ];
         }
     
-        $percent = $totalQuestions > 0 ? ($correctAnswers / $totalQuestions) * 100 : 0;
-    
         return response()->json([
-            'correct' => $correctAnswers,
-            'total' => $totalQuestions,
-            'percent' => number_format($percent, 2),
+            'success' => true,
+            'score' => $score,
+            'total' => count($questions),
+            'results' => $detailedResults
         ]);
     }
     
