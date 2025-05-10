@@ -64,39 +64,30 @@
 
                         <div class="left">
                             <ul class="main-menu__list">
-                                <li class="current">
-                                    <a href="index.html">Home</a>
+                                <li class="{{ Request::is('/') ? 'current' : '' }}">
+                                    <a href="{{ url('/') }}">Home</a>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#">Skills</a>
                                     <ul>
                                         <li><a href="#">Listening</a></li>
-                                        <li>
-                                            <a href="#">Reading</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Speaking</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Writing</a>
-                                        </li>
+                                        <li><a href="#">Reading</a></li>
+                                        <li><a href="#">Speaking</a></li>
+                                        <li><a href="#">Writing</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#"> Grammar</a>
+                                    <a href="#">Grammar</a>
                                     <ul>
-                                        <li><a href="#"> A</a></li>
+                                        <li><a href="#">A</a></li>
                                         <li><a href="#">B</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#">Vocabulary</a>
-                                    <ul>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                    </ul>
+                                <li class="{{ Request::is('vocabulary') ? 'current' : '' }}">
+                                    <a href="{{ url('vocabulary') }}">Vocabulary</a>
                                 </li>
                             </ul>
+
                         </div>
 
                         <div class="right">

@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('layout.index');
 });
 //vocabulary
-Route::get('/vocabularies', [VocabularyController::class, 'index']);
+Route::get('/vocabulary', [VocabularyController::class, 'index']);
 
 
 
@@ -33,6 +33,8 @@ Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [Lesson
 Route::get('/login', function () {
     return view('layout.login');
 })->name('login');
+
+
 //auth google
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
 

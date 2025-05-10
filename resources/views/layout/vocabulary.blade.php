@@ -107,6 +107,9 @@
         .table-hover tbody tr:hover {
             background-color: #f8f9fa;
         }
+        .vocab_x87_word-row:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -150,7 +153,7 @@
                     <table class="table table-hover mb-0" style="min-width: 100%">
                         <tbody>
                             @foreach($vocabularies as $vocabulary)
-                            <tr onclick="openVocabularyModal('{{ e($vocabulary->word) }}', '{{ e($vocabulary->pos) }}', '{{ e($vocabulary->phonetic) }}', '{{ e($vocabulary->phonetic_am) }}', '{{ e($vocabulary->phonetic_am_text) }}', '{{ e($vocabulary->phonetic_text) }}', {{ json_encode($vocabulary->senses) }})">
+                            <tr class="vocab_x87_word-row" onclick="openVocabularyModal('{{ e($vocabulary->word) }}', '{{ e($vocabulary->pos) }}', '{{ e($vocabulary->phonetic) }}', '{{ e($vocabulary->phonetic_am) }}', '{{ e($vocabulary->phonetic_am_text) }}', '{{ e($vocabulary->phonetic_text) }}', {{ json_encode($vocabulary->senses) }})">
 
                                 <td width="20%">
                                     <span class="vocab_x87_word">{{ $vocabulary->word }}</span>
@@ -198,9 +201,9 @@
                             <!-- Sense and Example will be loaded here -->
                         </div>
                     </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                    <!-- <div class="modal-footer justify-content-center">
+                        
+                    </div> -->
                 </div>
             </div>
         </div>
