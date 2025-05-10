@@ -9,8 +9,7 @@
                 </div>
 
                 <div class="main-header--one__top-right clearfix">
-                    <ul
-                        class="main-header--one__top-social-link list-unstyled clearfix">
+                    <ul class="main-header--one__top-social-link list-unstyled clearfix">
                         <li>
                             <a href="#"><i class="fab fa-twitter"></i></a>
                         </li>
@@ -26,8 +25,7 @@
                     </ul>
 
                     <div class="main-header--one__top-contact-info clearfix">
-                        <ul
-                            class="main-header--one__top-contact-info-list list-unstyled">
+                        <ul class="main-header--one__top-contact-info-list list-unstyled">
                             <li class="main-header--one__top-contact-info-list-item">
                                 <div class="icon">
                                     <span class="icon-phone-call-1"></span>
@@ -68,7 +66,7 @@
                                     <a href="index.html">Home</a>
                                 </li>
                                 <li class="dropdown">
-                                <a href="#">Skills</a>
+                                    <a href="#">Skills</a>
                                     <ul>
                                         <li><a href="#">Listening</a></li>
                                         <li>
@@ -100,34 +98,38 @@
                         </div>
 
                         <div class="right">
-                            <div class="main-menu__right">
-                                @auth
-                                <div class="main-menu__right-login-register d-flex align-items-center">
-                                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
-                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        <button type="submit" class="log-out-btn">Logout</button>
-                                    </form>
-                                </div>
-                                @endauth
+    <div class="main-menu__right">
+        @auth
+            <div class="main-menu__right-login-register d-flex align-items-center">
+                <img src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('images/favicons/profile.png') }}" 
+                     alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
+                <span class="mr-3 font-weight-bold">{{ Auth::user()->name }}</span>
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="log-out-btn">Logout</button>
+                </form>
+            </div>
+        @endauth
 
-                                @guest
-                                <div class="main-menu__right-login-register">
-                                    <ul class="list-unstyled">
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                        <li><a href="{{ route('login') }}">Register</a></li>
-                                    </ul>
-                                </div>
-                                @endguest
+        @guest
+            <div class="main-menu__right-login-register d-flex align-items-center">
+                <ul class="list-unstyled d-flex mb-0">
+                    <li class="mr-3"><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('registerDB') }}">Register</a></li>
+                </ul>
+            </div>
+        @endguest
 
-                                <div class="main-menu__right-cart-search">
-                                    <div class="main-menu__right-search-box">
-                                        <a href="#" class="thm-btn search-toggler">Search</a>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="main-menu__right-cart-search">
+            <div class="main-menu__right-search-box">
+                <a href="#" class="thm-btn search-toggler">Search</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        </div>
+
+
                     </div>
                 </nav>
             </div>

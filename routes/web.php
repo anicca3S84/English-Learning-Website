@@ -16,7 +16,7 @@ use App\Http\Controllers\VocabularyController;
 
 Route::get('/', function () {
     return view('layout.index');
-});
+})->name('home');
 //vocabulary
 Route::get('/vocabularies', [VocabularyController::class, 'index']);
 
@@ -60,17 +60,17 @@ Route::get('/test', [TestController::class, 'index'])->name('test.question');
 
 Route::post('/test/submit', [TestController::class, 'submitTest'])->name('test.submit');
 
-// Authentication Routes
-Route::get('/login', function () {
-    return view('layout.login');
-})->name('login');
+
 //ath database
 Route::post('/login', [AuthController::class, 'login'])->name('loginDB');
-Route::get('/register', function() {
+
+Route::get('/register/1', function() {
     return view('layout.register');
 })->name('registerDB');
+
+
 //reset password
-Route::get('/reset-password', [ResetPasswordController::class, 'showForm'])->name('reset-password');
+Route::get('/reset-password/form', [ResetPasswordController::class, 'showForm'])->name('reset-password');
 Route::post('/reset-password', [ResetPasswordController::class, 'sendResetLink'])->name('reset-password-post');
 Route::get('/reset/after', function() {
     return view('layout.after-reset');

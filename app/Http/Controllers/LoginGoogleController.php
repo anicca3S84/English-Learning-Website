@@ -103,7 +103,7 @@ class LoginGoogleController extends Controller
 
                 $newUser = User::create([
 
-                    'username' => $user->name,
+                    'name' => $user->name,
 
                     'email' => $user->email,
 
