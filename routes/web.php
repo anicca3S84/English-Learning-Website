@@ -1,23 +1,26 @@
 <?php
-
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
-use App\Http\Controllers\ListeningController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\CourseController;
 use App\Models\Course;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\FacebookController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\VocabularyController;
 
-// Home Route
 Route::get('/', function () {
     return view('layout.index');
-});
+})->name('home');
 //vocabulary
 Route::get('/vocabulary', [VocabularyController::class, 'index']);
 
+Route::get('/skill', [SkillController::class, 'skillOuterPage'])->name('skill.outerPage');
 
 
 // Skill Routes
@@ -28,7 +31,6 @@ Route::get('/skill/{skillSlug}/course/{courseSlug}', [CourseController::class, '
 
 // Lesson Routes
 Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [LessonController::class, 'showLesson'])->name('lesson.show');
-
 // Authentication Routes
 Route::get('/login', function () {
     return view('layout.login');
@@ -38,6 +40,11 @@ Route::get('/login', function () {
 //auth google
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
 
+// grammar, vocabulary
+Route::get('/{slug}', [SkillController::class, 'grammar'])->name('grammar.page');
+
+
+Route::get('/{skillSlug}/{courseSlug}/{lessonSlug}', [LessonController::class, 'testLesson'])->name('lesson.testLesson');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
 
 
@@ -46,9 +53,45 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-
-
-//auth facebook (cause facebook developer require https instead of http, but we are using localhost => do not implement yet)
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
 
+Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+
+
+
+// Route hiển thị bài test (load tất cả câu hỏi)
+Route::get('/test/1', [TestController::class, 'index'])->name('test.question');
+
+// Route nộp bài
+
+Route::post('/test/submit', [TestController::class, 'submitTest'])->name('test.submit');
+
+
+//ath database
+Route::post('/login', [AuthController::class, 'login'])->name('loginDB');
+
+Route::get('/register/1', function() {
+    return view('layout.register');
+})->name('registerDB');
+
+
+//reset password
+Route::get('/reset-password/form', [ResetPasswordController::class, 'showForm'])->name('reset-password');
+Route::post('/reset-password', [ResetPasswordController::class, 'sendResetLink'])->name('reset-password-post');
+Route::get('/reset/after', function() {
+    return view('layout.after-reset');
+})->name('reset-after');
+Route::get('/form-reset-password/{token}', [ResetPasswordController::class, 'showMailForm'])->name('password.reset');
+Route::post('/form-reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
+
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/send-test-mail', [MailController::class, 'sendTestEmail']);
+
+//auth google
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
+Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+
+//auth facebook
+Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);

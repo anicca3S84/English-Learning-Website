@@ -41,7 +41,6 @@
     margin-top: -10px;
     margin-bottom: 30px;
     right: 0;
-    z-index: 999;              /* Hiển thị trên cùng nếu cần */
     width: 100%;              /* Hoặc tùy theo ảnh của bạn */
     pointer-events: none;      /* Không ảnh hưởng khi người dùng bấm gần */
     
@@ -60,15 +59,7 @@
     width: 100%
 }
 
-a {
-    color: #3454e2;
-    text-decoration: underline;
-}
 
-a:hover {
-    color: #480089;
-    text-decoration: none;
-}
 
 
 .btn {

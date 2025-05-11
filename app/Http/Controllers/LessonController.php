@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Lesson;
 use App\Models\Course;
 use App\Models\Skill;
-
+use App\Models\Task;
+use App\Models\Question;
+use App\Models\Option;
 
 class LessonController extends Controller
 {
@@ -29,27 +31,28 @@ class LessonController extends Controller
         ]);
     }
 
+
     public function showLesson($skillSlug, $courseSlug, $lessonSlug)
-{
-    $skill = Skill::where('slug', $skillSlug)
-        ->select('id', 'title')
-        ->firstOrFail();
+    {
+        $skill = Skill::where('slug', $skillSlug)
+            ->select('id', 'title')
+            ->firstOrFail();
 
-    $course = Course::where('slug', $courseSlug)
-        ->where('skill_id', $skill->id)
-        ->select('title', 'skill_id')
-        ->firstOrFail();
+        $course = Course::where('slug', $courseSlug)
+            ->where('skill_id', $skill->id)
+            ->select('title', 'skill_id')
+            ->firstOrFail();
 
-    $lesson = Lesson::where('slug', $lessonSlug)
-        ->firstOrFail();
 
-    // Truyền thêm biến lessonSlug vào view
-    return view('layout.lesson', [
-        'skillTitle' => $skill->title,
-        'course' => $course,
-        'lesson' => $lesson,
-        'lessonSlug' => $lessonSlug, // Truyền slug của bài học
-    ]);
-}
-
+        $lesson = Lesson::with('tasks.questions.options')
+            ->where('slug', $lessonSlug)
+            ->firstOrFail();
+        $view = $skillSlug === 'grammar' ? 'layout.grammar-lesson' : 'layout.lesson';
+        // Truyền thêm biến lessonSlug vào view
+        return view($view, [
+            'lesson' => $lesson,
+            'lessonSlug' => $lessonSlug,
+            'skillTitle' => $skill->title,
+        ]);
+    }
 }

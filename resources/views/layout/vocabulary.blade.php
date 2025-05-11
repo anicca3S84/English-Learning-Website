@@ -121,14 +121,14 @@
         <!--Content here  -->
 
         <!-- Breadcrumb -->
-        <div class="container">
+        <!-- <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Vocabulary</li>
                 </ol>
             </nav>
-        </div>
+        </div> -->
         <!-- End Breadcrumb -->
         <div style="margin-bottom: 40px;" class="container">
             <div class="vocab_x87_search-section">

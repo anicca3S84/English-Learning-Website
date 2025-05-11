@@ -66,19 +66,6 @@ class LoginGoogleController extends Controller
         //
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function redirectToGoogle()
     {
 

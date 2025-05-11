@@ -18,34 +18,18 @@
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
 
-    <!-- Custom CSS for Flexbox -->
-    <style>
-        .custom-flex-row {
-            display: flex;
-            align-items: stretch; /* Đảm bảo chiều cao của cả hai cột bằng nhau */
-        }
 
-        .left-col, .right-col {
-            flex: 1; /* Mỗi cột sẽ chiếm một phần không gian của container */
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
 </head>
 
 <body>
     <div class="page-wrapper">
-        <!-- Include header -->
         @include('partial.header')
-
         <div class="container mt-5 mb-5">
             <div id="skill" class="skills-section-heading heading-lg" style="margin-top: -20px">
                 {{ $skill->title }}
             </div>
             <div class="custom-flex-row">
                 <div class="left-col">
-                    
-
                     <div id="skill" class="corner-image">
                         <img src="{{ $skill->imageUrl }}" alt="Skill Image" />
                     </div>
@@ -69,7 +53,7 @@
                     </div>
 
                     <div class="skills-section-heading heading-lg" style="margin-top: 40px">
-                        Choose your level to practise your listening
+                        Choose your level to practise 
                     </div>
 
                     <div id="skill">
