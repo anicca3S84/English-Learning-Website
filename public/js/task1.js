@@ -1,15 +1,14 @@
-let score = 0; // Biến lưu trữ điểm
-let totalQuestions = 0; // Biến lưu trữ tổng số câu hỏi
-let completedQuestions = []; // Mảng lưu các câu hỏi đã hoàn thành
-let currentIndex = 0; // Chỉ số câu hỏi hiện tại
-let isDragDropLockedTask1 = false; // Biến theo dõi trạng thái khóa kéo-thả
+let score = 0; 
+let totalQuestions = 0;
+let completedQuestions = []; 
+let currentIndex = 0; 
+let isDragDropLockedTask1 = false; 
 
 const finishBtn = document.querySelector('.spelling-task-finish-btn');
 const overlay = document.querySelector('.spelling-task-overlay');
 const modalText = document.querySelector('.modal-text');
 const modalActions = document.querySelector('.modal-actions');
 
-// Hàm hiển thị modal với nội dung và nút tùy chỉnh
 function showSpellingModal(text, actionsHTML) {
     if (overlay && modalText && modalActions) {
         modalText.textContent = text;
@@ -58,7 +57,7 @@ function lockDragAndDropTask1() {
         letter.setAttribute("draggable", "false");
         letter.style.cursor = "default";
         letter.classList.add("no-arrow");
-        letter.replaceWith(letter.cloneNode(true));
+        letter.replaceWith(letter.cloneNode(true)); //tạo ra bản sao mà không có sự kiện
     });
 
     boxes.forEach(box => {
@@ -73,7 +72,7 @@ function initDragAndDropTask1() {
     if (isDragDropLockedTask1) return; // Không khởi tạo nếu kéo-thả đang bị khóa
 
     const activeQuestion = document.querySelector(".spelling-task-question.active");
-    if (!activeQuestion) return;
+    if (!activeQuestion) return; 
 
     const letters = activeQuestion.querySelectorAll(".spelling-task-letter");
     const boxes = activeQuestion.querySelectorAll(".spelling-task-box");
@@ -81,22 +80,22 @@ function initDragAndDropTask1() {
 
     letters.forEach((letter) => {
         letter.setAttribute("draggable", "true");
-        letter.style.cursor = "grab";
+        letter.style.cursor = "grab"; // Thay đổi con trỏ thành "grab"
         letter.classList.remove("no-arrow");
 
         letter.addEventListener("dragstart", (e) => {
-            e.dataTransfer.setData("text/plain", letter.id);
+            e.dataTransfer.setData("text/plain", letter.id); // letter-1-s
         });
     });
 
     boxes.forEach((box) => {
-        box.addEventListener("dragover", (e) => e.preventDefault());
+        box.addEventListener("dragover", (e) => e.preventDefault()); //e.preventDefault() cho phép thả vào ô
         box.addEventListener("drop", (e) => {
             e.preventDefault();
-            const letterId = e.dataTransfer.getData("text/plain");
-            const letterEl = document.getElementById(letterId);
+            const letterId = e.dataTransfer.getData("text/plain");  //id 
+            const letterEl = document.getElementById(letterId); // chữ cái
 
-            if (!box.hasChildNodes() && letterEl) {
+            if (!box.hasChildNodes() && letterEl) { //ô chưa có chữ cái 
                 box.appendChild(letterEl);
                 letterEl.setAttribute("draggable", "false");
                 letterEl.style.cursor = "default";
@@ -108,7 +107,7 @@ function initDragAndDropTask1() {
                     letterEl.style.cursor = "grab";
                     letterEl.classList.remove("no-arrow");
 
-                }, { once: true });
+                }, { once: true }); //chỉ click 1 lần
             }
         });
     });
@@ -131,9 +130,9 @@ document.querySelector(".spelling-task-next-btn")?.addEventListener("click", () 
     const currentQuestion = document.querySelector(".spelling-task-question.active");
     if (!currentQuestion) return;
 
-    const currentIdx = parseInt(currentQuestion.getAttribute("data-question-index"));
+    const currentIdx = parseInt(currentQuestion.getAttribute("data-question-index")); //chỉ số câuhỏi hiện tại 
     if (!isDragDropLockedTask1 && isQuestionCompleted(currentQuestion)    && !completedQuestions.includes(currentIdx)) {
-        completedQuestions.push(currentIdx);
+        completedQuestions.push(currentIdx); //đẩy vào mảng completedQuestions
         updateRemainingItems();
     }
 
@@ -172,16 +171,14 @@ finishBtn?.addEventListener("click", () => {
                 let questionCorrect = true;
 
                 boxes.forEach((box) => {
-                    const letter = box.querySelector(".spelling-task-letter");
-                    const correctLetter = box.getAttribute("data-correct-letter");
+                    const letter = box.querySelector(".spelling-task-letter"); //chữ cái đã kéo vào ô 
+                    const correctLetter = box.getAttribute("data-correct-letter"); // chữ cái đúng từ db 
                     let boxCorrect = false;
 
-                    if (letter) {
-                        // Nếu ô có chữ cái, kiểm tra xem chữ cái có đúng không
+                    if (letter) { //nếu trong ô có chữ cái 
                         if (letter.textContent.trim().toLowerCase() === correctLetter) {
                             boxCorrect = true;
                         }
-                        // Thêm lớp correct hoặc incorrect cho chữ cái
                         letter.classList.remove('correct', 'incorrect');
                         if (boxCorrect) {
                             letter.classList.add('correct');
@@ -190,7 +187,6 @@ finishBtn?.addEventListener("click", () => {
                             questionCorrect = false;
                         }
                     } else {
-                        // Nếu ô trống, đánh dấu ô là incorrect
                         box.classList.remove('correct', 'incorrect');
                         box.classList.add('incorrect');
                         questionCorrect = false;

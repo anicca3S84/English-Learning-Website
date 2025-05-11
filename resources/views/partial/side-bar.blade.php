@@ -1,7 +1,5 @@
-{{-- Sidebar chính --}}
 <div class="sidebar-wrapper d-flex flex-column h-100 justify-content-start">
 
-    {{-- DANH SÁCH KỸ NĂNG (ẩn nếu có $lessonSlug) --}}
     @if (!isset($lessonSlug))
         <div class="sidebar-box shadow-sm" style="margin-top: -10px;">
             <ul class="list-skills-text">
@@ -38,16 +36,13 @@
         </div>
     @endif
 
-    {{-- CÁC DIV CÒN LẠI (gói chung trong wrapper) --}}
     <div style="margin-top: {{ isset($lessonSlug) ? '-28px' : '0' }};">
-        {{-- Hình khóa học --}}
         <div class="sidebar-box-1 shadow-sm">
             <img style="cursor: pointer" src="{{ asset('images/listening-page/online-english-course-image.avif') }}"
                 class="img-fluid rounded mb-2">
             <p class="online-english-course-title">Online English courses</p>
         </div>
 
-        {{-- Các trang web khác --}}
         <div class="sidebar-box shadow-sm mt-3">
             <ul class="list-skills-text">
                 <li><span class="right-row-header">Our websites</span></li>
@@ -57,7 +52,6 @@
             </ul>
         </div>
 
-        {{-- Trợ giúp --}}
         <div class="sidebar-box-1 shadow-sm mt-3" style="padding: 24px 12px">
             <ul class="list-skills-text">
                 <li><span class="right-row-header">Help</span></li>

@@ -209,6 +209,7 @@
     const levelText = correct <= 7
     ? "Based on your results we recommend learning materials at A1 level."
     : "Based on your results we recommend learning materials at A2 level.";
+   
 
    Swal.fire({
     title: 'Your score',

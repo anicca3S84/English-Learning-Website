@@ -4,7 +4,7 @@
             <div class="main-header--one__top-inner clearfix">
                 <div class="main-header--one__top-left">
                     <div class="main-header--one__top-logo">
-                        <a href="index.html"><img src="{{ asset('images/resources/demo.png') }}" alt="" /></a>
+                        <a href="index.html"><img style="width: 90px height: 90px"  src="{{ asset('images/resources/demo.png') }}" alt="" /></a>
                     </div>
                 </div>
 

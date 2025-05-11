@@ -20,12 +20,12 @@ class ResetPasswordController extends Controller
         );
         if ($status === Password::RESET_LINK_SENT) {
             Log::info('Reset password email is being sent.', ['email' => $request->email]);
-            return back()->with(['status' => __($status)]);
+            return redirect()->to('/reset/after')->with(['status' => ($status)]);
 
         } else {
             // Nếu có lỗi, hãy ghi lại lỗi vào logs
             Log::error('Password reset link error', ['status' => $status, 'email' => $request->email]);
-            return back()->withErrors(['email' => __($status)]);
+            return back()->withErrors(['email' => ($status)]);
         }
     }
     public function showMailForm($token, Request $request) {
@@ -48,7 +48,9 @@ class ResetPasswordController extends Controller
             $user->forceFill([
                 'password' => Hash::make($password),
             ])->save();
+        
         }
+           
     );
 
     return $status === Password::PASSWORD_RESET

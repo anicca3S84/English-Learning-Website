@@ -54,7 +54,7 @@ Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebook
 
 
 // Route hiển thị bài test (load tất cả câu hỏi)
-Route::get('/test', [TestController::class, 'index'])->name('test.question');
+Route::get('/test/1', [TestController::class, 'index'])->name('test.question');
 
 // Route nộp bài
 

@@ -65,6 +65,10 @@
     font-weight: bold;
     box-sizing: border-box;
   }
+  .spelling-task-box.incorrect {
+  background-color:#f77d6c !important; /* Màu đỏ đậm */                                                                                
+  color: #ffffff !important; /* Màu trắng để tương phản */
+}
   
   .spelling-task-letter {
     position: relative;
