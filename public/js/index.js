@@ -37,85 +37,85 @@
 
 
   //Pricing Tabs
-  if ($('.pricing-tabs').length) {
-    $('.pricing-tabs .tab-btns .tab-btn').on('click', function (e) {
-      e.preventDefault();
-      var target = $($(this).attr('data-tab'));
+  // if ($('.pricing-tabs').length) {
+  //   $('.pricing-tabs .tab-btns .tab-btn').on('click', function (e) {
+  //     e.preventDefault();
+  //     var target = $($(this).attr('data-tab'));
 
-      if ($(target).hasClass('actve-tab')) {
-        return false;
-      } else {
-        $('.pricing-tabs .tab-btns .tab-btn').removeClass('active-btn');
-        $(this).addClass('active-btn');
-        $('.pricing-tabs .pr-content .pr-tab').removeClass('active-tab');
-        $(target).addClass('active-tab');
-      }
-    });
-  }
+  //     if ($(target).hasClass('actve-tab')) {
+  //       return false;
+  //     } else {
+  //       $('.pricing-tabs .tab-btns .tab-btn').removeClass('active-btn');
+  //       $(this).addClass('active-btn');
+  //       $('.pricing-tabs .pr-content .pr-tab').removeClass('active-tab');
+  //       $(target).addClass('active-tab');
+  //     }
+  //   });
+  // }
 
 
 
   // Type Effect
-  if ($('.typed-effect').length) {
-    $('.typed-effect').each(function () {
-      var typedStrings = $(this).data('strings');
-      var typedTag = $(this).attr('id');
-      var typed = new Typed('#' + typedTag, {
-        typeSpeed: 100,
-        backSpeed: 100,
-        fadeOut: true,
-        loop: true,
-        strings: typedStrings.split(',')
-      });
-    });
+  // if ($('.typed-effect').length) {
+  //   $('.typed-effect').each(function () {
+  //     var typedStrings = $(this).data('strings');
+  //     var typedTag = $(this).attr('id');
+  //     var typed = new Typed('#' + typedTag, {
+  //       typeSpeed: 100,
+  //       backSpeed: 100,
+  //       fadeOut: true,
+  //       loop: true,
+  //       strings: typedStrings.split(',')
+  //     });
+  //   });
 
-  }
+  // }
 
 
-  // Popular Causes Progress Bar
-  if ($('.count-bar').length) {
-    $('.count-bar').appear(function () {
-      var el = $(this);
-      var percent = el.data('percent');
-      $(el).css('width', percent).addClass('counted');
-    }, { accY: -50 });
+  // // Popular Causes Progress Bar
+  // if ($('.count-bar').length) {
+  //   $('.count-bar').appear(function () {
+  //     var el = $(this);
+  //     var percent = el.data('percent');
+  //     $(el).css('width', percent).addClass('counted');
+  //   }, { accY: -50 });
 
-  }
+  // }
 
   //Fact Counter + Text Count
-  if ($(".count-box").length) {
-    $(".count-box").appear(
-      function () {
-        var $t = $(this),
-          n = $t.find(".count-text").attr("data-stop"),
-          r = parseInt($t.find(".count-text").attr("data-speed"), 10);
+  // if ($(".count-box").length) {
+  //   $(".count-box").appear(
+  //     function () {
+  //       var $t = $(this),
+  //         n = $t.find(".count-text").attr("data-stop"),
+  //         r = parseInt($t.find(".count-text").attr("data-speed"), 10);
 
-        if (!$t.hasClass("counted")) {
-          $t.addClass("counted");
-          $({
-            countNum: $t.find(".count-text").text(),
-          }).animate(
-            {
-              countNum: n,
-            },
-            {
-              duration: r,
-              easing: "linear",
-              step: function () {
-                $t.find(".count-text").text(
-                  Math.floor(this.countNum)
-                );
-              },
-              complete: function () {
-                $t.find(".count-text").text(this.countNum);
-              },
-            }
-          );
-        }
-      },
-      { accY: 0 }
-    );
-  }
+  //       if (!$t.hasClass("counted")) {
+  //         $t.addClass("counted");
+  //         $({
+  //           countNum: $t.find(".count-text").text(),
+  //         }).animate(
+  //           {
+  //             countNum: n,
+  //           },
+  //           {
+  //             duration: r,
+  //             easing: "linear",
+  //             step: function () {
+  //               $t.find(".count-text").text(
+  //                 Math.floor(this.countNum)
+  //               );
+  //             },
+  //             complete: function () {
+  //               $t.find(".count-text").text(this.countNum);
+  //             },
+  //           }
+  //         );
+  //       }
+  //     },
+  //     { accY: 0 }
+  //   );
+  // }
 
   // Accrodion
   if ($(".accrodion-grp").length) {

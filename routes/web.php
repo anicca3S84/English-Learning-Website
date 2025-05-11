@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('layout.index');
 })->name('home');
 //vocabulary
-Route::get('/vocabularies', [VocabularyController::class, 'index']);
+Route::get('/vocabulary', [VocabularyController::class, 'index']);
 
 Route::get('/skill', [SkillController::class, 'skillOuterPage'])->name('skill.outerPage');
+
 
 // Skill Routes
 Route::get('/skill/{slug}', [SkillController::class, 'index'])->name('skill.index');
@@ -34,9 +35,14 @@ Route::get('/skill/{skillSlug}/course/{courseSlug}/lesson/{lessonSlug}', [Lesson
 Route::get('/login', function () {
     return view('layout.login');
 })->name('login');
+
+
 //auth google
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
-Route::get('/{skillSlug}', [SkillController::class, 'grammar'])->name('skill.grammar');
+
+// grammar, vocabulary
+Route::get('/{slug}', [SkillController::class, 'grammar'])->name('grammar.page');
+
 
 Route::get('/{skillSlug}/{courseSlug}/{lessonSlug}', [LessonController::class, 'testLesson'])->name('lesson.testLesson');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
