@@ -352,6 +352,7 @@
             let commentText = CKEDITOR.instances['ckeditor-comment'].getData();
             let url = "{{ route('comments.store', ['lessonId' => $lesson->id]) }}";
             let token = $('input[name="_token"]').val();
+            console.log(commentText);
             console.log(token);
 
             $.ajax({

@@ -45,6 +45,9 @@ Route::get('/{slug}', [SkillController::class, 'grammar'])->name('grammar.page')
 
 
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
+
+
 
 //auth facebook
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
