@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\FacebookController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VocabularyController;
 
 Route::get('/', function () {
@@ -37,26 +39,24 @@ Route::get('/login', function () {
 })->name('login');
 
 
-//auth google
-Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
 
 // grammar, vocabulary
 Route::get('/{slug}', [SkillController::class, 'grammar'])->name('grammar.page');
 
-
-Route::get('/{skillSlug}/{courseSlug}/{lessonSlug}', [LessonController::class, 'testLesson'])->name('lesson.testLesson');
+//auth google
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+
+//auth facebook
+Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
+Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+
 
 
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/');
 })->name('logout');
-
-Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
-
-Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
-
 
 
 // Route hiển thị bài test (load tất cả câu hỏi)
@@ -70,7 +70,7 @@ Route::post('/test/submit', [TestController::class, 'submitTest'])->name('test.s
 //ath database
 Route::post('/login', [AuthController::class, 'login'])->name('loginDB');
 
-Route::get('/register/1', function() {
+Route::get('/register/1', function () {
     return view('layout.register');
 })->name('registerDB');
 
@@ -78,7 +78,7 @@ Route::get('/register/1', function() {
 //reset password
 Route::get('/reset-password/form', [ResetPasswordController::class, 'showForm'])->name('reset-password');
 Route::post('/reset-password', [ResetPasswordController::class, 'sendResetLink'])->name('reset-password-post');
-Route::get('/reset/after', function() {
+Route::get('/reset/after', function () {
     return view('layout.after-reset');
 })->name('reset-after');
 Route::get('/form-reset-password/{token}', [ResetPasswordController::class, 'showMailForm'])->name('password.reset');
@@ -88,10 +88,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 Route::get('/send-test-mail', [MailController::class, 'sendTestEmail']);
 
-//auth google
-Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('auth/google');
-Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
 
-//auth facebook
-Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth/facebook');
-Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+// comment
+Route::post('/lessons/{lessonId}/comments', [CommentController::class, 'store'])
+    ->middleware('auth')
+    ->name('comments.store');

@@ -22,4 +22,9 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
     ];
+
+    public function comments()
+{
+    return $this->hasMany(Comments::class);
+}
 }
