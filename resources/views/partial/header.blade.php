@@ -76,19 +76,20 @@
                                     {{ Request::is('skill') ? 'current' : '' }}">
                                     <a href="{{ route('skill.outerPage') }}" class="engspire-menu-link">Skills</a>
                                     <ul class="engspire-dropdown-menu">
-                                        <li class="engspire-dropdown-item {{ Request::is('skill/listening') ? 'current-tag' : '' }}">
+                                        <li class="engspire-dropdown-item {{ Request::is('skill/listening*') ? 'current-tag' : '' }}">
                                             <a href="{{ route('skill.index', ['slug' => 'listening']) }}" class="engspire-dropdown-link">Listening</a>
                                         </li>
-                                        <li class="engspire-dropdown-item {{ Request::is('skill/reading') ? 'current-tag' : '' }}">
+                                        <li class="engspire-dropdown-item {{ Request::is('skill/reading*') ? 'current-tag' : '' }}">
                                             <a href="{{ route('skill.index', ['slug' => 'reading']) }}" class="engspire-dropdown-link">Reading</a>
                                         </li>
-                                        <li class="engspire-dropdown-item {{ Request::is('skill/speaking') ? 'current-tag' : '' }}">
+                                        <li class="engspire-dropdown-item {{ Request::is('skill/speaking*') ? 'current-tag' : '' }}">
                                             <a href="{{ route('skill.index', ['slug' => 'speaking']) }}" class="engspire-dropdown-link">Speaking</a>
                                         </li>
-                                        <li class="engspire-dropdown-item {{ Request::is('skill/writing') ? 'current-tag' : '' }}">
+                                        <li class="engspire-dropdown-item {{ Request::is('skill/writing*') ? 'current-tag' : '' }}">
                                             <a href="{{ route('skill.index', ['slug' => 'writing']) }}" class="engspire-dropdown-link">Writing</a>
                                         </li>
                                     </ul>
+
                                 </li>
 
 

@@ -24,4 +24,10 @@ class Lesson extends Model
     public function tasks() {
         return $this->hasMany(Task::class);
     }
+
+    public function comments()
+{
+    return $this->hasMany(Comments::class);
+}
+
 }

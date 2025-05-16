@@ -27,7 +27,7 @@ class LessonController extends Controller
             'slug' => $lesson->slug,
             'created_at' => $lesson->created_at,
             'updated_at' => $lesson->updated_at,
-            'content' => $lesson->content, // Trả về object thay vì raw JSON string
+            'content' => $lesson->content, 
         ]);
     }
 
