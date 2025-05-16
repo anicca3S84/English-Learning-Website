@@ -44,7 +44,6 @@ Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->n
 Route::get('/{slug}', [SkillController::class, 'grammar'])->name('grammar.page');
 
 
-Route::get('/{skillSlug}/{courseSlug}/{lessonSlug}', [LessonController::class, 'testLesson'])->name('lesson.testLesson');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
 
 
