@@ -263,7 +263,7 @@
                         <div style="margin-top: 16px;">
                             <!-- ALL comment đã post -->
                             <div id="comments-container">
-                                @foreach ($lesson->comments->sortByDesc('created_at')->values() as $index => $comment)
+                                @foreach ($lesson->comments->whereNull('parent_id')->sortByDesc('created_at')->values() as $index => $comment)
                                 <div class="comment-wrapper" style="{{ $index >= 7 ? 'display:none;' : '' }}">
                                     @include('partial.comment', ['comment' => $comment])
                                 </div>
@@ -378,28 +378,33 @@
         });
 
 
-        function renderComment(comment) {
+        function renderComment(comment, parentId = null) {
             let avatar = comment.user.avatar ?? "{{ asset('images/favicons/profile.png') }}";
             let name = comment.user.name ?? 'Anonymous';
-            return `
-            <div class="comment-card" style="display: flex; background: #f4f4f4; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 18px;">
-                <div style="min-width: 90px; max-width: 90px; background: #2b0060; display: flex; align-items: center; justify-content: center; border-radius: 8px 0 0 8px;">
-                    <img src="${avatar}" alt="Avatar" style="width: 48px; height: 48px; border-radius: 50%;">
+            let html = `
+        <div class="comment-card" style="display: flex; background: #f4f4f4; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 18px; ${parentId ? 'margin-left: 50px;' : ''}">
+            <div style="min-width: 90px; max-width: 90px; background: #2b0060; display: flex; align-items: center; justify-content: center; border-radius: 8px 0 0 8px;">
+                <img src="${avatar}" alt="Avatar" style="width: 48px; height: 48px; border-radius: 50%;">
+            </div>
+            <div style="flex: 1; padding: 14px 18px; background: #fff; border-radius: 0 8px 8px 0;">
+                <div style="font-size: 1rem; color: #333; margin-bottom: 6px;">
+                    <span>Submitted by <strong>${name}</strong> on <strong>just now</strong></span>
                 </div>
-                <div style="flex: 1; padding: 14px 18px; background: #fff; border-radius: 0 8px 8px 0;">
-                    <div style="font-size: 1rem; color: #333; margin-bottom: 6px;">
-                        <span>Submitted by <strong>${name}</strong> on <strong>just now</strong></span>
-                    </div>
-                    <div style="margin-bottom: 12px; color: #222; font-size: 1.02rem; line-height: 1.7;">
-                        ${comment.comment}
-                    </div>
-                    <hr style="margin:14px 0; border:none; border-top:1px solid #e0e0e0" />
-                    <div style="font-size: 0.96rem; color: #333;">
-                        <a href="#" class="text-success" style="color: #43B02A;">Reply</a>
+                <div style="margin-bottom: 12px; color: #222; font-size: 1.02rem; line-height: 1.7;">
+                    ${comment.comment}
+                </div>
+                <hr style="margin:14px 0; border:none; border-top:1px solid #e0e0e0" />
+                <div style="font-size: 0.96rem; color: #333;">
+                    <a href="#" class="reply-btn text-success" data-comment-id="${comment.id}" style="color: #43B02A;">Reply</a>
+                    <div class="reply-form" id="reply-form-${comment.id}" style="display: none; margin-top: 15px;">
+                        <textarea class="reply-textarea" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                        <button class="submit-reply" data-comment-id="${comment.id}" style="margin-top: 10px; background: #2b0060; color: #fff; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer;">Submit Reply</button>
                     </div>
                 </div>
             </div>
-        `;
+        </div>
+    `;
+            return html;
         }
 
 
@@ -465,19 +470,44 @@
                 document.getElementById('load-more-wrapper').style.display = 'none';
             }
         });
+
+
+        $(document).ready(function() {
+            $(document).on('click', '.reply-btn', function(e) {
+                e.preventDefault();
+                const commentId = $(this).data('comment-id');
+                $(`#reply-form-${commentId}`).toggle();
+            });
+
+            // Submit reply handler
+            $(document).on('click', '.submit-reply', function() {
+                const commentId = $(this).data('comment-id');
+                const replyText = $(this).siblings('.reply-textarea').val();
+                const url = "{{ route('comments.store', ['lessonId' => $lesson->id]) }}";
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        comment: replyText,
+                        parent_id: commentId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            const replyHtml = renderComment(response.comment, 50);
+                            $(`#reply-form-${commentId}`).after(replyHtml);
+                            $(`#reply-form-${commentId}`).hide();
+                            $(`#reply-form-${commentId} .reply-textarea`).val('');
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('Error posting reply');
+                    }
+                });
+            });
+        });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>
