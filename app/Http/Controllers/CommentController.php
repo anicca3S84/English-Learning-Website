@@ -12,15 +12,16 @@ class CommentController extends Controller
     {
         $request->validate([
             'comment' => 'required|string|max:2000',
+            'parent_id' => 'nullable|exists:comments,id'
         ]);
 
         $comment = Comments::create([
             'lesson_id' => $lessonId,
             'user_id' => Auth::id(),
             'comment' => $request->comment,
+            'parent_id' => $request->parent_id
         ]);
 
-        // Load user để hiển thị thông tin avatar và tên
         $comment->load('user');
 
         return response()->json([

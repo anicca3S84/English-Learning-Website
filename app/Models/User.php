@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Lesson;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
         'email',
         'password',
         'google_id',
-        'facebook_id', 
+        'facebook_id',
         'avatar',
     ];
 
@@ -24,7 +25,12 @@ class User extends Authenticatable
     ];
 
     public function comments()
-{
-    return $this->hasMany(Comments::class);
-}
+    {
+        return $this->hasMany(Comments::class);
+    }
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class)->withPivot('is_finished')->withTimestamps();
+    }
 }

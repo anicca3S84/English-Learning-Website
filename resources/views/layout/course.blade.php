@@ -18,15 +18,18 @@
     <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skill-pages.css') }}">
 
-     <!-- Custom CSS for Flexbox -->
-     <style>
+    <!-- Custom CSS for Flexbox -->
+    <style>
         .custom-flex-row {
             display: flex;
-            align-items: stretch; /* Đảm bảo chiều cao của cả hai cột bằng nhau */
+            align-items: stretch;
+            /* Đảm bảo chiều cao của cả hai cột bằng nhau */
         }
 
-        .left-col, .right-col {
-            flex: 1; /* Mỗi cột sẽ chiếm một phần không gian của container */
+        .left-col,
+        .right-col {
+            flex: 1;
+            /* Mỗi cột sẽ chiếm một phần không gian của container */
             display: flex;
             flex-direction: column;
         }
@@ -44,7 +47,7 @@
             </div>
             <div class="custom-flex-row">
                 <div class="left-col">
-                   
+
 
                     <div id="course" class="corner-image">
                         @if (!empty($course->imageUrl))
@@ -89,7 +92,6 @@
                                 'lessonSlug' => $lesson->slug,
                             ]) }}"
                                 class="container-course text-decoration-none text-dark">
-
                                 <div class="image-side">
                                     @if (!empty($lesson->content['imageUrl']))
                                         <img src="{{ $lesson->content['imageUrl'] }}" alt="{{ $lesson->title }}" />
@@ -97,12 +99,23 @@
                                 </div>
 
                                 <div class="text-side">
-                                    <h2>{{ $lesson->title }}</h2>
+                                    <h2>
+                                        {{ $lesson->title }}
+                                        @if (auth()->check() && $lesson->users->first() && $lesson->users->first()->pivot->is_finished)
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30"
+                                                fill="green" viewBox="0 0 16 16" style="margin-left: 8px;"
+                                                title="Đã hoàn thành">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.707 10.293l5-5a1 1 0 0 0-1.414-1.414L6 8.586 4.707 7.293a1 1 0 1 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0z" />
+                                            </svg>
+                                        @endif
+                                    </h2>
                                     <p>{{ $lesson->description }}</p>
                                 </div>
                             </a>
                         @endforeach
                     </div>
+
 
 
 

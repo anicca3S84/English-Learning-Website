@@ -9,6 +9,8 @@ use App\Models\Skill;
 use App\Models\Task;
 use App\Models\Question;
 use App\Models\Option;
+use Illuminate\Support\Facades\Auth;
+
 
 class LessonController extends Controller
 {
@@ -27,7 +29,7 @@ class LessonController extends Controller
             'slug' => $lesson->slug,
             'created_at' => $lesson->created_at,
             'updated_at' => $lesson->updated_at,
-            'content' => $lesson->content, 
+            'content' => $lesson->content,
         ]);
     }
 
@@ -53,6 +55,29 @@ class LessonController extends Controller
             'lesson' => $lesson,
             'lessonSlug' => $lessonSlug,
             'skillTitle' => $skill->title,
+            'skillSlug' => $skillSlug,
+            'courseSlug' => $courseSlug
         ]);
+    }
+
+
+    public function finish($id)
+    {
+        $lesson = Lesson::findOrFail($id);
+
+        /** @var User $user */
+        $user = Auth::user();
+        $user->lessons()->syncWithoutDetaching([
+            $lesson->id => ['is_finished' => true]
+        ]);
+
+        $course = $lesson->course;
+        $skill = $course->skill;
+
+
+        return redirect()->route('course.show', [
+            'skillSlug' => $skill->slug,
+            'courseSlug' => $course->slug,
+        ])->with('success', 'Lesson marked as finished!');
     }
 }

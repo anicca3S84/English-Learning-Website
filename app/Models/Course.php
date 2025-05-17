@@ -18,5 +18,15 @@ class Course extends Model
         'updated_at',
     ];
 
+    public function skill()
+    {
+        return $this->belongsTo(Skill::class, 'skill_id');
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'course_id');
+    }
+
     public $timestamps = true;
 }

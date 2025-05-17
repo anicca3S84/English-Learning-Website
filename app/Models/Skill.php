@@ -19,5 +19,9 @@ class Skill extends Model
         'updated_at',
     ];
 
+     public function courses() {
+        return $this->hasMany(Course::class);
+    }
+
     public $timestamps = true;
 }

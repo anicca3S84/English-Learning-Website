@@ -62,7 +62,7 @@ Route::post('/logout', function () {
 
 
 // Route hiển thị bài test (load tất cả câu hỏi)
-Route::get('/test/1', [TestController::class, 'index'])->name('test.question');
+Route::get('/test/1', [TestController::class, 'index'])->middleware('auth')->name('test.question');
 
 // Route nộp bài
 
@@ -95,3 +95,5 @@ Route::get('/send-test-mail', [MailController::class, 'sendTestEmail']);
 Route::post('/lessons/{lessonId}/comments', [CommentController::class, 'store'])
     ->middleware('auth')
     ->name('comments.store');
+
+Route::post('/lesson/{id}/finish', [LessonController::class, 'finish'])->middleware('auth')->name('lesson.finish');
