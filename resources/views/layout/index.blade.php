@@ -43,21 +43,6 @@
 <body>
     <div class="page-wrapper">
         @include('partial.header')
-
-
-        <!--Content here  -->
-
-        <!-- Breadcrumb -->
-        <!-- <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Library</li>
-                </ol>
-            </nav>
-        </div> -->
-        <!-- End Breadcrumb -->
-
         <!-- Slider -->
         <div style="padding: 0" class="container-fluid">
             <div class="row">
@@ -71,7 +56,7 @@
                                 data-target="#carousel-554496"
                                 class="active"></li>
                         </ol>
-                        <div class="carousel-inner">
+                        <div style="margin-top: -25px" class="carousel-inner">
                             <div class="carousel-item">
                                 <img
                                     class="d-block w-100"
@@ -228,12 +213,6 @@
     @include('partial.footer')
     </div>
     <!-- /.page-wrapper -->
-
-
-
-
-
-
 
 
     <div class="mobile-nav__wrapper">
