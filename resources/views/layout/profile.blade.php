@@ -2,371 +2,315 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400" rel="stylesheet">
     <style>
-        :root {
-            --primary: #5b21b6;
-            --bg-light: #f8fafc;
-            --bg-dark: #1e293b;
-            --text-light: #1e293b;
-            --text-dark: #f8fafc;
-            --accent: #6366f1;
+        .xyz .header-bar,
+        .xyz .footer-bar {
+            height: 4px;
+            background: #232043;
+            width: 100vw;
+            position: fixed;
+            left: 0;
+            z-index: 2;
         }
 
-        body {
-            background: var(--bg-light);
-            min-height: 100vh;
-            color: var(--text-light);
-            font-family: 'Inter', Arial, sans-serif;
+        .xyz .header-bar {
+            top: 0;
+        }
+
+        .xyz .footer-bar {
+            bottom: 0;
+        }
+
+        .xyz .container {
+            margin: 64px auto;
+            max-width: 720px;
+            padding: 0 12px;
+        }
+
+        .xyz header {
+            text-align: left;
+            padding: 32px 0 8px 8px;
+        }
+
+        .xyz .profile-username {
             margin: 0;
-            transition: background 0.2s, color 0.2s;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #232043;
         }
 
-        body.dark {
-            background: var(--bg-dark);
-            color: var(--text-dark);
-        }
-
-        .profile-open {
-            max-width: 460px;
-            margin: 72px auto 0 auto;
-            text-align: center;
-            padding: 0 2vw;
+        .xyz .profile-card {
+            background: #f7f8fa;
+            box-shadow: 0 3px 16px 0 #dbdaee55;
+            border-radius: 18px;
+            margin-bottom: 48px;
+            padding: 30px 40px 40px 40px;
+            min-height: 350px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.4rem;
         }
 
-        .avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 5px solid var(--accent);
-            object-fit: cover;
-            background: #eee;
-            margin-bottom: 0.4rem;
+        .xyz .tabs {
+            display: flex;
+            border-bottom: 2px solid #e5e5ef;
+            margin-bottom: 24px;
+            width: 100%;
         }
 
-        .username {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-top: 0.15rem;
-            letter-spacing: .01em;
-            word-break: break-all;
-        }
-
-        .email {
-            color: #6366f1;
-            font-size: 1.03rem;
-            margin-bottom: 0.23rem;
-            word-break: break-all;
-        }
-
-        .edit-btn {
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            padding: 0.67rem 2.1rem;
-            border-radius: 22px;
-            font-size: 1.03rem;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 0.7rem;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.03);
-            transition: background 0.17s;
-        }
-
-        .edit-btn:hover {
-            background: var(--primary);
-        }
-
-        .mode-toggle {
-            position: absolute;
-            top: 22px;
-            right: 22px;
+        .xyz .tab-btn {
             background: none;
             border: none;
-            font-size: 1.37rem;
+            font: inherit;
+            padding: 14px 38px 10px 18px;
+            font-size: 1.1rem;
+            color: #232043;
             cursor: pointer;
-            color: var(--accent);
-            border-radius: 50%;
-            z-index: 2;
-            padding: 4px;
+            position: relative;
+            transition: color 0.2s;
+            flex: 1 1 auto;
+            text-align: center;
         }
 
-        .mode-toggle:focus {
-            outline: 2px solid var(--accent);
+        .xyz .tab-btn.active {
+            color: #2b117d;
+            font-weight: bold;
         }
 
-        /* Modal stays the same as before */
-        .modal-bg {
+        .xyz .tab-btn.active::after {
+            content: "";
+            display: block;
+            height: 3px;
+            background: #2b117d;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -2px;
+            border-radius: 2px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .xyz .tab-content {
             display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 30;
-            background: rgba(70, 65, 100, 0.22);
-            backdrop-filter: blur(2px);
-            justify-content: center;
+            animation: fadeInTab 0.35s;
+            width: 100%;
+        }
+
+        .xyz .tab-content.active {
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
-        .modal-bg.active {
-            display: flex;
+        @keyframes fadeInTab {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
         }
 
-        .modal {
-            background: #fff;
-            padding: 2rem 1.8rem 1.5rem 1.8rem;
-            border-radius: 21px;
-            box-shadow: 0 6px 24px rgba(80, 60, 110, 0.12);
-            max-width: 340px;
-            width: 98vw;
-            transition: background 0.2s, color 0.2s;
+        .xyz .profile-avatar {
+            margin: 18px 0;
         }
 
-        body.dark .modal {
-            background: #334155;
-            color: #f8fafc;
-        }
-
-        .modal h2 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1.17rem;
-        }
-
-        .field {
-            margin-bottom: 1.2rem;
-        }
-
-        .field label {
-            display: block;
-            font-size: 0.97rem;
-            margin-bottom: 0.4rem;
-            font-weight: 500;
-        }
-
-        .field input[type="text"],
-        .field input[type="email"] {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            background: none;
-            font-size: 1rem;
-            transition: border 0.16s;
-            color: inherit;
-        }
-
-        body.dark .field input[type="text"],
-        body.dark .field input[type="email"] {
-            border-color: #475569;
-        }
-
-        .field input[type="text"]:focus,
-        .field input[type="email"]:focus {
-            border-color: var(--accent);
-            outline: none;
-        }
-
-        .field input[type="file"] {
-            border: none;
-            background: none;
-            margin-top: 0.4rem;
-        }
-
-        .avatar-preview {
-            display: block;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+        .xyz .profile-avatar img {
+            width: 104px;
+            height: 104px;
             object-fit: cover;
-            margin: 0.7rem auto 1rem auto;
+            border-radius: 50%;
+            box-shadow: 0 2px 9px #c9c9e3bb;
+            border: 3px solid #fff;
+            background: #c9c9e3;
         }
 
-        .modal-btns {
-            text-align: right;
-            margin-top: 1rem;
+        .xyz .profile-fields,
+        .xyz .tab-content.edit-tab form {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
 
-        .modal-btns button {
-            padding: 0.56rem 1.5rem;
-            border-radius: 20px;
+        .xyz .profile-field {
+            font-size: 1.08rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .xyz .profile-field span:first-child,
+        .xyz .profile-field label {
+            font-weight: 600;
+            color: #2b117d;
+        }
+
+        .xyz .profile-field span:last-child {
+            font-weight: 400;
+            color: #232043;
+        }
+
+        .xyz .profile-fields input,
+        .xyz .tab-content.edit-tab form input {
+            padding: 8px 12px;
+            border: 1px solid #c4c2e6;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-family: inherit;
+            color: #232043;
+            background: #fff;
+            transition: border 0.18s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .xyz .profile-fields input:focus,
+        .xyz .tab-content.edit-tab form input:focus {
+            outline: none;
+            border-color: #2b117d;
+            background: #fcfaff;
+        }
+
+        .xyz #save-profile {
+            padding: 12px 0;
+            font-size: 1rem;
+            background: #2b117d;
+            color: #fff;
             border: none;
-            margin-left: 0.6rem;
-            font-size: 0.98rem;
-            font-weight: 500;
+            border-radius: 6px;
+            font-family: inherit;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.18s;
+            box-shadow: 0 2px 10px #bfbfdacc;
+            transition: background 0.2s;
+            width: 100%;
         }
 
-        .modal-btns .save-btn {
-            background: var(--accent);
-            color: #fff;
+        .xyz #save-profile:hover,
+        .xyz #save-profile:focus {
+            background: #4123a5;
         }
 
-        .modal-btns .save-btn:hover {
-            background: var(--primary);
-        }
-
-        .modal-btns .cancel-btn {
-            background: #e2e8f0;
-            color: #333;
-        }
-
-        body.dark .modal-btns .cancel-btn {
-            background: #475569;
-            color: #fff;
-        }
-
-        /* Responsive */
-        @media (max-width: 700px) {
-            .profile-open {
-                margin-top: 44px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-open {
-                padding: 0 3vw;
+        @media (max-width: 600px) {
+            .xyz .container {
+                max-width: 99vw;
+                margin-left: 0;
+                margin-right: 0;
             }
 
-            .modal {
-                padding: 1.3rem 3vw;
+            .xyz .profile-card {
+                padding: 15px 12px 21px 12px;
+                min-height: auto;
             }
         }
     </style>
 </head>
 
 <body>
-    <button class="mode-toggle" aria-label="Switch color mode" id="mode-toggle">🌙</button>
-    <section class="profile-open">
-        <img src="https://same-assets.com/placeholder-avatars/256/avatar-9.png" alt="Avatar" class="avatar" id="avatar-img">
-        <div class="username" id="profile-username">your_username</div>
-        <div class="email" id="profile-email">your@email.com</div>
-        <button class="edit-btn" id="edit-btn">Edit</button>
-    </section>
-    <!-- Modal -->
-    <div class="modal-bg" id="modal-bg">
-        <div class="modal">
-            <h2>Edit Profile</h2>
-            <form id="edit-form" autocomplete="off">
-                <div class="field" style="text-align:center;">
-                    <img src="https://same-assets.com/placeholder-avatars/256/avatar-9.png" alt="Preview" class="avatar-preview" id="modal-avatar-preview">
-                    <input type="file" id="avatar-input" accept="image/*">
+    <div class="xyz">
+        <div class="header-bar"></div>
+        <div class="container">
+            <header>
+                <h1 class="profile-username">{{ $user->name }}</h1>
+                <a href="{{ route('home') }}" class="btn-back" style="display:inline-block; margin: 12px; color:#2b117d; text-decoration:none; font-weight:600;">
+                    ←
+                </a>
+            </header>
+            <section class="profile-card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="view">View</button>
+                    <button class="tab-btn" data-tab="edit">Edit</button>
                 </div>
-                <div class="field">
-                    <label for="username-input">User Name</label>
-                    <input type="text" id="username-input" required>
+                <div class="tab-content view-tab active">
+                    <div class="profile-avatar">
+                        <img src="{{ $user->avatar ?? asset('images/favicons/profile.png') }}" alt="Avatar">
+                    </div>
+                    <div class="profile-fields">
+                        <div class="profile-field"><span>Username:</span> <span id="view-username">{{ $user->name }}</span></div>
+                        <div class="profile-field"><span>Email:</span> <span id="view-email">{{ $user->email }}</span></div>
+                        <div class="profile-field"><span>Place:</span> <span id="view-place">Vietnam</span></div>
+                    </div>
                 </div>
-                <div class="field">
-                    <label for="email-input">Email</label>
-                    <input type="email" id="email-input" required>
+                <div class="tab-content edit-tab">
+                    <div class="profile-avatar">
+                        <img id="edit-avatar-img" src="{{ $user->avatar ?? asset('images/favicons/profile.png') }}" alt="Avatar">
+                    </div>
+                    <form method="POST" action="{{ url('/profile/update') }}">
+                        @csrf
+                        <div class="profile-field">
+                            <label for="edit-username">Username:</label>
+                            <input id="edit-username" type="text" name="name" value="{{ auth()->user()->name }}">
+                        </div>
+                        <div class="profile-field">
+                            <label for="edit-email">Email:</label>
+                            <input id="edit-email" type="email" name="email" value="{{ auth()->user()->email }}">
+                        </div>
+                        <div class="profile-field">
+                            <label>Place:</label>
+                            <input type="text" value="Vietnam" disabled>
+                        </div>
+                        <button id="save-profile">Save</button>
+                    </form>
                 </div>
-                <div class="modal-btns">
-                    <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
-                    <button type="submit" class="save-btn">Save</button>
-                </div>
-            </form>
+            </section>
         </div>
+        <div class="footer-bar"></div>
     </div>
-    <script>
-        // Demo profile data
-        let profile = {
-            avatar: "https://same-assets.com/placeholder-avatars/256/avatar-9.png",
-            username: "your_username",
-            email: "your@email.com"
-        };
-        // Elements
-        const profileUsername = document.getElementById('profile-username');
-        const profileEmail = document.getElementById('profile-email');
-        const avatarImg = document.getElementById('avatar-img');
-        const editBtn = document.getElementById('edit-btn');
-        const modalBg = document.getElementById('modal-bg');
-        const modalAvatarPreview = document.getElementById('modal-avatar-preview');
-        const avatarInput = document.getElementById('avatar-input');
-        const usernameInput = document.getElementById('username-input');
-        const emailInput = document.getElementById('email-input');
-        const cancelBtn = document.getElementById('cancel-btn');
-        const editForm = document.getElementById('edit-form');
-        const modeToggle = document.getElementById('mode-toggle');
 
-        // Render profile
-        function renderProfile() {
-            profileUsername.textContent = profile.username;
-            profileEmail.textContent = profile.email;
-            avatarImg.src = profile.avatar;
-            modalAvatarPreview.src = profile.avatar;
-        }
-        // Modal open
-        editBtn.onclick = function() {
-            usernameInput.value = profile.username;
-            emailInput.value = profile.email;
-            modalAvatarPreview.src = profile.avatar;
-            avatarInput.value = "";
-            modalBg.classList.add('active');
-        };
-        // Modal close
-        cancelBtn.onclick = () => modalBg.classList.remove('active');
-        modalBg.onclick = e => {
-            if (e.target === modalBg) modalBg.classList.remove('active');
-        }
-        // Preview avatar in modal
-        avatarInput.onchange = function(ev) {
-            const file = ev.target.files && ev.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    modalAvatarPreview.src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            } else {
-                modalAvatarPreview.src = profile.avatar;
-            }
-        };
-        // Save profile changes
-        editForm.onsubmit = function(e) {
-            e.preventDefault();
-            profile.username = usernameInput.value.trim();
-            profile.email = emailInput.value.trim();
-            const file = avatarInput.files && avatarInput.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(ev) {
-                    profile.avatar = ev.target.result;
-                    renderProfile();
-                }
-                reader.readAsDataURL(file);
-            } else {
-                renderProfile();
-            }
-            modalBg.classList.remove('active');
-        };
-        // Color mode toggle
-        function setMode(mode) {
-            if (mode === 'dark') {
-                document.body.classList.add('dark');
-                modeToggle.textContent = '🌞';
-                localStorage.setItem('color-mode', 'dark');
-            } else {
-                document.body.classList.remove('dark');
-                modeToggle.textContent = '🌙';
-                localStorage.setItem('color-mode', 'light');
-            }
-        }
-        modeToggle.onclick = function() {
-            setMode(document.body.classList.contains('dark') ? 'light' : 'dark');
-        };
-        // On page load: set color mode
-        (function() {
-            let initMode = localStorage.getItem('color-mode');
-            if (!initMode) initMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            setMode(initMode);
-            renderProfile();
-        })();
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const viewTab = document.querySelector('.view-tab');
+            const editTab = document.querySelector('.edit-tab');
+            const viewFields = {
+                username: document.getElementById('view-username'),
+                email: document.getElementById('view-email'),
+            };
+            const editFields = {
+                username: document.getElementById('edit-username'),
+                email: document.getElementById('edit-email'),
+            };
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    viewTab.classList.remove('active');
+                    editTab.classList.remove('active');
+                    this.classList.add('active');
+                    if (this.dataset.tab === 'edit') {
+                        editTab.classList.add('active');
+                    } else {
+                        viewTab.classList.add('active');
+                    }
+                });
+            });
+
+            document.getElementById('save-profile').addEventListener('click', function() {
+                viewFields.username.textContent = editFields.username.value;
+                viewFields.email.textContent = editFields.email.value;
+                tabBtns[0].click(); // Switch to View tab
+            });
+        });
     </script>
 </body>
 

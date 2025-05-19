@@ -140,14 +140,19 @@
                         <div class="right engspire-menu-right">
                             <div class="main-menu__right engspire-user-section">
                                 @auth
-                                <div class="main-menu__right-login-register d-flex align-items-center engspire-user-info">
-                                    <img src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('images/favicons/profile.png') }}"
-                                        alt="Avatar" class="rounded-circle mr-2 engspire-user-avatar" width="40" height="40">
-                                    <span class="mr-3 font-weight-bold engspire-user-name">{{ Auth::user()->name }}</span>
-                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        <button type="submit" class="log-out-btn engspire-logout-btn">Logout</button>
-                                    </form>
+                                <div class="main-menu__right-login-register d-flex align-items-center engspire-user-info engspire-user-avatar-dropdown">
+                                    <div class="engspire-avatar-dropdown-trigger">
+                                        <img src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('images/favicons/profile.png') }}"
+                                            alt="Avatar" class="rounded-circle engspire-user-avatar" width="40" height="40">
+                                        <div class="engspire-avatar-dropdown-menu">
+                                            <div class="dropdown-header engspire-dropdown-username">{{ Auth::user()->name }}</div>
+                                            <a href="{{ url('profile') }}" class="dropdown-item engspire-profile-link">Profile Detail</a>
+                                            <form action="{{ route('logout') }}" method="POST" class="dropdown-item engspire-dropdown-logout-form" style="margin: 0; padding: 0;">
+                                                @csrf
+                                                <button type="submit" class="log-out-btn engspire-logout-btn">Logout</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 @endauth
 

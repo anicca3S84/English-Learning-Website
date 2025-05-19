@@ -15,10 +15,16 @@ use App\Http\Controllers\FacebookController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VocabularyController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('layout.index');
 })->name('home');
+// profile 
+Route::get('/profile', [ProfileController::class, 'show'])->middleware('auth');
+//update profile
+Route::post('/profile/update', [ProfileController::class, 'update'])->middleware('auth');
+
 //vocabulary
 Route::get('/vocabulary', [VocabularyController::class, 'index']);
 
