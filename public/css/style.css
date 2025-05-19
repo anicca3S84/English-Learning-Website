@@ -2103,11 +2103,13 @@ ul {
 
 .log-out-btn {
     color: var(--thm-gray);
-    font-size: 14px;
+    font-size: 18px;
     line-height: 24px;
+    margin-bottom: 20px;
     font-weight: 400;
     transition: all 200ms linear;
     transition-delay: 0.1s;
+    margin-left: 32px;
     outline: none;
     border: none;
 }
