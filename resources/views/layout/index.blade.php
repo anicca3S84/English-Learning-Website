@@ -187,7 +187,7 @@
         }
 
         .engspire-logout-btn:hover {
-            color: #fff;
+            color: #fff !important;
             background: #dc3545;
             border-radius: 8px;
             transform: translateX(2px) scale(1.03);
@@ -481,7 +481,6 @@
     <!-- template js -->
     <script src="{{ asset('js/index.js') }}"></script>
     <script>
-        // EngSpire Avatar Dropdown: Open on click, close on selection or outside click
         (function() {
             var triggers = document.querySelectorAll('.engspire-avatar-dropdown-trigger');
 
