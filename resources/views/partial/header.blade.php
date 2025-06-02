@@ -125,10 +125,14 @@
                                         </li>
                                     </ul>
                                 </li>
-
+                                
 
                                 <li class="{{ Request::is('vocabulary') ? 'current' : '' }} engspire-menu-item">
-                                    <a href="{{ url('vocabulary') }}" class="engspire-menu-link">Dictionary</a>
+                                    <a href="{{ url('vocabulary') }}" class="engspire-menu-link">Vocabulary</a>
+                                </li>
+
+                                <li class="{{ Request::is('dictionary') ? 'current' : '' }} engspire-menu-item">
+                                    <a href="{{ url('dictionary') }}" class="engspire-menu-link">Dictionary</a>
                                 </li>
 
                                 <li class="{{ Request::is('test/*') ? 'current' : '' }} engspire-menu-item">

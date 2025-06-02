@@ -29,7 +29,7 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->middleware
 
 
 //vocabulary
-Route::get('/vocabulary', [VocabularyController::class, 'index']);
+Route::get('/dictionary', [VocabularyController::class, 'index']);
 
 Route::get('/skill', [SkillController::class, 'skillOuterPage'])->name('skill.outerPage');
 

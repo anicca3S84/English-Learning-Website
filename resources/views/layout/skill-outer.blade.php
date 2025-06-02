@@ -51,6 +51,8 @@
         .engspire-user-avatar {
             box-shadow: 0 2px 10px rgba(40, 40, 40, 0.08);
             border: 2px solid #e8f4ee;
+            width: 40px;
+            height: 40px;
             transition: box-shadow 0.18s, border 0.18s;
         }
 

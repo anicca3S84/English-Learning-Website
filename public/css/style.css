@@ -21,6 +21,21 @@
     font-weight: bold;
 }
 
+    .engspire-logout-btn {
+            background: none;
+            border: none;
+            margin-left: 32px;
+            size: 32px;
+            color: #dc3545;
+            font-weight: 500;
+            padding: 0;
+            width: 100%;
+            text-align: left;
+            font-size: 1.01rem;
+            transition: color .15s, background .15s, transform .18s;
+            outline: none;
+        }
+
 /* Section heading */
 .heading-md {
     font-size: 28px;
