@@ -20,9 +20,9 @@
 <br>
 <h3 align="center">🏠 Home & Core Skills</h3>
 <p align="center">
-  <img src="img_web_learning_english/home.png" width="30%" />
-  <img src="img_web_learning_english/skill.png" width="30%" />
-  <img src="img_web_learning_english/home1.png" width="30%" />
+  <img src="img_web_learning_english/home.png" width="32%" />
+  <img src="img_web_learning_english/skill.png" width="32%" />
+  <img src="img_web_learning_english/home1.png" width="32%" />
 </p>
 <br>
 
@@ -31,22 +31,22 @@
 <br>
 <h3 align="center">📖 Dictionary & Grammar Rules</h3>
 <p align="center">
-  <img src="img_web_learning_english/dictionary.png" width="30%" />
-  <img src="img_web_learning_english/grammar.png" width="30%" />
-  <img src="img_web_learning_english/dictionary1.png" width="30%" />
+  <img src="img_web_learning_english/dictionary.png" width="32%" />
+  <img src="img_web_learning_english/grammar.png" width="32%" />
+  <img src="img_web_learning_english/dictionary1.png" width="32%" />
 </p>
 <br>
 
 <br>
 <h3 align="center">🏆 Games & Assessment</h3>
 <p align="center">
-  <img src="img_web_learning_english/game.png" width="45%" />
-  <img src="img_web_learning_english/game1.png" width="45%" />
+  <img src="img_web_learning_english/game.png" width="48%" />
+  <img src="img_web_learning_english/game1.png" width="48%" />
   
-  <br /> <img src="img_web_learning_english/game2.png" width="45%" />
-  <img src="img_web_learning_english/game3.png" width="45%" />
+  <br /> <img src="img_web_learning_english/game2.png" width="48%" />
+  <img src="img_web_learning_english/game3.png" width="48%" />
 </p>
-<br>>
+<br>
 
 ## ✨ Key Features
 1.  **Smart Dictionary:** Built-in lookup tool helping users find definitions and examples instantly.
@@ -69,3 +69,4 @@
     * Open `index.html` (or run via Live Server).
 
 ---
+*Developed by [Huỳnh Minh Hiếu](https://github.com/anicca3S84)*
