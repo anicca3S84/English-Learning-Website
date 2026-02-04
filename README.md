@@ -69,4 +69,4 @@
     * Open `index.html` (or run via Live Server).
 
 ---
-*Developed by [Huỳnh Minh Hiếu](https://github.com/anicca3S84)*
+
