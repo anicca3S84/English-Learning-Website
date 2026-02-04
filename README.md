@@ -40,12 +40,13 @@
 <br>
 <h3 align="center">🏆 Games & Assessment</h3>
 <p align="center">
-  <img src="img_web_learning_english/game.png" width="30%" />
-  <img src="img_web_learning_english/game1.png" width="30%" />
-  <img src="img_web_learning_english/game2.png" width="30%" />
-  <img src="img_web_learning_english/game3.png" width="30%" />
+  <img src="img_web_learning_english/game.png" width="45%" />
+  <img src="img_web_learning_english/game1.png" width="45%" />
+  
+  <br /> <img src="img_web_learning_english/game2.png" width="45%" />
+  <img src="img_web_learning_english/game3.png" width="45%" />
 </p>
-<br>
+<br>>
 
 ## ✨ Key Features
 1.  **Smart Dictionary:** Built-in lookup tool helping users find definitions and examples instantly.
