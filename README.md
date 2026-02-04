@@ -41,8 +41,9 @@
 <h3 align="center">🏆 Games & Assessment</h3>
 <p align="center">
   <img src="img_web_learning_english/game.png" width="30%" />
-  <img src="img_web_learning_english/test.png" width="30%" />
+  <img src="img_web_learning_english/game1.png" width="30%" />
   <img src="img_web_learning_english/game2.png" width="30%" />
+  <img src="img_web_learning_english/game3.png" width="30%" />
 </p>
 <br>
 
